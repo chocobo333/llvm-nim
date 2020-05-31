@@ -68,17 +68,17 @@ type
                 LTO_CODEGEN_PIC_MODEL_DEFAULT = 3
 
 
-## * Opaque reference to a loaded object module
+## * opaque reference to a loaded object module
 
 type
     LtoModuleT* = ptr OpaqueLTOModule
 
-## * Opaque reference to a code generator
+## * opaque reference to a code generator
 
 type
     LtoCodeGenT* = ptr OpaqueLTOCodeGenerator
 
-## * Opaque reference to a thin code generator
+## * opaque reference to a thin code generator
 
 type
     ThinltoCodeGenT* = ptr OpaqueThinLTOCodeGenerator

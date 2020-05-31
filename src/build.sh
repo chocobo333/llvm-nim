@@ -42,7 +42,15 @@ for f in $FILES; do
     $C2NIM $C2NIMFLAGS $PREOUT -o:$OUT
 
     # amends nim file
-    gsed -i -r "s/opaque/Opaque/g" $OUT
+    # rename structs
+    sed -i "" "s/ptr opaque/ptr Opaque/" $OUT
+    sed -i "" "s/ptr comdat/ptr Comdat/" $OUT
+    sed -i "" "s/opaqueModuleFlagEntry/OpaqueModuleFlagEntry/" $OUT
+    sed -i "" "s/opaqueValueMetadataEntry/OpaqueValueMetadataEntry/" $OUT
+
+    # proglem with keword
+    # sed -i "" "s/sizeOf/sizeOfX/" $OUT
+    # sed -i "" "s/typeOf/typeOfX/" $OUT
     $NIMPRETTY --indent:4 $OUT
 
 done

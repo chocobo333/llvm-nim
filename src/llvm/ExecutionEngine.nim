@@ -90,24 +90,24 @@ proc getFunctionAddress*(ee: ExecutionEngineRef; name: cstring): uint64T {.cdecl
 ## ===-- Operations on memory managers -------------------------------------===
 
 type
-    MemoryManagerAllocateCodeSectionCallback * = proc (Opaque: pointer;size: uintptrT;alignment: cuint; sectionID: cuint; sectionName: cstring): ptr uint8T {.cdecl.}
-  MemoryManagerAllocateDataSectionCallback * = proc (Opaque: pointer;size: uintptrT;alignment: cuint; sectionID: cuint; sectionName: cstring;isReadOnly: Bool): ptr uint8T {. cdecl.}
-  MemoryManagerFinalizeMemoryCallback* = proc (Opaque: pointer;errMsg: cstringArray): Bool {. cdecl.}
-  MemoryManagerDestroyCallback* = proc (Opaque: pointer) {.cdecl.}
+    MemoryManagerAllocateCodeSectionCallback * = proc (opaque: pointer;size: uintptrT;alignment: cuint; sectionID: cuint; sectionName: cstring): ptr uint8T {.cdecl.}
+  MemoryManagerAllocateDataSectionCallback * = proc (opaque: pointer;size: uintptrT;alignment: cuint; sectionID: cuint; sectionName: cstring;isReadOnly: Bool): ptr uint8T {. cdecl.}
+  MemoryManagerFinalizeMemoryCallback* = proc (opaque: pointer;errMsg: cstringArray): Bool {. cdecl.}
+  MemoryManagerDestroyCallback* = proc (opaque: pointer) {.cdecl.}
 
 ## *
 ##  Create a simple custom MCJIT memory manager. This memory manager can
 ##  intercept allocations in a module-oblivious way. This will return NULL
 ##  if any of the passed functions are NULL.
 ##
-##  @param Opaque An Opaque client object to pass back to the callbacks.
+##  @param Opaque An opaque client object to pass back to the callbacks.
 ##  @param AllocateCodeSection Allocate a block of memory for executable code.
 ##  @param AllocateDataSection Allocate a block of memory for data.
 ##  @param FinalizeMemory Set page permissions and flush cache. Return 0 on
 ##    success, 1 on error.
 ##
 
-proc createSimpleMCJITMemoryManager*(Opaque: pointer;allocateCodeSection: MemoryManagerAllocateCodeSectionCallback;allocateDataSection: MemoryManagerAllocateDataSectionCallback; finalizeMemory: MemoryManagerFinalizeMemoryCallback;destroy: MemoryManagerDestroyCallback): MCJITMemoryManagerRef {. cdecl, importc: "LLVMCreateSimpleMCJITMemoryManager", dynlib: LLVMlib.}
+proc createSimpleMCJITMemoryManager*(opaque: pointer;allocateCodeSection: MemoryManagerAllocateCodeSectionCallback;allocateDataSection: MemoryManagerAllocateDataSectionCallback; finalizeMemory: MemoryManagerFinalizeMemoryCallback;destroy: MemoryManagerDestroyCallback): MCJITMemoryManagerRef {. cdecl, importc: "LLVMCreateSimpleMCJITMemoryManager", dynlib: LLVMlib.}
 proc disposeMCJITMemoryManager*(mm: MCJITMemoryManagerRef) {.cdecl, importc: "LLVMDisposeMCJITMemoryManager", dynlib: LLVMlib.}
 ## ===-- JIT Event Listener functions -------------------------------------===
 

@@ -367,7 +367,7 @@ proc contextGetDiagnosticContext*(c: ContextRef): pointer {.cdecl, importc: "LLV
 ##  @see LLVMContext::setYieldCallback()
 ##
 
-proc contextSetYieldCallback*(c: ContextRef; callback: YieldCallback;OpaqueHandle: pointer) {.cdecl, importc: "LLVMContextSetYieldCallback", dynlib: LLVMlib.}
+proc contextSetYieldCallback*(c: ContextRef; callback: YieldCallback;opaqueHandle: pointer) {.cdecl, importc: "LLVMContextSetYieldCallback", dynlib: LLVMlib.}
 ## *
 ##  Retrieve whether the given context is set to discard all value names.
 ##
@@ -898,7 +898,7 @@ proc setModuleInlineAsm*(m: ModuleRef; `asm`: cstring) {.cdecl, importc: "LLVMSe
 ##        vector type
 ##      void type
 ##      label type
-##      Opaque type
+##      opaque type
 ##
 ##  @{
 ##
@@ -1154,7 +1154,7 @@ proc isPackedStruct*(structTy: TypeRef): Bool {.cdecl,
         importc: "LLVMIsPackedStruct",
     dynlib: LLVMlib.}
 ## *
-##  Determine whether a structure is Opaque.
+##  Determine whether a structure is opaque.
 ##
 ##  @see llvm::StructType::isOpaque()
 ##
@@ -3385,7 +3385,7 @@ proc buildCondBr*(a1: BuilderRef; `if`: ValueRef; then: BasicBlockRef;`else`: Ba
 proc buildSwitch*(a1: BuilderRef; v: ValueRef; `else`: BasicBlockRef;numCases: cuint): ValueRef {. cdecl, importc: "LLVMBuildSwitch", dynlib: LLVMlib.}
 proc buildIndirectBr*(b: BuilderRef; `addr`: ValueRef;numDests: cuint): ValueRef {. cdecl, importc: "LLVMBuildIndirectBr", dynlib: LLVMlib.}
 ##  LLVMBuildInvoke is deprecated in favor of LLVMBuildInvoke2, in preparation
-##  for Opaque pointer types.
+##  for opaque pointer types.
 
 proc buildInvoke*(a1: BuilderRef; fn: ValueRef; args: ptr ValueRef; numArgs: cuint;then: BasicBlockRef; catch: BasicBlockRef;name: cstring): ValueRef {. cdecl, importc: "LLVMBuildInvoke", dynlib: LLVMlib.}
 proc buildInvoke2*(a1: BuilderRef; ty: TypeRef; fn: ValueRef; args: ptr ValueRef;numArgs: cuint; then: BasicBlockRef; catch: BasicBlockRef;name: cstring): ValueRef {.cdecl, importc: "LLVMBuildInvoke2", dynlib: LLVMlib.}
@@ -3530,13 +3530,13 @@ proc buildAlloca*(a1: BuilderRef; ty: TypeRef; name: cstring): ValueRef {.cdecl,
 proc buildArrayAlloca*(a1: BuilderRef; ty: TypeRef; val: ValueRef;name: cstring): ValueRef {. cdecl, importc: "LLVMBuildArrayAlloca", dynlib: LLVMlib.}
 proc buildFree*(a1: BuilderRef; pointerVal: ValueRef): ValueRef {.cdecl, importc: "LLVMBuildFree", dynlib: LLVMlib.}
 ##  LLVMBuildLoad is deprecated in favor of LLVMBuildLoad2, in preparation for
-##  Opaque pointer types.
+##  opaque pointer types.
 
 proc buildLoad*(a1: BuilderRef; pointerVal: ValueRef;name: cstring): ValueRef {.cdecl, importc: "LLVMBuildLoad", dynlib: LLVMlib.}
 proc buildLoad2*(a1: BuilderRef; ty: TypeRef; pointerVal: ValueRef;name: cstring): ValueRef {. cdecl, importc: "LLVMBuildLoad2", dynlib: LLVMlib.}
 proc buildStore*(a1: BuilderRef; val: ValueRef; `ptr`: ValueRef): ValueRef {.cdecl, importc: "LLVMBuildStore", dynlib: LLVMlib.}
 ##  LLVMBuildGEP, LLVMBuildInBoundsGEP, and LLVMBuildStructGEP are deprecated in
-##  favor of LLVMBuild*GEP2, in preparation for Opaque pointer types.
+##  favor of LLVMBuild*GEP2, in preparation for opaque pointer types.
 
 proc buildGEP*(b: BuilderRef; pointer: ValueRef; indices: ptr ValueRef;numIndices: cuint; name: cstring): ValueRef {.cdecl, importc: "LLVMBuildGEP", dynlib: LLVMlib.}
 proc buildInBoundsGEP*(b: BuilderRef; pointer: ValueRef; indices: ptr ValueRef;numIndices: cuint; name: cstring): ValueRef {.cdecl, importc: "LLVMBuildInBoundsGEP", dynlib: LLVMlib.}
@@ -3592,7 +3592,7 @@ proc buildFCmp*(a1: BuilderRef; op: RealPredicate; lhs: ValueRef; rhs: ValueRef;
 
 proc buildPhi*(a1: BuilderRef; ty: TypeRef; name: cstring): ValueRef {.cdecl, importc: "LLVMBuildPhi", dynlib: LLVMlib.}
 ##  LLVMBuildCall is deprecated in favor of LLVMBuildCall2, in preparation for
-##  Opaque pointer types.
+##  opaque pointer types.
 
 proc buildCall*(a1: BuilderRef; fn: ValueRef; args: ptr ValueRef; numArgs: cuint;name: cstring): ValueRef {.cdecl, importc: "LLVMBuildCall", dynlib: LLVMlib.}
 proc buildCall2*(a1: BuilderRef; a2: TypeRef; fn: ValueRef; args: ptr ValueRef;numArgs: cuint; name: cstring): ValueRef {.cdecl, importc: "LLVMBuildCall2", dynlib: LLVMlib.}

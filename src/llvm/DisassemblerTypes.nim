@@ -7,7 +7,7 @@
 ## |*                                                                            *|
 ## |*===----------------------------------------------------------------------===
 ## *
-##  An Opaque reference to a disassembler context.
+##  An opaque reference to a disassembler context.
 ##
 
 type

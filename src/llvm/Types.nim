@@ -176,7 +176,7 @@ type
 ##
 
 type
-    ComdatRef* = ptr comdat
+    ComdatRef* = ptr Comdat
 
 ## *
 ##  @see llvm::Module::ModuleFlagEntry
