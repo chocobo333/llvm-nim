@@ -10,17 +10,15 @@
 ## |* This file defines types used by the C interface to LLVM.                   *|
 ## |*                                                                            *|
 ## \*===----------------------------------------------------------------------===
-## *
-##  @defgroup LLVMCSupportTypes Types and Enumerations
-##
-##  @{
-##
+
+import prelude/opaques
+
 
 type
     Bool* = cint
+    ## Represents c bool(int).
 
 ##  Opaque types.
-## *
 ##  LLVM uses a polymorphic type hierarchy which C cannot represent, therefore
 ##  parameters must be passed as base types. Despite the declared types, most
 ##  of the functions provided operate only on branches of the type hierarchy.
@@ -30,175 +28,95 @@ type
 ##  If in doubt, refer to Core.cpp, which performs parameter downcasts in the
 ##  form unwrap<RequiredType>(Param).
 ##
-## *
-##  Used to pass regions of memory through LLVM interfaces.
-##
-##  @see llvm::MemoryBuffer
-##
 
 type
     MemoryBufferRef* = ptr OpaqueMemoryBuffer
+    ##  Used to pass regions of memory through LLVM interfaces.
+    ##
+    ##  @see llvm::MemoryBuffer
 
-## *
-##  The top-level container for all LLVM global data. See the LLVMContext class.
-##
-
-type
     ContextRef* = ptr OpaqueContext
+    ##  The top-level container for all LLVM global data. See the LLVMContext class.
 
-## *
-##  The top-level container for all other LLVM Intermediate Representation (IR)
-##  objects.
-##
-##  @see llvm::Module
-##
-
-type
     ModuleRef* = ptr OpaqueModule
-
-## *
-##  Each value in the LLVM IR has a type, an LLVMTypeRef.
-##
-##  @see llvm::Type
-##
+    ##  The top-level container for all other LLVM Intermediate Representation (IR)
+    ##  objects.
+    ##
+    ##  @see llvm::Module
 
 type
+
     TypeRef* = ptr OpaqueType
+    ##  Each value in the LLVM IR has a type, an LLVMTypeRef.
+    ##
+    ##  @see llvm::Type
 
-## *
-##  Represents an individual value in LLVM IR.
-##
-##  This models llvm::Value.
-##
-
-type
     ValueRef* = ptr OpaqueValue
+    ##  Represents an individual value in LLVM IR.
+    ##
+    ##  This models llvm::Value.
 
-## *
-##  Represents a basic block of instructions in LLVM IR.
-##
-##  This models llvm::BasicBlock.
-##
-
-type
     BasicBlockRef* = ptr OpaqueBasicBlock
+    ##  Represents a basic block of instructions in LLVM IR.
+    ##
+    ##  This models llvm::BasicBlock.
 
-## *
-##  Represents an LLVM Metadata.
-##
-##  This models llvm::Metadata.
-##
-
-type
     MetadataRef* = ptr OpaqueMetadata
+    ##  Represents an LLVM Metadata.
+    ##
+    ##  This models llvm::Metadata.
 
-## *
-##  Represents an LLVM Named Metadata Node.
-##
-##  This models llvm::NamedMDNode.
-##
-
-type
     NamedMDNodeRef* = ptr OpaqueNamedMDNode
+    ##  Represents an LLVM Named Metadata Node.
+    ##
+    ##  This models llvm::NamedMDNode.
 
-## *
-##  Represents an entry in a Global Object's metadata attachments.
-##
-##  This models std::pair<unsigned, MDNode *>
-##
-
-type
     ValueMetadataEntry* = OpaqueValueMetadataEntry
+    ##  Represents an entry in a Global Object's metadata attachments.
+    ##
+    ##  This models std::pair<unsigned, MDNode *>
 
-## *
-##  Represents an LLVM basic block builder.
-##
-##  This models llvm::IRBuilder.
-##
-
-type
     BuilderRef* = ptr OpaqueBuilder
+    ##  Represents an LLVM basic block builder.
+    ##
+    ##  This models llvm::IRBuilder.
 
-## *
-##  Represents an LLVM debug info builder.
-##
-##  This models llvm::DIBuilder.
-##
-
-type
     DIBuilderRef* = ptr OpaqueDIBuilder
+    ##  Represents an LLVM debug info builder.
+    ##
+    ##  This models llvm::DIBuilder.
 
-## *
-##  Interface used to provide a module to JIT or interpreter.
-##  This is now just a synonym for llvm::Module, but we have to keep using the
-##  different type to keep binary compatibility.
-##
-
-type
     ModuleProviderRef* = ptr OpaqueModuleProvider
+    ##  Interface used to provide a module to JIT or interpreter.
+    ##  This is now just a synonym for llvm::Module, but we have to keep using the
+    ##  different type to keep binary compatibility.
 
-## * @see llvm::PassManagerBase
-
-type
     PassManagerRef* = ptr OpaquePassManager
+    ## * @see llvm::PassManagerBase
 
-## * @see llvm::PassRegistry
-
-type
     PassRegistryRef* = ptr OpaquePassRegistry
+    ## * @see llvm::PassRegistry
 
-## *
-##  Used to get the users and usees of a Value.
-##
-##  @see llvm::Use
-
-type
     UseRef* = ptr OpaqueUse
+    ##  Used to get the users and usees of a Value.
+    ##
+    ##  @see llvm::Use
 
-## *
-##  Used to represent an attributes.
-##
-##  @see llvm::Attribute
-##
-
-type
     AttributeRef* = ptr OpaqueAttributeRef
-
-## *
-##  @see llvm::DiagnosticInfo
-##
-
-type
+    ##  Used to represent an attributes.
+    ##
+    ##  @see llvm::Attribute
     DiagnosticInfoRef* = ptr OpaqueDiagnosticInfo
+    ##  @see llvm::DiagnosticInfo
 
-## *
-##  @see llvm::Comdat
-##
-
-type
     ComdatRef* = ptr Comdat
+    ##  @see llvm::Comdat
 
-## *
-##  @see llvm::Module::ModuleFlagEntry
-##
-
-type
     ModuleFlagEntry* = OpaqueModuleFlagEntry
+    ##  @see llvm::Module::ModuleFlagEntry
 
-## *
-##  @see llvm::JITEventListener
-##
-
-type
     JITEventListenerRef* = ptr OpaqueJITEventListener
+    ##  @see llvm::JITEventListener
 
-## *
-##  @see llvm::object::Binary
-##
-
-type
     BinaryRef* = ptr OpaqueBinary
-
-## *
-##  @}
-##
+    ##  @see llvm::object::Binary
