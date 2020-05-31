@@ -12,7 +12,7 @@
 ## \*===----------------------------------------------------------------------===
 
 type
-  FatalErrorHandler* = proc (reason: cstring) {.cdecl.}
+    FatalErrorHandler* = proc (reason: cstring) {.cdecl.}
 
 ## *
 ##  Install a fatal error handler. By default, if LLVM detects a fatal error, it

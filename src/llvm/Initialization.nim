@@ -33,7 +33,9 @@ proc initializeInstrumentation*(r: PassRegistryRef) {.cdecl, importc: "LLVMIniti
 proc initializeAnalysis*(r: PassRegistryRef) {.cdecl, importc: "LLVMInitializeAnalysis", dynlib: LLVMlib.}
 proc initializeIPA*(r: PassRegistryRef) {.cdecl, importc: "LLVMInitializeIPA", dynlib: LLVMlib.}
 proc initializeCodeGen*(r: PassRegistryRef) {.cdecl, importc: "LLVMInitializeCodeGen", dynlib: LLVMlib.}
-proc initializeTarget*(r: PassRegistryRef) {.cdecl, importc: "LLVMInitializeTarget", dynlib: LLVMlib.}
+proc initializeTarget*(r: PassRegistryRef) {.cdecl,
+        importc: "LLVMInitializeTarget",
+    dynlib: LLVMlib.}
 ## *
 ##  @}
 ##

@@ -23,9 +23,10 @@
 ##
 
 type
-  RemarkType* {.size: sizeof(cint).} = enum
-    RemarkTypeUnknown, RemarkTypePassed, RemarkTypeMissed, RemarkTypeAnalysis,
-    RemarkTypeAnalysisFPCommute, RemarkTypeAnalysisAliasing, RemarkTypeFailure
+    RemarkType* {.size: sizeof(cint).} = enum
+        RemarkTypeUnknown, RemarkTypePassed, RemarkTypeMissed,
+                RemarkTypeAnalysis,
+        RemarkTypeAnalysisFPCommute, RemarkTypeAnalysisAliasing, RemarkTypeFailure
 
 
 ## *
@@ -36,7 +37,7 @@ type
 ##
 
 type
-  RemarkStringRef* = ptr remarkOpaqueString
+    RemarkStringRef* = ptr remarkOpaqueString
 
 ## *
 ##  Returns the buffer holding the string.
@@ -59,7 +60,7 @@ proc remarkStringGetLen*(string: RemarkStringRef): uint32T {.cdecl, importc: "LL
 ##
 
 type
-  RemarkDebugLocRef* = ptr remarkOpaqueDebugLoc
+    RemarkDebugLocRef* = ptr remarkOpaqueDebugLoc
 
 ## *
 ##  Return the path to the source file for a debug location.
@@ -91,7 +92,7 @@ proc remarkDebugLocGetSourceColumn*(dl: RemarkDebugLocRef): uint32T {.cdecl, imp
 ##
 
 type
-  RemarkArgRef* = ptr remarkOpaqueArg
+    RemarkArgRef* = ptr remarkOpaqueArg
 
 ## *
 ##  Returns the key of an argument. The key defines what the value is, and the
@@ -124,7 +125,7 @@ proc remarkArgGetDebugLoc*(arg: RemarkArgRef): RemarkDebugLocRef {.cdecl, import
 ##
 
 type
-  RemarkEntryRef* = ptr remarkOpaqueEntry
+    RemarkEntryRef* = ptr remarkOpaqueEntry
 
 ## *
 ##  Free the resources used by the remark entry.
@@ -208,9 +209,9 @@ proc remarkEntryGetFirstArg*(remark: RemarkEntryRef): RemarkArgRef {.cdecl, impo
 ##  \since REMARKS_API_VERSION=0
 ##
 
-proc remarkEntryGetNextArg*(it: RemarkArgRef; remark: RemarkEntryRef): RemarkArgRef {. cdecl, importc: "LLVMRemarkEntryGetNextArg", dynlib: LLVMlib.}
+proc remarkEntryGetNextArg*(it: RemarkArgRef;remark: RemarkEntryRef): RemarkArgRef {. cdecl, importc: "LLVMRemarkEntryGetNextArg", dynlib: LLVMlib.}
 type
-  RemarkParserRef* = ptr remarkOpaqueParser
+    RemarkParserRef* = ptr remarkOpaqueParser
 
 ## *
 ##  Creates a remark parser that can be used to parse the buffer located in \p
@@ -237,7 +238,7 @@ proc remarkParserCreateYAML*(buf: pointer; size: uint64T): RemarkParserRef {.cde
 ##  \since REMARKS_API_VERSION=1
 ##
 
-proc remarkParserCreateBitstream*(buf: pointer; size: uint64T): RemarkParserRef {. cdecl, importc: "LLVMRemarkParserCreateBitstream", dynlib: LLVMlib.}
+proc remarkParserCreateBitstream*(buf: pointer;size: uint64T): RemarkParserRef {. cdecl, importc: "LLVMRemarkParserCreateBitstream", dynlib: LLVMlib.}
 ## *
 ##  Returns the next remark in the file.
 ##

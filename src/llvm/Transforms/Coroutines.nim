@@ -23,13 +23,19 @@
 ##
 ## * See llvm::createCoroEarlyLegacyPass function.
 
-proc addCoroEarlyPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddCoroEarlyPass", dynlib: LLVMlib.}
+proc addCoroEarlyPass*(pm: PassManagerRef) {.cdecl,
+        importc: "LLVMAddCoroEarlyPass",
+    dynlib: LLVMlib.}
 ## * See llvm::createCoroSplitLegacyPass function.
 
-proc addCoroSplitPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddCoroSplitPass", dynlib: LLVMlib.}
+proc addCoroSplitPass*(pm: PassManagerRef) {.cdecl,
+        importc: "LLVMAddCoroSplitPass",
+    dynlib: LLVMlib.}
 ## * See llvm::createCoroElideLegacyPass function.
 
-proc addCoroElidePass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddCoroElidePass", dynlib: LLVMlib.}
+proc addCoroElidePass*(pm: PassManagerRef) {.cdecl,
+        importc: "LLVMAddCoroElidePass",
+    dynlib: LLVMlib.}
 ## * See llvm::createCoroCleanupLegacyPass function.
 
 proc addCoroCleanupPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddCoroCleanupPass", dynlib: LLVMlib.}

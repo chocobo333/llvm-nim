@@ -43,7 +43,9 @@ proc addFunctionInliningPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddFunc
 proc addAlwaysInlinerPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddAlwaysInlinerPass", dynlib: LLVMlib.}
 ## * See llvm::createGlobalDCEPass function.
 
-proc addGlobalDCEPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddGlobalDCEPass", dynlib: LLVMlib.}
+proc addGlobalDCEPass*(pm: PassManagerRef) {.cdecl,
+        importc: "LLVMAddGlobalDCEPass",
+    dynlib: LLVMlib.}
 ## * See llvm::createGlobalOptimizerPass function.
 
 proc addGlobalOptimizerPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddGlobalOptimizerPass", dynlib: LLVMlib.}
@@ -70,7 +72,9 @@ proc addInternalizePass*(a1: PassManagerRef; allButMain: cuint) {.cdecl, importc
 ##  @see llvm::createInternalizePass function.
 ##
 
-proc addInternalizePassWithMustPreservePredicate*(pm: PassManagerRef;context: pointer;mustPreserve: proc (a1: ValueRef; a2: pointer): Bool {.cdecl.}) {.cdecl, importc: "LLVMAddInternalizePassWithMustPreservePredicate", dynlib: LLVMlib.}
+proc addInternalizePassWithMustPreservePredicate*(pm: PassManagerRef;context: pointer;mustPreserve: proc (a1: ValueRef; a2: pointer): Bool {.cdecl.}) {.cdecl,
+    importc: "LLVMAddInternalizePassWithMustPreservePredicate",
+            dynlib: LLVMlib.}
 ## * See llvm::createStripDeadPrototypesPass function.
 
 proc addStripDeadPrototypesPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddStripDeadPrototypesPass", dynlib: LLVMlib.}

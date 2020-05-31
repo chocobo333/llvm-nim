@@ -68,7 +68,9 @@ proc addLICMPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddLICMPass", dynli
 proc addLoopDeletionPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddLoopDeletionPass", dynlib: LLVMlib.}
 ## * See llvm::createLoopIdiomPass function
 
-proc addLoopIdiomPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddLoopIdiomPass", dynlib: LLVMlib.}
+proc addLoopIdiomPass*(pm: PassManagerRef) {.cdecl,
+        importc: "LLVMAddLoopIdiomPass",
+    dynlib: LLVMlib.}
 ## * See llvm::createLoopRotatePass function.
 
 proc addLoopRotatePass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddLoopRotatePass", dynlib: LLVMlib.}
@@ -89,7 +91,9 @@ proc addLoopUnswitchPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddLoopUnsw
 proc addLowerAtomicPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddLowerAtomicPass", dynlib: LLVMlib.}
 ## * See llvm::createMemCpyOptPass function.
 
-proc addMemCpyOptPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddMemCpyOptPass", dynlib: LLVMlib.}
+proc addMemCpyOptPass*(pm: PassManagerRef) {.cdecl,
+        importc: "LLVMAddMemCpyOptPass",
+    dynlib: LLVMlib.}
 ## * See llvm::createPartiallyInlineLibCallsPass function.
 
 proc addPartiallyInlineLibCallsPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddPartiallyInlineLibCallsPass", dynlib: LLVMlib.}
@@ -107,7 +111,9 @@ proc addScalarReplAggregatesPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAdd
 proc addScalarReplAggregatesPassSSA*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddScalarReplAggregatesPassSSA", dynlib: LLVMlib.}
 ## * See llvm::createSROAPass function.
 
-proc addScalarReplAggregatesPassWithThreshold*(pm: PassManagerRef; threshold: cint) {. cdecl, importc: "LLVMAddScalarReplAggregatesPassWithThreshold", dynlib: LLVMlib.}
+proc addScalarReplAggregatesPassWithThreshold*(pm: PassManagerRef;threshold: cint) {.
+    cdecl, importc: "LLVMAddScalarReplAggregatesPassWithThreshold",
+            dynlib: LLVMlib.}
 ## * See llvm::createSimplifyLibCallsPass function.
 
 proc addSimplifyLibCallsPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddSimplifyLibCallsPass", dynlib: LLVMlib.}
@@ -122,13 +128,17 @@ proc addConstantPropagationPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddC
 proc addDemoteMemoryToRegisterPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddDemoteMemoryToRegisterPass", dynlib: LLVMlib.}
 ## * See llvm::createVerifierPass function.
 
-proc addVerifierPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddVerifierPass", dynlib: LLVMlib.}
+proc addVerifierPass*(pm: PassManagerRef) {.cdecl,
+        importc: "LLVMAddVerifierPass",
+    dynlib: LLVMlib.}
 ## * See llvm::createCorrelatedValuePropagationPass function
 
 proc addCorrelatedValuePropagationPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddCorrelatedValuePropagationPass", dynlib: LLVMlib.}
 ## * See llvm::createEarlyCSEPass function
 
-proc addEarlyCSEPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddEarlyCSEPass", dynlib: LLVMlib.}
+proc addEarlyCSEPass*(pm: PassManagerRef) {.cdecl,
+        importc: "LLVMAddEarlyCSEPass",
+    dynlib: LLVMlib.}
 ## * See llvm::createEarlyCSEPass function
 
 proc addEarlyCSEMemSSAPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddEarlyCSEMemSSAPass", dynlib: LLVMlib.}

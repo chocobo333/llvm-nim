@@ -23,10 +23,10 @@
 ##
 
 type
-  VerifierFailureAction* {.size: sizeof(cint).} = enum
-    AbortProcessAction,       ##  verifier will print to stderr and abort()
-    PrintMessageAction,       ##  verifier will print to stderr and return 1
-    ReturnStatusAction        ##  verifier will just return 1
+    VerifierFailureAction* {.size: sizeof(cint).} = enum
+        AbortProcessAction, ##  verifier will print to stderr and abort()
+        PrintMessageAction, ##  verifier will print to stderr and return 1
+        ReturnStatusAction  ##  verifier will just return 1
 
 
 ##  Verifies that a module is valid, taking the specified action if not.

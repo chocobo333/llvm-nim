@@ -10,7 +10,6 @@
 ## |* This file defines the C interface to the LLVM support library.             *|
 ## |*                                                                            *|
 ## \*===----------------------------------------------------------------------===
-## 
 ## *
 ##  This function permanently loads the dynamic library at the given path.
 ##  It is safe to call this function multiple times for the same library.
@@ -28,7 +27,7 @@ proc loadLibraryPermanently*(filename: cstring): Bool {.cdecl, importc: "LLVMLoa
 ##  @see llvm::cl::ParseCommandLineOptions()
 ##
 
-proc parseCommandLineOptions*(argc: cint; argv: cstringArray; overview: cstring) {. cdecl, importc: "LLVMParseCommandLineOptions", dynlib: LLVMlib.}
+proc parseCommandLineOptions*(argc: cint; argv: cstringArray;overview: cstring) {. cdecl, importc: "LLVMParseCommandLineOptions", dynlib: LLVMlib.}
 ## *
 ##  This function will search through all previously loaded dynamic
 ##  libraries for the symbol \p symbolName. If it is found, the address of

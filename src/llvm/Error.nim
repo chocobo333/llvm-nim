@@ -15,14 +15,14 @@
 ##
 
 type
-  ErrorRef* = ptr opaqueError
+    ErrorRef* = ptr OpaqueError
 
 ## *
 ##  Error type identifier.
 ##
 
 type
-  ErrorTypeId* = pointer
+    ErrorTypeId* = pointer
 
 ## *
 ##  Returns the type id for the given error instance, which must be a failure

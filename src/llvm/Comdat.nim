@@ -12,16 +12,16 @@
 ## \*===----------------------------------------------------------------------===
 
 type
-  ComdatSelectionKind* {.size: sizeof(cint).} = enum
-    AnyComdatSelectionKind,   ## /< The linker may choose any COMDAT.
-    ExactMatchComdatSelectionKind, ## /< The data referenced by the COMDAT must
-                                  ## /< be the same.
-    LargestComdatSelectionKind, ## /< The linker will choose the largest
-                               ## /< COMDAT.
-    NoDuplicatesComdatSelectionKind, ## /< No other Module may specify this
+    ComdatSelectionKind* {.size: sizeof(cint).} = enum
+        AnyComdatSelectionKind,     ## /< The linker may choose any COMDAT.
+        ExactMatchComdatSelectionKind, ## /< The data referenced by the COMDAT must
+                                    ## /< be the same.
+        LargestComdatSelectionKind, ## /< The linker will choose the largest
                                     ## /< COMDAT.
-    SameSizeComdatSelectionKind ## /< The data referenced by the COMDAT must be
-                               ## /< the same size.
+        NoDuplicatesComdatSelectionKind, ## /< No other Module may specify this
+                                    ## /< COMDAT.
+        SameSizeComdatSelectionKind ## /< The data referenced by the COMDAT must be
+                                    ## /< the same size.
 
 
 ## *

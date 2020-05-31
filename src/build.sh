@@ -6,6 +6,7 @@ CC='gcc'
 CCFLAGS="`llvm-config --cflags --libs --ldflags all --system-libs` -lLLVM"
 C2NIM='c2nim'
 C2NIMFLAGS='--nep1 --skipinclude --cdecl --prefix:LLVM --dynlib:LLVMlib'
+NIMPRETTY='nimpretty'
 
 
 DIRS=`find $LLVM_INC/llvm-c -type d -mindepth 1 | sed "s|$LLVM_INC/llvm-c/||g"`
@@ -40,7 +41,8 @@ for f in $FILES; do
     # c2nim
     $C2NIM $C2NIMFLAGS $PREOUT -o:$OUT
 
-    # demands nim file
-    gsed -i -r "s/\{([^}\n]*)\n\s*([^{\n]*)\}/{\1 \2}/g" $OUT
+    # amends nim file
+    gsed -i -r "s/opaque/Opaque/g" $OUT
+    $NIMPRETTY --indent:4 $OUT
 
 done

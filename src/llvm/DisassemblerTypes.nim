@@ -7,11 +7,11 @@
 ## |*                                                                            *|
 ## |*===----------------------------------------------------------------------===
 ## *
-##  An opaque reference to a disassembler context.
+##  An Opaque reference to a disassembler context.
 ##
 
 type
-  DisasmContextRef* = pointer
+    DisasmContextRef* = pointer
 
 ## *
 ##  The type for the operand information call back function.  This is called to
@@ -32,7 +32,7 @@ type
 ##
 
 type
-  OpInfoCallback* = proc (disInfo: pointer; pc: uint64T; offset: uint64T; size: uint64T;tagType: cint; tagBuf: pointer): cint {.cdecl.}
+    OpInfoCallback* = proc (disInfo: pointer; pc: uint64T; offset: uint64T; size: uint64T;tagType: cint; tagBuf: pointer): cint {.cdecl.}
 
 ## *
 ##  The initial support in LLVM MC for the most general form of a relocatable
@@ -56,16 +56,16 @@ type
 ##
 
 type
-  OpInfoSymbol1* {.bycopy.} = object
-    present*: uint64T          ##  1 if this symbol is present
-    name*: cstring             ##  symbol name if not NULL
-    value*: uint64T            ##  symbol value if name is NULL
+    OpInfoSymbol1* {.bycopy.} = object
+        present*: uint64T ##  1 if this symbol is present
+        name*: cstring    ##  symbol name if not NULL
+        value*: uint64T   ##  symbol value if name is NULL
 
-  OpInfo1* {.bycopy.} = object
-    addSymbol*: OpInfoSymbol1
-    subtractSymbol*: OpInfoSymbol1
-    value*: uint64T
-    variantKind*: uint64T
+    OpInfo1* {.bycopy.} = object
+        addSymbol*: OpInfoSymbol1
+        subtractSymbol*: OpInfoSymbol1
+        value*: uint64T
+        variantKind*: uint64T
 
 
 ## *
@@ -91,7 +91,7 @@ type
 ##
 
 type
-  SymbolLookupCallback* = proc (disInfo: pointer; referenceValue: uint64T;referenceType: ptr uint64T; referencePC: uint64T;referenceName: cstringArray): cstring {.cdecl.}
+    SymbolLookupCallback* = proc (disInfo: pointer; referenceValue: uint64T;referenceType: ptr uint64T; referencePC: uint64T;referenceName: cstringArray): cstring {.cdecl.}
 
 ## *
 ##  The reference types on input and output.

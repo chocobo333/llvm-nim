@@ -33,14 +33,14 @@ proc parseBitcode*(memBuf: MemoryBufferRef; outModule: ptr ModuleRef;outMessage:
 proc parseBitcode2*(memBuf: MemoryBufferRef; outModule: ptr ModuleRef): Bool {.cdecl, importc: "LLVMParseBitcode2", dynlib: LLVMlib.}
 ##  This is deprecated. Use LLVMParseBitcodeInContext2.
 
-proc parseBitcodeInContext*(contextRef: ContextRef; memBuf: MemoryBufferRef;outModule: ptr ModuleRef; outMessage: cstringArray): Bool {. cdecl, importc: "LLVMParseBitcodeInContext", dynlib: LLVMlib.}
+proc parseBitcodeInContext*(contextRef: ContextRef; memBuf: MemoryBufferRef;outModule: ptr ModuleRef;outMessage: cstringArray): Bool {. cdecl, importc: "LLVMParseBitcodeInContext", dynlib: LLVMlib.}
 proc parseBitcodeInContext2*(contextRef: ContextRef; memBuf: MemoryBufferRef;outModule: ptr ModuleRef): Bool {.cdecl, importc: "LLVMParseBitcodeInContext2", dynlib: LLVMlib.}
 ## * Reads a module from the specified path, returning via the OutMP parameter
 ##     a module provider which performs lazy deserialization. Returns 0 on success.
 ##     Optionally returns a human-readable error message via OutMessage.
 ##     This is deprecated. Use LLVMGetBitcodeModuleInContext2.
 
-proc getBitcodeModuleInContext*(contextRef: ContextRef; memBuf: MemoryBufferRef;outM: ptr ModuleRef; outMessage: cstringArray): Bool {. cdecl, importc: "LLVMGetBitcodeModuleInContext", dynlib: LLVMlib.}
+proc getBitcodeModuleInContext*(contextRef: ContextRef; memBuf: MemoryBufferRef;outM: ptr ModuleRef;outMessage: cstringArray): Bool {. cdecl, importc: "LLVMGetBitcodeModuleInContext", dynlib: LLVMlib.}
 ## * Reads a module from the specified path, returning via the OutMP parameter a
 ##  module provider which performs lazy deserialization. Returns 0 on success.
 

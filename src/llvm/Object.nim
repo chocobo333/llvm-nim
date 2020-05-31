@@ -24,25 +24,25 @@
 ##  Opaque type wrappers
 
 type
-  SectionIteratorRef* = ptr opaqueSectionIterator
-  SymbolIteratorRef* = ptr opaqueSymbolIterator
-  RelocationIteratorRef* = ptr opaqueRelocationIterator
-  BinaryType* {.size: sizeof(cint).} = enum
-    BinaryTypeArchive,        ## *< Archive file.
-    BinaryTypeMachOUniversalBinary, ## *< Mach-O Universal Binary file.
-    BinaryTypeCOFFImportFile, ## *< COFF Import file.
-    BinaryTypeIR,             ## *< LLVM IR.
-    BinaryTypeWinRes,         ## *< Windows resource (.res) file.
-    BinaryTypeCOFF,           ## *< COFF Object file.
-    BinaryTypeELF32L,         ## *< ELF 32-bit, little endian.
-    BinaryTypeELF32B,         ## *< ELF 32-bit, big endian.
-    BinaryTypeELF64L,         ## *< ELF 64-bit, little endian.
-    BinaryTypeELF64B,         ## *< ELF 64-bit, big endian.
-    BinaryTypeMachO32L,       ## *< MachO 32-bit, little endian.
-    BinaryTypeMachO32B,       ## *< MachO 32-bit, big endian.
-    BinaryTypeMachO64L,       ## *< MachO 64-bit, little endian.
-    BinaryTypeMachO64B,       ## *< MachO 64-bit, big endian.
-    BinaryTypeWasm            ## *< Web Assembly.
+    SectionIteratorRef* = ptr OpaqueSectionIterator
+    SymbolIteratorRef* = ptr OpaqueSymbolIterator
+    RelocationIteratorRef* = ptr OpaqueRelocationIterator
+    BinaryType* {.size: sizeof(cint).} = enum
+        BinaryTypeArchive,              ## *< Archive file.
+        BinaryTypeMachOUniversalBinary, ## *< Mach-O Universal Binary file.
+        BinaryTypeCOFFImportFile,       ## *< COFF Import file.
+        BinaryTypeIR,                   ## *< LLVM IR.
+        BinaryTypeWinRes,               ## *< Windows resource (.res) file.
+        BinaryTypeCOFF,                 ## *< COFF Object file.
+        BinaryTypeELF32L,               ## *< ELF 32-bit, little endian.
+        BinaryTypeELF32B,               ## *< ELF 32-bit, big endian.
+        BinaryTypeELF64L,               ## *< ELF 64-bit, little endian.
+        BinaryTypeELF64B,               ## *< ELF 64-bit, big endian.
+        BinaryTypeMachO32L,             ## *< MachO 32-bit, little endian.
+        BinaryTypeMachO32B,             ## *< MachO 32-bit, big endian.
+        BinaryTypeMachO64L,             ## *< MachO 64-bit, little endian.
+        BinaryTypeMachO64B,             ## *< MachO 64-bit, big endian.
+        BinaryTypeWasm                  ## *< Web Assembly.
 
 
 ## *
@@ -88,7 +88,9 @@ proc binaryCopyMemoryBuffer*(br: BinaryRef): MemoryBufferRef {.cdecl, importc: "
 ##  @see llvm::object::Binary::getType
 ##
 
-proc binaryGetType*(br: BinaryRef): BinaryType {.cdecl, importc: "LLVMBinaryGetType", dynlib: LLVMlib.}
+proc binaryGetType*(br: BinaryRef): BinaryType {.cdecl,
+        importc: "LLVMBinaryGetType",
+    dynlib: LLVMlib.}
 ##
 ##  For a Mach-O universal binary file, retrieves the object file corresponding
 ##  to the given architecture if it is present as a slice.
@@ -121,7 +123,7 @@ proc objectFileCopySectionIterator*(br: BinaryRef): SectionIteratorRef {.cdecl, 
 ##  @see llvm::object::section_end
 ##
 
-proc objectFileIsSectionIteratorAtEnd*(br: BinaryRef; si: SectionIteratorRef): Bool {. cdecl, importc: "LLVMObjectFileIsSectionIteratorAtEnd", dynlib: LLVMlib.}
+proc objectFileIsSectionIteratorAtEnd*(br: BinaryRef;si: SectionIteratorRef): Bool {. cdecl, importc: "LLVMObjectFileIsSectionIteratorAtEnd", dynlib: LLVMlib.}
 ## *
 ##  Retrieve a copy of the symbol iterator for this object file.
 ##
@@ -141,10 +143,10 @@ proc objectFileCopySymbolIterator*(br: BinaryRef): SymbolIteratorRef {.cdecl, im
 ##  @see llvm::object::symbol_end
 ##
 
-proc objectFileIsSymbolIteratorAtEnd*(br: BinaryRef; si: SymbolIteratorRef): Bool {. cdecl, importc: "LLVMObjectFileIsSymbolIteratorAtEnd", dynlib: LLVMlib.}
+proc objectFileIsSymbolIteratorAtEnd*(br: BinaryRef;si: SymbolIteratorRef): Bool {. cdecl, importc: "LLVMObjectFileIsSymbolIteratorAtEnd", dynlib: LLVMlib.}
 proc disposeSectionIterator*(si: SectionIteratorRef) {.cdecl, importc: "LLVMDisposeSectionIterator", dynlib: LLVMlib.}
 proc moveToNextSection*(si: SectionIteratorRef) {.cdecl, importc: "LLVMMoveToNextSection", dynlib: LLVMlib.}
-proc moveToContainingSection*(sect: SectionIteratorRef; sym: SymbolIteratorRef) {. cdecl, importc: "LLVMMoveToContainingSection", dynlib: LLVMlib.}
+proc moveToContainingSection*(sect: SectionIteratorRef;sym: SymbolIteratorRef) {. cdecl, importc: "LLVMMoveToContainingSection", dynlib: LLVMlib.}
 ##  ObjectFile Symbol iterators
 
 proc disposeSymbolIterator*(si: SymbolIteratorRef) {.cdecl, importc: "LLVMDisposeSymbolIterator", dynlib: LLVMlib.}
@@ -155,7 +157,7 @@ proc getSectionName*(si: SectionIteratorRef): cstring {.cdecl, importc: "LLVMGet
 proc getSectionSize*(si: SectionIteratorRef): uint64T {.cdecl, importc: "LLVMGetSectionSize", dynlib: LLVMlib.}
 proc getSectionContents*(si: SectionIteratorRef): cstring {.cdecl, importc: "LLVMGetSectionContents", dynlib: LLVMlib.}
 proc getSectionAddress*(si: SectionIteratorRef): uint64T {.cdecl, importc: "LLVMGetSectionAddress", dynlib: LLVMlib.}
-proc getSectionContainsSymbol*(si: SectionIteratorRef; sym: SymbolIteratorRef): Bool {. cdecl, importc: "LLVMGetSectionContainsSymbol", dynlib: LLVMlib.}
+proc getSectionContainsSymbol*(si: SectionIteratorRef;sym: SymbolIteratorRef): Bool {. cdecl, importc: "LLVMGetSectionContainsSymbol", dynlib: LLVMlib.}
 ##  Section Relocation iterators
 
 proc getRelocations*(section: SectionIteratorRef): RelocationIteratorRef {.cdecl, importc: "LLVMGetRelocations", dynlib: LLVMlib.}
@@ -180,7 +182,7 @@ proc getRelocationValueString*(ri: RelocationIteratorRef): cstring {.cdecl, impo
 ## * Deprecated: Use LLVMBinaryRef instead.
 
 type
-  ObjectFileRef* = ptr opaqueObjectFile
+    ObjectFileRef* = ptr OpaqueObjectFile
 
 ## * Deprecated: Use LLVMCreateBinary instead.
 
@@ -193,13 +195,13 @@ proc disposeObjectFile*(objectFile: ObjectFileRef) {.cdecl, importc: "LLVMDispos
 proc getSections*(objectFile: ObjectFileRef): SectionIteratorRef {.cdecl, importc: "LLVMGetSections", dynlib: LLVMlib.}
 ## * Deprecated: Use LLVMObjectFileIsSectionIteratorAtEnd instead.
 
-proc isSectionIteratorAtEnd*(objectFile: ObjectFileRef; si: SectionIteratorRef): Bool {. cdecl, importc: "LLVMIsSectionIteratorAtEnd", dynlib: LLVMlib.}
+proc isSectionIteratorAtEnd*(objectFile: ObjectFileRef;si: SectionIteratorRef): Bool {. cdecl, importc: "LLVMIsSectionIteratorAtEnd", dynlib: LLVMlib.}
 ## * Deprecated: Use LLVMObjectFileCopySymbolIterator instead.
 
 proc getSymbols*(objectFile: ObjectFileRef): SymbolIteratorRef {.cdecl, importc: "LLVMGetSymbols", dynlib: LLVMlib.}
 ## * Deprecated: Use LLVMObjectFileIsSymbolIteratorAtEnd instead.
 
-proc isSymbolIteratorAtEnd*(objectFile: ObjectFileRef; si: SymbolIteratorRef): Bool {. cdecl, importc: "LLVMIsSymbolIteratorAtEnd", dynlib: LLVMlib.}
+proc isSymbolIteratorAtEnd*(objectFile: ObjectFileRef;si: SymbolIteratorRef): Bool {. cdecl, importc: "LLVMIsSymbolIteratorAtEnd", dynlib: LLVMlib.}
 ## *
 ##  @}
 ##

@@ -14,7 +14,7 @@
 ## \*===----------------------------------------------------------------------===
 
 type
-  LtoBoolT* = bool
+    LtoBoolT* = bool
 
 ## *
 ##  @defgroup LLVMCLTO LTO
@@ -27,23 +27,25 @@ type
 ##
 
 type
-  LtoSymbolAttributes* {.size: sizeof(cint).} = enum
-    LTO_SYMBOL_ALIGNMENT_MASK = 0x0000001F, ##  log2 of alignment
-    LTO_SYMBOL_PERMISSIONS_RODATA = 0x00000080,
-    LTO_SYMBOL_PERMISSIONS_CODE = 0x000000A0,
-    LTO_SYMBOL_PERMISSIONS_DATA = 0x000000C0,
-    LTO_SYMBOL_PERMISSIONS_MASK = 0x000000E0,
-    LTO_SYMBOL_DEFINITION_REGULAR = 0x00000100,
-    LTO_SYMBOL_DEFINITION_TENTATIVE = 0x00000200,
-    LTO_SYMBOL_DEFINITION_WEAK = 0x00000300,
-    LTO_SYMBOL_DEFINITION_UNDEFINED = 0x00000400,
-    LTO_SYMBOL_DEFINITION_WEAKUNDEF = 0x00000500,
-    LTO_SYMBOL_DEFINITION_MASK = 0x00000700,
-    LTO_SYMBOL_SCOPE_INTERNAL = 0x00000800, LTO_SYMBOL_SCOPE_HIDDEN = 0x00001000,
-    LTO_SYMBOL_SCOPE_DEFAULT = 0x00001800, LTO_SYMBOL_SCOPE_PROTECTED = 0x00002000,
-    LTO_SYMBOL_SCOPE_DEFAULT_CAN_BE_HIDDEN = 0x00002800,
-    LTO_SYMBOL_SCOPE_MASK = 0x00003800, LTO_SYMBOL_COMDAT = 0x00004000,
-    LTO_SYMBOL_ALIAS = 0x00008000
+    LtoSymbolAttributes* {.size: sizeof(cint).} = enum
+        LTO_SYMBOL_ALIGNMENT_MASK = 0x0000001F, ##  log2 of alignment
+        LTO_SYMBOL_PERMISSIONS_RODATA = 0x00000080,
+        LTO_SYMBOL_PERMISSIONS_CODE = 0x000000A0,
+        LTO_SYMBOL_PERMISSIONS_DATA = 0x000000C0,
+        LTO_SYMBOL_PERMISSIONS_MASK = 0x000000E0,
+        LTO_SYMBOL_DEFINITION_REGULAR = 0x00000100,
+        LTO_SYMBOL_DEFINITION_TENTATIVE = 0x00000200,
+        LTO_SYMBOL_DEFINITION_WEAK = 0x00000300,
+        LTO_SYMBOL_DEFINITION_UNDEFINED = 0x00000400,
+        LTO_SYMBOL_DEFINITION_WEAKUNDEF = 0x00000500,
+        LTO_SYMBOL_DEFINITION_MASK = 0x00000700,
+        LTO_SYMBOL_SCOPE_INTERNAL = 0x00000800,
+                LTO_SYMBOL_SCOPE_HIDDEN = 0x00001000,
+        LTO_SYMBOL_SCOPE_DEFAULT = 0x00001800,
+                LTO_SYMBOL_SCOPE_PROTECTED = 0x00002000,
+        LTO_SYMBOL_SCOPE_DEFAULT_CAN_BE_HIDDEN = 0x00002800,
+        LTO_SYMBOL_SCOPE_MASK = 0x00003800, LTO_SYMBOL_COMDAT = 0x00004000,
+        LTO_SYMBOL_ALIAS = 0x00008000
 
 
 ## *
@@ -51,8 +53,8 @@ type
 ##
 
 type
-  LtoDebugModel* {.size: sizeof(cint).} = enum
-    LTO_DEBUG_MODEL_NONE = 0, LTO_DEBUG_MODEL_DWARF = 1
+    LtoDebugModel* {.size: sizeof(cint).} = enum
+        LTO_DEBUG_MODEL_NONE = 0, LTO_DEBUG_MODEL_DWARF = 1
 
 
 ## *
@@ -60,25 +62,26 @@ type
 ##
 
 type
-  LtoCodegenModel* {.size: sizeof(cint).} = enum
-    LTO_CODEGEN_PIC_MODEL_STATIC = 0, LTO_CODEGEN_PIC_MODEL_DYNAMIC = 1,
-    LTO_CODEGEN_PIC_MODEL_DYNAMIC_NO_PIC = 2, LTO_CODEGEN_PIC_MODEL_DEFAULT = 3
+    LtoCodegenModel* {.size: sizeof(cint).} = enum
+        LTO_CODEGEN_PIC_MODEL_STATIC = 0, LTO_CODEGEN_PIC_MODEL_DYNAMIC = 1,
+        LTO_CODEGEN_PIC_MODEL_DYNAMIC_NO_PIC = 2,
+                LTO_CODEGEN_PIC_MODEL_DEFAULT = 3
 
 
-## * opaque reference to a loaded object module
-
-type
-  LtoModuleT* = ptr opaqueLTOModule
-
-## * opaque reference to a code generator
+## * Opaque reference to a loaded object module
 
 type
-  LtoCodeGenT* = ptr opaqueLTOCodeGenerator
+    LtoModuleT* = ptr OpaqueLTOModule
 
-## * opaque reference to a thin code generator
+## * Opaque reference to a code generator
 
 type
-  ThinltoCodeGenT* = ptr opaqueThinLTOCodeGenerator
+    LtoCodeGenT* = ptr OpaqueLTOCodeGenerator
+
+## * Opaque reference to a thin code generator
+
+type
+    ThinltoCodeGenT* = ptr OpaqueThinLTOCodeGenerator
 
 ## *
 ##  Returns a printable string.
@@ -107,7 +110,7 @@ proc ltoModuleIsObjectFile*(path: cstring): LtoBoolT {.cdecl, importc: "lto_modu
 ##  \since prior to LTO_API_VERSION=3
 ##
 
-proc ltoModuleIsObjectFileForTarget*(path: cstring; targetTriplePrefix: cstring): LtoBoolT {. cdecl, importc: "lto_module_is_object_file_for_target", dynlib: LLVMlib.}
+proc ltoModuleIsObjectFileForTarget*(path: cstring;targetTriplePrefix: cstring): LtoBoolT {. cdecl, importc: "lto_module_is_object_file_for_target", dynlib: LLVMlib.}
 ## *
 ##  Return true if \p Buffer contains a bitcode file with ObjC code (category
 ##  or class) in it.
@@ -153,7 +156,7 @@ proc ltoModuleCreateFromMemory*(mem: pointer; length: csize): LtoModuleT {.cdecl
 ##  \since LTO_API_VERSION=9
 ##
 
-proc ltoModuleCreateFromMemoryWithPath*(mem: pointer; length: csize; path: cstring): LtoModuleT {. cdecl, importc: "lto_module_create_from_memory_with_path", dynlib: LLVMlib.}
+proc ltoModuleCreateFromMemoryWithPath*(mem: pointer; length: csize;path: cstring): LtoModuleT {. cdecl, importc: "lto_module_create_from_memory_with_path", dynlib: LLVMlib.}
 ## *
 ##  Loads an object file in its own context.
 ##
@@ -166,7 +169,7 @@ proc ltoModuleCreateFromMemoryWithPath*(mem: pointer; length: csize; path: cstri
 ##  \since LTO_API_VERSION=11
 ##
 
-proc ltoModuleCreateInLocalContext*(mem: pointer; length: csize; path: cstring): LtoModuleT {. cdecl, importc: "lto_module_create_in_local_context", dynlib: LLVMlib.}
+proc ltoModuleCreateInLocalContext*(mem: pointer; length: csize;path: cstring): LtoModuleT {. cdecl, importc: "lto_module_create_in_local_context", dynlib: LLVMlib.}
 ## *
 ##  Loads an object file in the codegen context.
 ##
@@ -186,7 +189,7 @@ proc ltoModuleCreateInCodegenContext*(mem: pointer; length: csize; path: cstring
 ##  \since LTO_API_VERSION=5
 ##
 
-proc ltoModuleCreateFromFd*(fd: cint; path: cstring; fileSize: csize): LtoModuleT {. cdecl, importc: "lto_module_create_from_fd", dynlib: LLVMlib.}
+proc ltoModuleCreateFromFd*(fd: cint; path: cstring;fileSize: csize): LtoModuleT {. cdecl, importc: "lto_module_create_from_fd", dynlib: LLVMlib.}
 ## *
 ##  Loads an object file from disk. The seek point of fd is not preserved.
 ##  Returns NULL on error (check lto_get_error_message() for details).
@@ -202,7 +205,9 @@ proc ltoModuleCreateFromFdAtOffset*(fd: cint; path: cstring; fileSize: csize;map
 ##  \since prior to LTO_API_VERSION=3
 ##
 
-proc ltoModuleDispose*(`mod`: LtoModuleT) {.cdecl, importc: "lto_module_dispose", dynlib: LLVMlib.}
+proc ltoModuleDispose*(`mod`: LtoModuleT) {.cdecl,
+        importc: "lto_module_dispose",
+    dynlib: LLVMlib.}
 ## *
 ##  Returns triple string which the object module was compiled under.
 ##
@@ -237,7 +242,7 @@ proc ltoModuleGetSymbolName*(`mod`: LtoModuleT; index: cuint): cstring {.cdecl, 
 ##  \since prior to LTO_API_VERSION=3
 ##
 
-proc ltoModuleGetSymbolAttribute*(`mod`: LtoModuleT; index: cuint): LtoSymbolAttributes {. cdecl, importc: "lto_module_get_symbol_attribute", dynlib: LLVMlib.}
+proc ltoModuleGetSymbolAttribute*(`mod`: LtoModuleT;index: cuint): LtoSymbolAttributes {. cdecl, importc: "lto_module_get_symbol_attribute", dynlib: LLVMlib.}
 ## *
 ##  Returns the module's linker options.
 ##
@@ -255,8 +260,9 @@ proc ltoModuleGetLinkeropts*(`mod`: LtoModuleT): cstring {.cdecl, importc: "lto_
 ##
 
 type
-  LtoCodegenDiagnosticSeverityT* {.size: sizeof(cint).} = enum
-    LTO_DS_ERROR = 0, LTO_DS_WARNING = 1, LTO_DS_NOTE = 2, LTO_DS_REMARK = 3 ##  Added in LTO_API_VERSION=10.
+    LtoCodegenDiagnosticSeverityT* {.size: sizeof(cint).} = enum
+        LTO_DS_ERROR = 0, LTO_DS_WARNING = 1, LTO_DS_NOTE = 2,
+                LTO_DS_REMARK = 3 ##  Added in LTO_API_VERSION=10.
 
 
 ## *
@@ -270,7 +276,7 @@ type
 ##
 
 type
-  LtoDiagnosticHandlerT* = proc (severity: LtoCodegenDiagnosticSeverityT;diag: cstring; ctxt: pointer) {.cdecl.}
+    LtoDiagnosticHandlerT* = proc (severity: LtoCodegenDiagnosticSeverityT;diag: cstring; ctxt: pointer) {.cdecl.}
 
 ## *
 ##  Set a diagnostic handler and the related context (void *).
@@ -370,7 +376,7 @@ proc ltoCodegenSetAssemblerPath*(cg: LtoCodeGenT; path: cstring) {.cdecl, import
 ##  \since LTO_API_VERSION=4
 ##
 
-proc ltoCodegenSetAssemblerArgs*(cg: LtoCodeGenT; args: cstringArray; nargs: cint) {. cdecl, importc: "lto_codegen_set_assembler_args", dynlib: LLVMlib.}
+proc ltoCodegenSetAssemblerArgs*(cg: LtoCodeGenT; args: cstringArray;nargs: cint) {. cdecl, importc: "lto_codegen_set_assembler_args", dynlib: LLVMlib.}
 ## *
 ##  Adds to a list of all global symbols that must exist in the final generated
 ##  code. If a function is not listed there, it might be inlined into every usage
@@ -460,7 +466,7 @@ proc ltoCodegenDebugOptions*(cg: LtoCodeGenT; a2: cstring) {.cdecl, importc: "lt
 ##  \since prior to LTO_API_VERSION=26
 ##
 
-proc ltoCodegenDebugOptionsArray*(cg: LtoCodeGenT; a2: cstringArray; number: cint) {. cdecl, importc: "lto_codegen_debug_options_array", dynlib: LLVMlib.}
+proc ltoCodegenDebugOptionsArray*(cg: LtoCodeGenT; a2: cstringArray;number: cint) {. cdecl, importc: "lto_codegen_debug_options_array", dynlib: LLVMlib.}
 ## *
 ##  Initializes LLVM disassemblers.
 ##  FIXME: This doesn't really belong here.
@@ -476,7 +482,7 @@ proc ltoInitializeDisassembler*() {.cdecl, importc: "lto_initialize_disassembler
 ##  \since LTO_API_VERSION=14
 ##
 
-proc ltoCodegenSetShouldInternalize*(cg: LtoCodeGenT; shouldInternalize: LtoBoolT) {. cdecl, importc: "lto_codegen_set_should_internalize", dynlib: LLVMlib.}
+proc ltoCodegenSetShouldInternalize*(cg: LtoCodeGenT;shouldInternalize: LtoBoolT) {. cdecl, importc: "lto_codegen_set_should_internalize", dynlib: LLVMlib.}
 ## *
 ##  Set whether to embed uselists in bitcode.
 ##
@@ -490,7 +496,7 @@ proc ltoCodegenSetShouldEmbedUselists*(cg: LtoCodeGenT;shouldEmbedUselists: LtoB
 ## * Opaque reference to an LTO input file
 
 type
-  LtoInputT* = ptr opaqueLTOInput
+    LtoInputT* = ptr OpaqueLTOInput
 
 ## *
 ##  Creates an LTO input file from a buffer. The path
@@ -501,7 +507,7 @@ type
 ##  \since LTO_API_VERSION=24
 ##
 
-proc ltoInputCreate*(buffer: pointer; bufferSize: csize; path: cstring): LtoInputT {. cdecl, importc: "lto_input_create", dynlib: LLVMlib.}
+proc ltoInputCreate*(buffer: pointer; bufferSize: csize;path: cstring): LtoInputT {. cdecl, importc: "lto_input_create", dynlib: LLVMlib.}
 ## *
 ##  Frees all memory internally allocated by the LTO input file.
 ##  Upon return the lto_module_t is no longer valid.
@@ -526,7 +532,7 @@ proc ltoInputGetNumDependentLibraries*(input: LtoInputT): cuint {.cdecl, importc
 ##  \since LTO_API_VERSION=24
 ##
 
-proc ltoInputGetDependentLibrary*(input: LtoInputT; index: csize; size: ptr csize): cstring {. cdecl, importc: "lto_input_get_dependent_library", dynlib: LLVMlib.}
+proc ltoInputGetDependentLibrary*(input: LtoInputT; index: csize;size: ptr csize): cstring {. cdecl, importc: "lto_input_get_dependent_library", dynlib: LLVMlib.}
 ## *
 ##  Returns the list of libcall symbols that can be generated by LTO
 ##  that might not be visible from the symbol table of bitcode files.
@@ -549,9 +555,9 @@ proc ltoRuntimeLibSymbolsList*(size: ptr csize): cstringArray {.cdecl, importc: 
 ##
 
 type
-  LTOObjectBuffer* {.bycopy.} = object
-    buffer*: cstring
-    size*: csize
+    LTOObjectBuffer* {.bycopy.} = object
+        buffer*: cstring
+        size*: csize
 
 
 ## *
@@ -618,7 +624,7 @@ proc thinltoModuleGetNumObjects*(cg: ThinltoCodeGenT): cuint {.cdecl, importc: "
 ##  \since LTO_API_VERSION=18
 ##
 
-proc thinltoModuleGetObject*(cg: ThinltoCodeGenT; index: cuint): LTOObjectBuffer {. cdecl, importc: "thinlto_module_get_object", dynlib: LLVMlib.}
+proc thinltoModuleGetObject*(cg: ThinltoCodeGenT;index: cuint): LTOObjectBuffer {. cdecl, importc: "thinlto_module_get_object", dynlib: LLVMlib.}
 ## *
 ##  Returns the number of object files produced by the ThinLTO CodeGenerator.
 ##
@@ -648,7 +654,7 @@ proc thinltoModuleGetObjectFile*(cg: ThinltoCodeGenT; index: cuint): cstring {.c
 ##  \since LTO_API_VERSION=18
 ##
 
-proc thinltoCodegenSetPicModel*(cg: ThinltoCodeGenT; a2: LtoCodegenModel): LtoBoolT {. cdecl, importc: "thinlto_codegen_set_pic_model", dynlib: LLVMlib.}
+proc thinltoCodegenSetPicModel*(cg: ThinltoCodeGenT;a2: LtoCodegenModel): LtoBoolT {. cdecl, importc: "thinlto_codegen_set_pic_model", dynlib: LLVMlib.}
 ## *
 ##  Sets the path to a directory to use as a storage for temporary bitcode files.
 ##  The intention is to make the bitcode files available for debugging at various
@@ -657,7 +663,7 @@ proc thinltoCodegenSetPicModel*(cg: ThinltoCodeGenT; a2: LtoCodegenModel): LtoBo
 ##  \since LTO_API_VERSION=18
 ##
 
-proc thinltoCodegenSetSavetempsDir*(cg: ThinltoCodeGenT; saveTempsDir: cstring) {. cdecl, importc: "thinlto_codegen_set_savetemps_dir", dynlib: LLVMlib.}
+proc thinltoCodegenSetSavetempsDir*(cg: ThinltoCodeGenT;saveTempsDir: cstring) {. cdecl, importc: "thinlto_codegen_set_savetemps_dir", dynlib: LLVMlib.}
 ## *
 ##  Set the path to a directory where to save generated object files. This
 ##  path can be used by a linker to request on-disk files instead of in-memory
@@ -667,7 +673,7 @@ proc thinltoCodegenSetSavetempsDir*(cg: ThinltoCodeGenT; saveTempsDir: cstring) 
 ##  \since LTO_API_VERSION=21
 ##
 
-proc thinltoSetGeneratedObjectsDir*(cg: ThinltoCodeGenT; saveTempsDir: cstring) {. cdecl, importc: "thinlto_set_generated_objects_dir", dynlib: LLVMlib.}
+proc thinltoSetGeneratedObjectsDir*(cg: ThinltoCodeGenT;saveTempsDir: cstring) {. cdecl, importc: "thinlto_set_generated_objects_dir", dynlib: LLVMlib.}
 ## *
 ##  Sets the cpu to generate code for.
 ##
@@ -689,7 +695,7 @@ proc thinltoCodegenDisableCodegen*(cg: ThinltoCodeGenT; disable: LtoBoolT) {.cde
 ##  \since LTO_API_VERSION=19
 ##
 
-proc thinltoCodegenSetCodegenOnly*(cg: ThinltoCodeGenT; codegenOnly: LtoBoolT) {. cdecl, importc: "thinlto_codegen_set_codegen_only", dynlib: LLVMlib.}
+proc thinltoCodegenSetCodegenOnly*(cg: ThinltoCodeGenT;codegenOnly: LtoBoolT) {. cdecl, importc: "thinlto_codegen_set_codegen_only", dynlib: LLVMlib.}
 ## *
 ##  Parse -mllvm style debug options.
 ##
@@ -760,7 +766,9 @@ proc thinltoCodegenSetCacheDir*(cg: ThinltoCodeGenT; cacheDir: cstring) {.cdecl,
 ##  \since LTO_API_VERSION=18
 ##
 
-proc thinltoCodegenSetCachePruningInterval*(cg: ThinltoCodeGenT; interval: cint) {. cdecl, importc: "thinlto_codegen_set_cache_pruning_interval", dynlib: LLVMlib.}
+proc thinltoCodegenSetCachePruningInterval*(cg: ThinltoCodeGenT;interval: cint) {.
+    cdecl, importc: "thinlto_codegen_set_cache_pruning_interval",
+            dynlib: LLVMlib.}
 ## *
 ##  Sets the maximum cache size that can be persistent across build, in terms of
 ##  percentage of the available space on the disk. Set to 100 to indicate
@@ -776,7 +784,9 @@ proc thinltoCodegenSetCachePruningInterval*(cg: ThinltoCodeGenT; interval: cint)
 ##
 
 proc thinltoCodegenSetFinalCacheSizeRelativeToAvailableSpace*(
-    cg: ThinltoCodeGenT; percentage: cuint) {.cdecl, importc: "thinlto_codegen_set_final_cache_size_relative_to_available_space", dynlib: LLVMlib.}
+    cg: ThinltoCodeGenT; percentage: cuint) {.cdecl,
+            importc: "thinlto_codegen_set_final_cache_size_relative_to_available_space",
+    dynlib: LLVMlib.}
 ## *
 ##  Sets the expiration (in seconds) for an entry in the cache. An unspecified
 ##  default value will be applied. A value of 0 will be ignored.
@@ -784,7 +794,9 @@ proc thinltoCodegenSetFinalCacheSizeRelativeToAvailableSpace*(
 ##  \since LTO_API_VERSION=18
 ##
 
-proc thinltoCodegenSetCacheEntryExpiration*(cg: ThinltoCodeGenT; expiration: cuint) {. cdecl, importc: "thinlto_codegen_set_cache_entry_expiration", dynlib: LLVMlib.}
+proc thinltoCodegenSetCacheEntryExpiration*(cg: ThinltoCodeGenT;expiration: cuint) {.
+    cdecl, importc: "thinlto_codegen_set_cache_entry_expiration",
+            dynlib: LLVMlib.}
 ## *
 ##  Sets the maximum size of the cache directory (in bytes). A value over the
 ##  amount of available space on the disk will be reduced to the amount of
@@ -794,7 +806,7 @@ proc thinltoCodegenSetCacheEntryExpiration*(cg: ThinltoCodeGenT; expiration: cui
 ##  \since LTO_API_VERSION=22
 ##
 
-proc thinltoCodegenSetCacheSizeBytes*(cg: ThinltoCodeGenT; maxSizeBytes: cuint) {. cdecl, importc: "thinlto_codegen_set_cache_size_bytes", dynlib: LLVMlib.}
+proc thinltoCodegenSetCacheSizeBytes*(cg: ThinltoCodeGenT;maxSizeBytes: cuint) {. cdecl, importc: "thinlto_codegen_set_cache_size_bytes", dynlib: LLVMlib.}
 ## *
 ##  Same as thinlto_codegen_set_cache_size_bytes, except the maximum size is in
 ##  megabytes (2^20 bytes).
@@ -810,7 +822,7 @@ proc thinltoCodegenSetCacheSizeMegabytes*(cg: ThinltoCodeGenT;maxSizeMegabytes: 
 ##  \since LTO_API_VERSION=22
 ##
 
-proc thinltoCodegenSetCacheSizeFiles*(cg: ThinltoCodeGenT; maxSizeFiles: cuint) {. cdecl, importc: "thinlto_codegen_set_cache_size_files", dynlib: LLVMlib.}
+proc thinltoCodegenSetCacheSizeFiles*(cg: ThinltoCodeGenT;maxSizeFiles: cuint) {. cdecl, importc: "thinlto_codegen_set_cache_size_files", dynlib: LLVMlib.}
 ## *
 ##  @} // endgroup LLVMCTLTO_CACHING
 ##

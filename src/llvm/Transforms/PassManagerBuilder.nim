@@ -12,7 +12,7 @@
 ## \*===----------------------------------------------------------------------===
 
 type
-  PassManagerBuilderRef* = ptr opaquePassManagerBuilder
+    PassManagerBuilderRef* = ptr OpaquePassManagerBuilder
 
 ## *
 ##  @defgroup LLVMCTransformsPassManagerBuilder Pass manager builder
@@ -26,10 +26,10 @@ proc passManagerBuilderCreate*(): PassManagerBuilderRef {.cdecl, importc: "LLVMP
 proc passManagerBuilderDispose*(pmb: PassManagerBuilderRef) {.cdecl, importc: "LLVMPassManagerBuilderDispose", dynlib: LLVMlib.}
 ## * See llvm::PassManagerBuilder::OptLevel.
 
-proc passManagerBuilderSetOptLevel*(pmb: PassManagerBuilderRef; optLevel: cuint) {. cdecl, importc: "LLVMPassManagerBuilderSetOptLevel", dynlib: LLVMlib.}
+proc passManagerBuilderSetOptLevel*(pmb: PassManagerBuilderRef;optLevel: cuint) {. cdecl, importc: "LLVMPassManagerBuilderSetOptLevel", dynlib: LLVMlib.}
 ## * See llvm::PassManagerBuilder::SizeLevel.
 
-proc passManagerBuilderSetSizeLevel*(pmb: PassManagerBuilderRef; sizeLevel: cuint) {. cdecl, importc: "LLVMPassManagerBuilderSetSizeLevel", dynlib: LLVMlib.}
+proc passManagerBuilderSetSizeLevel*(pmb: PassManagerBuilderRef;sizeLevel: cuint) {. cdecl, importc: "LLVMPassManagerBuilderSetSizeLevel", dynlib: LLVMlib.}
 ## * See llvm::PassManagerBuilder::DisableUnitAtATime.
 
 proc passManagerBuilderSetDisableUnitAtATime*(pmb: PassManagerBuilderRef;value: Bool) {.cdecl, importc: "LLVMPassManagerBuilderSetDisableUnitAtATime", dynlib: LLVMlib.}

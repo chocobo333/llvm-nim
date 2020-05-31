@@ -26,7 +26,7 @@
 ##  LLVMCreateDisasmCPUFeatures() with an empty CPU name and feature set.
 ##
 
-proc createDisasm*(tripleName: cstring; disInfo: pointer; tagType: cint;getOpInfo: OpInfoCallback; symbolLookUp: SymbolLookupCallback): DisasmContextRef {. cdecl, importc: "LLVMCreateDisasm", dynlib: LLVMlib.}
+proc createDisasm*(tripleName: cstring; disInfo: pointer; tagType: cint;getOpInfo: OpInfoCallback;symbolLookUp: SymbolLookupCallback): DisasmContextRef {. cdecl, importc: "LLVMCreateDisasm", dynlib: LLVMlib.}
 ## *
 ##  Create a disassembler for the TripleName and a specific CPU.  Symbolic
 ##  disassembly is supported by passing a block of information in the DisInfo
@@ -36,7 +36,7 @@ proc createDisasm*(tripleName: cstring; disInfo: pointer; tagType: cint;getOpInf
 ##  to calling LLVMCreateDisasmCPUFeatures() with an empty feature set.
 ##
 
-proc createDisasmCPU*(triple: cstring; cpu: cstring; disInfo: pointer; tagType: cint;getOpInfo: OpInfoCallback; symbolLookUp: SymbolLookupCallback): DisasmContextRef {. cdecl, importc: "LLVMCreateDisasmCPU", dynlib: LLVMlib.}
+proc createDisasmCPU*(triple: cstring; cpu: cstring; disInfo: pointer; tagType: cint;getOpInfo: OpInfoCallback;symbolLookUp: SymbolLookupCallback): DisasmContextRef {. cdecl, importc: "LLVMCreateDisasmCPU", dynlib: LLVMlib.}
 ## *
 ##  Create a disassembler for the TripleName, a specific CPU and specific feature
 ##  string.  Symbolic disassembly is supported by passing a block of information
@@ -73,7 +73,7 @@ proc disasmDispose*(dc: DisasmContextRef) {.cdecl, importc: "LLVMDisasmDispose",
 ##  no valid instruction.
 ##
 
-proc disasmInstruction*(dc: DisasmContextRef; bytes: ptr uint8T; bytesSize: uint64T;pc: uint64T; outString: cstring; outStringSize: csize): csize {. cdecl, importc: "LLVMDisasmInstruction", dynlib: LLVMlib.}
+proc disasmInstruction*(dc: DisasmContextRef; bytes: ptr uint8T; bytesSize: uint64T;pc: uint64T; outString: cstring;outStringSize: csize): csize {. cdecl, importc: "LLVMDisasmInstruction", dynlib: LLVMlib.}
 ## *
 ##  @}
 ##

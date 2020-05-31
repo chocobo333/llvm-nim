@@ -20,11 +20,11 @@
 ## \*===----------------------------------------------------------------------===
 
 type
-  OrcJITStackRef* = ptr orcOpaqueJITStack
-  OrcModuleHandle* = uint64T
-  OrcTargetAddress* = uint64T
-  OrcSymbolResolverFn* = proc (name: cstring; lookupCtx: pointer): uint64T {.cdecl.}
-  OrcLazyCompileCallbackFn* = proc (jITStack: OrcJITStackRef; callbackCtx: pointer): uint64T {. cdecl.}
+    OrcJITStackRef* = ptr orcOpaqueJITStack
+    OrcModuleHandle* = uint64T
+    OrcTargetAddress* = uint64T
+    OrcSymbolResolverFn* = proc (name: cstring; lookupCtx: pointer): uint64T {.cdecl.}
+  OrcLazyCompileCallbackFn* = proc (jITStack: OrcJITStackRef;callbackCtx: pointer): uint64T {. cdecl.}
 
 ## *
 ##  Create an ORC JIT stack.
@@ -121,7 +121,7 @@ proc orcDisposeInstance*(jITStack: OrcJITStackRef): ErrorRef {.cdecl, importc: "
 ##  A NULL listener is ignored.
 ##
 
-proc orcRegisterJITEventListener*(jITStack: OrcJITStackRef; L: JITEventListenerRef) {. cdecl, importc: "LLVMOrcRegisterJITEventListener", dynlib: LLVMlib.}
+proc orcRegisterJITEventListener*(jITStack: OrcJITStackRef;L: JITEventListenerRef) {. cdecl, importc: "LLVMOrcRegisterJITEventListener", dynlib: LLVMlib.}
 ## *
 ##  Unegister a JIT Event Listener.
 ##

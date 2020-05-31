@@ -27,7 +27,7 @@
 proc writeBitcodeToFile*(m: ModuleRef; path: cstring): cint {.cdecl, importc: "LLVMWriteBitcodeToFile", dynlib: LLVMlib.}
 ## * Writes a module to an open file descriptor. Returns 0 on success.
 
-proc writeBitcodeToFD*(m: ModuleRef; fd: cint; shouldClose: cint; unbuffered: cint): cint {. cdecl, importc: "LLVMWriteBitcodeToFD", dynlib: LLVMlib.}
+proc writeBitcodeToFD*(m: ModuleRef; fd: cint; shouldClose: cint;unbuffered: cint): cint {. cdecl, importc: "LLVMWriteBitcodeToFD", dynlib: LLVMlib.}
 ## * Deprecated for LLVMWriteBitcodeToFD. Writes a module to an open file
 ##     descriptor. Returns 0 on success. Closes the Handle.
 

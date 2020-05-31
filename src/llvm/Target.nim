@@ -23,13 +23,13 @@
 ##
 
 type
-  ByteOrdering* {.size: sizeof(cint).} = enum
-    BigEndian, LittleEndian
+    ByteOrdering* {.size: sizeof(cint).} = enum
+        BigEndian, LittleEndian
 
 
 type
-  TargetDataRef* = ptr opaqueTargetData
-  TargetLibraryInfoRef* = ptr opaqueTargetLibraryInfotData
+    TargetDataRef* = ptr OpaqueTargetData
+    TargetLibraryInfoRef* = ptr OpaqueTargetLibraryInfotData
 
 ##  Declare all of the target-initialization functions that are available.
 ##  Declare all of the available assembly printer initialization functions.
@@ -40,71 +40,71 @@ type
 ##     support.
 
 proc initializeAllTargetInfos*() {.inline, cdecl.} =
-  discard
+    discard
 
 ## * LLVMInitializeAllTargets - The main program should call this function if it
 ##     wants to link in all available targets that LLVM is configured to
 ##     support.
 
 proc initializeAllTargets*() {.inline, cdecl.} =
-  discard
+    discard
 
 ## * LLVMInitializeAllTargetMCs - The main program should call this function if
 ##     it wants access to all available target MC that LLVM is configured to
 ##     support.
 
 proc initializeAllTargetMCs*() {.inline, cdecl.} =
-  discard
+    discard
 
 ## * LLVMInitializeAllAsmPrinters - The main program should call this function if
 ##     it wants all asm printers that LLVM is configured to support, to make them
 ##     available via the TargetRegistry.
 
 proc initializeAllAsmPrinters*() {.inline, cdecl.} =
-  discard
+    discard
 
 ## * LLVMInitializeAllAsmParsers - The main program should call this function if
 ##     it wants all asm parsers that LLVM is configured to support, to make them
 ##     available via the TargetRegistry.
 
 proc initializeAllAsmParsers*() {.inline, cdecl.} =
-  discard
+    discard
 
 ## * LLVMInitializeAllDisassemblers - The main program should call this function
 ##     if it wants all disassemblers that LLVM is configured to support, to make
 ##     them available via the TargetRegistry.
 
 proc initializeAllDisassemblers*() {.inline, cdecl.} =
-  discard
+    discard
 
 ## * LLVMInitializeNativeTarget - The main program should call this function to
 ##     initialize the native target corresponding to the host.  This is useful
 ##     for JIT applications to ensure that the target gets linked in correctly.
 
 proc initializeNativeTarget*(): Bool {.inline, cdecl.} =
-  ##  If we have a native target, initialize it to ensure it is linked in.
-  return 1
+    ##  If we have a native target, initialize it to ensure it is linked in.
+    return 1
 
 ## * LLVMInitializeNativeTargetAsmParser - The main program should call this
 ##     function to initialize the parser for the native target corresponding to the
 ##     host.
 
 proc initializeNativeAsmParser*(): Bool {.inline, cdecl.} =
-  return 1
+    return 1
 
 ## * LLVMInitializeNativeTargetAsmPrinter - The main program should call this
 ##     function to initialize the printer for the native target corresponding to
 ##     the host.
 
 proc initializeNativeAsmPrinter*(): Bool {.inline, cdecl.} =
-  return 1
+    return 1
 
 ## * LLVMInitializeNativeTargetDisassembler - The main program should call this
 ##     function to initialize the disassembler for the native target corresponding
 ##     to the host.
 
 proc initializeNativeDisassembler*(): Bool {.inline, cdecl.} =
-  return 1
+    return 1
 
 ## ===-- Target Data -------------------------------------------------------===
 ## *
@@ -143,7 +143,9 @@ proc copyStringRepOfTargetData*(td: TargetDataRef): cstring {.cdecl, importc: "L
 ##     LLVMLittleEndian.
 ##     See the method llvm::DataLayout::isLittleEndian.
 
-proc byteOrder*(td: TargetDataRef): ByteOrdering {.cdecl, importc: "LLVMByteOrder", dynlib: LLVMlib.}
+proc byteOrder*(td: TargetDataRef): ByteOrdering {.cdecl,
+        importc: "LLVMByteOrder",
+    dynlib: LLVMlib.}
 ## * Returns the pointer size in bytes for a target.
 ##     See the method llvm::DataLayout::getPointerSize.
 
@@ -170,7 +172,7 @@ proc intPtrTypeInContext*(c: ContextRef; td: TargetDataRef): TypeRef {.cdecl, im
 ##     This version allows the address space to be specified.
 ##     See the method llvm::DataLayout::getIntPtrType.
 
-proc intPtrTypeForASInContext*(c: ContextRef; td: TargetDataRef; `as`: cuint): TypeRef {. cdecl, importc: "LLVMIntPtrTypeForASInContext", dynlib: LLVMlib.}
+proc intPtrTypeForASInContext*(c: ContextRef; td: TargetDataRef;`as`: cuint): TypeRef {. cdecl, importc: "LLVMIntPtrTypeForASInContext", dynlib: LLVMlib.}
 ## * Computes the size of a type in bytes for a target.
 ##     See the method llvm::DataLayout::getTypeSizeInBits.
 
@@ -198,15 +200,15 @@ proc preferredAlignmentOfType*(td: TargetDataRef; ty: TypeRef): cuint {.cdecl, i
 ## * Computes the preferred alignment of a global variable in bytes for a target.
 ##     See the method llvm::DataLayout::getPreferredAlignment.
 
-proc preferredAlignmentOfGlobal*(td: TargetDataRef; globalVar: ValueRef): cuint {. cdecl, importc: "LLVMPreferredAlignmentOfGlobal", dynlib: LLVMlib.}
+proc preferredAlignmentOfGlobal*(td: TargetDataRef;globalVar: ValueRef): cuint {. cdecl, importc: "LLVMPreferredAlignmentOfGlobal", dynlib: LLVMlib.}
 ## * Computes the structure element that contains the byte offset for a target.
 ##     See the method llvm::StructLayout::getElementContainingOffset.
 
-proc elementAtOffset*(td: TargetDataRef; structTy: TypeRef; offset: culonglong): cuint {. cdecl, importc: "LLVMElementAtOffset", dynlib: LLVMlib.}
+proc elementAtOffset*(td: TargetDataRef; structTy: TypeRef;offset: culonglong): cuint {. cdecl, importc: "LLVMElementAtOffset", dynlib: LLVMlib.}
 ## * Computes the byte offset of the indexed struct element for a target.
 ##     See the method llvm::StructLayout::getElementContainingOffset.
 
-proc offsetOfElement*(td: TargetDataRef; structTy: TypeRef; element: cuint): culonglong {. cdecl, importc: "LLVMOffsetOfElement", dynlib: LLVMlib.}
+proc offsetOfElement*(td: TargetDataRef; structTy: TypeRef;element: cuint): culonglong {. cdecl, importc: "LLVMOffsetOfElement", dynlib: LLVMlib.}
 ## *
 ##  @}
 ##
