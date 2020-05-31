@@ -15,11 +15,7 @@
 ##  tools written in such languages.
 ##
 ## ===----------------------------------------------------------------------===
-## *
-##  @defgroup LLVMCTarget Target information
-##  @ingroup LLVMC
-##
-##  @{
+
 
 import prelude/[
     opaques,
