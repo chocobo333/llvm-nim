@@ -537,7 +537,7 @@ proc disposeModule*(m: ModuleRef) {.cdecl, importc: "LLVMDisposeModule", dynlib:
     ##  This must be called for every created module or memory will be
     ##  leaked.
 
-proc getModuleIdentifier*(m: ModuleRef; len: ptr csize): cstring {.cdecl, importc: "LLVMGetModuleIdentifier", dynlib: LLVMlib.}
+proc getModuleIdentifier*(m: ModuleRef; len: ptr csize_t): cstring {.cdecl, importc: "LLVMGetModuleIdentifier", dynlib: LLVMlib.}
     ##  Obtain the identifier of a module.
     ##
     ##  @param M Module to obtain identifier of
@@ -545,7 +545,7 @@ proc getModuleIdentifier*(m: ModuleRef; len: ptr csize): cstring {.cdecl, import
     ##  @return The identifier of M.
     ##  @see Module::getModuleIdentifier()
 
-proc setModuleIdentifier*(m: ModuleRef; ident: cstring; len: csize) {.cdecl, importc: "LLVMSetModuleIdentifier", dynlib: LLVMlib.}
+proc setModuleIdentifier*(m: ModuleRef; ident: cstring; len: csize_t) {.cdecl, importc: "LLVMSetModuleIdentifier", dynlib: LLVMlib.}
     ##  Set the identifier of a module to a string Ident with length Len.
     ##
     ##  @param M The module to set identifier
@@ -553,7 +553,7 @@ proc setModuleIdentifier*(m: ModuleRef; ident: cstring; len: csize) {.cdecl, imp
     ##  @param Len Length of Ident
     ##  @see Module::setModuleIdentifier()
 
-proc getSourceFileName*(m: ModuleRef; len: ptr csize): cstring {.cdecl, importc: "LLVMGetSourceFileName", dynlib: LLVMlib.}
+proc getSourceFileName*(m: ModuleRef; len: ptr csize_t): cstring {.cdecl, importc: "LLVMGetSourceFileName", dynlib: LLVMlib.}
     ##  Obtain the module's original source file name.
     ##
     ##  @param M Module to obtain the name of
@@ -561,7 +561,7 @@ proc getSourceFileName*(m: ModuleRef; len: ptr csize): cstring {.cdecl, importc:
     ##  @return The original source file name of M
     ##  @see Module::getSourceFileName()
 
-proc setSourceFileName*(m: ModuleRef; name: cstring; len: csize) {.cdecl, importc: "LLVMSetSourceFileName", dynlib: LLVMlib.}
+proc setSourceFileName*(m: ModuleRef; name: cstring; len: csize_t) {.cdecl, importc: "LLVMSetSourceFileName", dynlib: LLVMlib.}
     ##  Set the original source file name of a module to a string Name with length
     ##  Len.
     ##
@@ -595,7 +595,7 @@ proc setTarget*(m: ModuleRef; triple: cstring) {.cdecl, importc: "LLVMSetTarget"
     ##
     ##  @see Module::setTargetTriple()
 
-proc copyModuleFlagsMetadata*(m: ModuleRef;len: ptr csize): ptr ModuleFlagEntry {. cdecl, importc: "LLVMCopyModuleFlagsMetadata", dynlib: LLVMlib.}
+proc copyModuleFlagsMetadata*(m: ModuleRef;len: ptr csize_t): ptr ModuleFlagEntry {. cdecl, importc: "LLVMCopyModuleFlagsMetadata", dynlib: LLVMlib.}
     ##  Returns the module flags as an array of flag-key-value triples.  The caller
     ##  is responsible for freeing this array by calling
     ##  \c LLVMDisposeModuleFlagsMetadata.
@@ -626,7 +626,7 @@ proc getModuleFlag*(m: ModuleRef; key: cstring; keyLen: csize_t): MetadataRef {.
     ##
     ##  @see Module::getModuleFlag()
 
-proc addModuleFlag*(m: ModuleRef; behavior: ModuleFlagBehavior; key: cstring;keyLen: csize; val: MetadataRef) {.cdecl, importc: "LLVMAddModuleFlag", dynlib: LLVMlib.}
+proc addModuleFlag*(m: ModuleRef; behavior: ModuleFlagBehavior; key: cstring;keyLen: csize_t; val: MetadataRef) {.cdecl, importc: "LLVMAddModuleFlag", dynlib: LLVMlib.}
     ##  Add a module-level flag to the module-level flags metadata if it doesn't
     ##  already exist.
     ##
@@ -664,7 +664,7 @@ proc appendModuleInlineAsm*(m: ModuleRef; `asm`: cstring; len: csize_t) {.cdecl,
     ##
     ##  @see Module::appendModuleInlineAsm()
 
-proc getInlineAsm*(ty: TypeRef; asmString: cstring; asmStringSize: csize_t; constraints: cstring; constraintsSize: csize;hasSideEffects: Bool; isAlignStack: Bool;dialect: InlineAsmDialect): ValueRef {.cdecl, importc: "LLVMGetInlineAsm", dynlib: LLVMlib.}
+proc getInlineAsm*(ty: TypeRef; asmString: cstring; asmStringSize: csize_t; constraints: cstring; constraintsSize: csize_t;hasSideEffects: Bool; isAlignStack: Bool;dialect: InlineAsmDialect): ValueRef {.cdecl, importc: "LLVMGetInlineAsm", dynlib: LLVMlib.}
     ##  Create the specified uniqued inline asm string.
     ##
     ##  @see InlineAsm::get()
@@ -1121,12 +1121,12 @@ proc getValueKind*(val: ValueRef): ValueKind {.cdecl, importc: "LLVMGetValueKind
     ##
     ##  @see llvm::Value::getValueID()
 
-proc getValueName2*(val: ValueRef; length: ptr csize): cstring {.cdecl, importc: "LLVMGetValueName2", dynlib: LLVMlib.}
+proc getValueName2*(val: ValueRef; length: ptr csize_t): cstring {.cdecl, importc: "LLVMGetValueName2", dynlib: LLVMlib.}
     ##  Obtain the string name of a value.
     ##
     ##  @see llvm::Value::getName()
 
-proc setValueName2*(val: ValueRef; name: cstring; nameLen: csize) {.cdecl, importc: "LLVMSetValueName2", dynlib: LLVMlib.}
+proc setValueName2*(val: ValueRef; name: cstring; nameLen: csize_t) {.cdecl, importc: "LLVMSetValueName2", dynlib: LLVMlib.}
     ##  Set the string name of a value.
     ##
     ##  @see llvm::Value::setName()
@@ -1438,7 +1438,7 @@ proc isConstantString*(c: ValueRef): Bool {.cdecl, importc: "LLVMIsConstantStrin
     ##
     ##  @see ConstantDataSequential::getAsString()
 
-proc getAsString*(c: ValueRef; length: ptr csize): cstring {.cdecl, importc: "LLVMGetAsString", dynlib: LLVMlib.}
+proc getAsString*(c: ValueRef; length: ptr csize_t): cstring {.cdecl, importc: "LLVMGetAsString", dynlib: LLVMlib.}
     ##  Get the given constant data sequential as a string.
     ##
     ##  @see ConstantDataSequential::getAsString()
@@ -1613,7 +1613,7 @@ proc globalClearMetadata*(global: ValueRef) {.cdecl, importc: "LLVMGlobalClearMe
     ##
     ##  @see llvm::GlobalObject::clearMetadata()
 
-proc globalCopyAllMetadata*(value: ValueRef;numEntries: ptr csize): ptr ValueMetadataEntry {. cdecl, importc: "LLVMGlobalCopyAllMetadata", dynlib: LLVMlib.}
+proc globalCopyAllMetadata*(value: ValueRef;numEntries: ptr csize_t): ptr ValueMetadataEntry {. cdecl, importc: "LLVMGlobalCopyAllMetadata", dynlib: LLVMlib.}
     ##  Retrieves an array of metadata entries representing the metadata attached to
     ##  this value. The caller is responsible for freeing this array by calling
     ##  \c LLVMDisposeValueMetadataEntries.
@@ -1659,7 +1659,7 @@ proc setExternallyInitialized*(globalVar: ValueRef; isExtInit: Bool) {.cdecl, im
 ##  @see llvm::GlobalAlias
 proc addAlias*(m: ModuleRef; ty: TypeRef; aliasee: ValueRef;name: cstring): ValueRef {. cdecl, importc: "LLVMAddAlias", dynlib: LLVMlib.}
 
-proc getNamedGlobalAlias*(m: ModuleRef; name: cstring;nameLen: csize): ValueRef {. cdecl, importc: "LLVMGetNamedGlobalAlias", dynlib: LLVMlib.}
+proc getNamedGlobalAlias*(m: ModuleRef; name: cstring;nameLen: csize_t): ValueRef {. cdecl, importc: "LLVMGetNamedGlobalAlias", dynlib: LLVMlib.}
     ##  Obtain a GlobalAlias value from a Module by its name.
     ##
     ##  The returned value corresponds to a llvm::GlobalAlias value.
@@ -1719,7 +1719,7 @@ proc setPersonalityFn*(fn: ValueRef; personalityFn: ValueRef) {.cdecl, importc: 
     ##
     ##  @see llvm::Function::setPersonalityFn()
 
-proc lookupIntrinsicID*(name: cstring; nameLen: csize): cuint {.cdecl, importc: "LLVMLookupIntrinsicID", dynlib: LLVMlib.}
+proc lookupIntrinsicID*(name: cstring; nameLen: csize_t): cuint {.cdecl, importc: "LLVMLookupIntrinsicID", dynlib: LLVMlib.}
     ##  Obtain the intrinsic ID number which matches the given function name.
     ##
     ##  @see llvm::Function::lookupIntrinsicID()
@@ -1729,19 +1729,19 @@ proc getIntrinsicID*(fn: ValueRef): cuint {.cdecl, importc: "LLVMGetIntrinsicID"
     ##
     ##  @see llvm::Function::getIntrinsicID()
 
-proc getIntrinsicDeclaration*(`mod`: ModuleRef; id: cuint; paramTypes: ptr TypeRef;paramCount: csize): ValueRef {.cdecl, importc: "LLVMGetIntrinsicDeclaration", dynlib: LLVMlib.}
+proc getIntrinsicDeclaration*(`mod`: ModuleRef; id: cuint; paramTypes: ptr TypeRef;paramCount: csize_t): ValueRef {.cdecl, importc: "LLVMGetIntrinsicDeclaration", dynlib: LLVMlib.}
     ##  Create or insert the declaration of an intrinsic.  For overloaded intrinsics,
     ##  parameter types must be provided to uniquely identify an overload.
     ##
     ##  @see llvm::Intrinsic::getDeclaration()
 
-proc intrinsicGetType*(ctx: ContextRef; id: cuint; paramTypes: ptr TypeRef;paramCount: csize): TypeRef {.cdecl, importc: "LLVMIntrinsicGetType", dynlib: LLVMlib.}
+proc intrinsicGetType*(ctx: ContextRef; id: cuint; paramTypes: ptr TypeRef;paramCount: csize_t): TypeRef {.cdecl, importc: "LLVMIntrinsicGetType", dynlib: LLVMlib.}
     ##  Retrieves the type of an intrinsic.  For overloaded intrinsics, parameter
     ##  types must be provided to uniquely identify an overload.
     ##
     ##  @see llvm::Intrinsic::getType()
 
-proc intrinsicGetName*(id: cuint; nameLength: ptr csize): cstring {.cdecl, importc: "LLVMIntrinsicGetName", dynlib: LLVMlib.}
+proc intrinsicGetName*(id: cuint; nameLength: ptr csize_t): cstring {.cdecl, importc: "LLVMIntrinsicGetName", dynlib: LLVMlib.}
     ##  Retrieves the name of an intrinsic.
     ##
     ##  @see llvm::Intrinsic::getName()
@@ -1873,12 +1873,12 @@ proc setParamAlignment*(arg: ValueRef; align: cuint) {.cdecl, importc: "LLVMSetP
 ##
 ##  Functions in this group expect LLVMValueRef instances that correspond
 ##  to llvm::GlobalIFunc instances.
-proc addGlobalIFunc*(m: ModuleRef; name: cstring; nameLen: csize; ty: TypeRef;addrSpace: cuint; resolver: ValueRef): ValueRef {.cdecl, importc: "LLVMAddGlobalIFunc", dynlib: LLVMlib.}
+proc addGlobalIFunc*(m: ModuleRef; name: cstring; nameLen: csize_t; ty: TypeRef;addrSpace: cuint; resolver: ValueRef): ValueRef {.cdecl, importc: "LLVMAddGlobalIFunc", dynlib: LLVMlib.}
     ##  Add a global indirect function to a module under a specified name.
     ##
     ##  @see llvm::GlobalIFunc::create()
 
-proc getNamedGlobalIFunc*(m: ModuleRef; name: cstring;nameLen: csize): ValueRef {. cdecl, importc: "LLVMGetNamedGlobalIFunc", dynlib: LLVMlib.}
+proc getNamedGlobalIFunc*(m: ModuleRef; name: cstring;nameLen: csize_t): ValueRef {. cdecl, importc: "LLVMGetNamedGlobalIFunc", dynlib: LLVMlib.}
     ##  Obtain a GlobalIFunc value from a Module by its name.
     ##
     ##  The returned value corresponds to a llvm::GlobalIFunc value.
@@ -1931,7 +1931,7 @@ proc removeGlobalIFunc*(iFunc: ValueRef) {.cdecl, importc: "LLVMRemoveGlobalIFun
     ##
     ##  @see llvm::GlobalIFunc::removeFromParent()
 
-proc mdStringInContext2*(c: ContextRef; str: cstring;sLen: csize): MetadataRef {.cdecl, importc: "LLVMMDStringInContext2", dynlib: LLVMlib.}
+proc mdStringInContext2*(c: ContextRef; str: cstring;sLen: csize_t): MetadataRef {.cdecl, importc: "LLVMMDStringInContext2", dynlib: LLVMlib.}
     ##  Create an MDString value from a given string value.
     ##
     ##  The MDString value does not take ownership of the given string, it remains
@@ -1939,7 +1939,7 @@ proc mdStringInContext2*(c: ContextRef; str: cstring;sLen: csize): MetadataRef {
     ##
     ##  @see llvm::MDString::get()
 
-proc mdNodeInContext2*(c: ContextRef; mDs: ptr MetadataRef;count: csize): MetadataRef {. cdecl, importc: "LLVMMDNodeInContext2", dynlib: LLVMlib.}
+proc mdNodeInContext2*(c: ContextRef; mDs: ptr MetadataRef;count: csize_t): MetadataRef {. cdecl, importc: "LLVMMDNodeInContext2", dynlib: LLVMlib.}
     ##  Create an MDNode value with the given array of operands.
     ##
     ##  @see llvm::MDNode::get()
@@ -2159,7 +2159,7 @@ proc getMetadata*(val: ValueRef; kindID: cuint): ValueRef {.cdecl, importc: "LLV
 proc setMetadata*(val: ValueRef; kindID: cuint; node: ValueRef) {.cdecl, importc: "LLVMSetMetadata", dynlib: LLVMlib.}
     ##  Set metadata associated with an instruction value.
 
-proc instructionGetAllMetadataOtherThanDebugLoc*(instr: ValueRef;numEntries: ptr csize): ptr ValueMetadataEntry {.cdecl, importc: "LLVMInstructionGetAllMetadataOtherThanDebugLoc", dynlib: LLVMlib.}
+proc instructionGetAllMetadataOtherThanDebugLoc*(instr: ValueRef;numEntries: ptr csize_t): ptr ValueMetadataEntry {.cdecl, importc: "LLVMInstructionGetAllMetadataOtherThanDebugLoc", dynlib: LLVMlib.}
     ##  Returns the metadata associated with an instruction value, but filters out
     ##  all the debug locations.
     ##
@@ -2719,10 +2719,10 @@ proc disposeModuleProvider*(m: ModuleProviderRef) {.cdecl, importc: "LLVMDispose
 
 proc createMemoryBufferWithContentsOfFile*(path: cstring;outMemBuf: ptr MemoryBufferRef; outMessage: cstringArray): Bool {.cdecl, importc: "LLVMCreateMemoryBufferWithContentsOfFile", dynlib: LLVMlib.}
 proc createMemoryBufferWithSTDIN*(outMemBuf: ptr MemoryBufferRef;outMessage: cstringArray): Bool {.cdecl, importc: "LLVMCreateMemoryBufferWithSTDIN", dynlib: LLVMlib.}
-proc createMemoryBufferWithMemoryRange*(inputData: cstring; inputDataLength: csize;bufferName: cstring;requiresNullTerminator: Bool): MemoryBufferRef {. cdecl, importc: "LLVMCreateMemoryBufferWithMemoryRange", dynlib: LLVMlib.}
-proc createMemoryBufferWithMemoryRangeCopy*(inputData: cstring;inputDataLength: csize; bufferName: cstring): MemoryBufferRef {.cdecl, importc: "LLVMCreateMemoryBufferWithMemoryRangeCopy", dynlib: LLVMlib.}
+proc createMemoryBufferWithMemoryRange*(inputData: cstring; inputDataLength: csize_t;bufferName: cstring;requiresNullTerminator: Bool): MemoryBufferRef {. cdecl, importc: "LLVMCreateMemoryBufferWithMemoryRange", dynlib: LLVMlib.}
+proc createMemoryBufferWithMemoryRangeCopy*(inputData: cstring;inputDataLength: csize_t; bufferName: cstring): MemoryBufferRef {.cdecl, importc: "LLVMCreateMemoryBufferWithMemoryRangeCopy", dynlib: LLVMlib.}
 proc getBufferStart*(memBuf: MemoryBufferRef): cstring {.cdecl, importc: "LLVMGetBufferStart", dynlib: LLVMlib.}
-proc getBufferSize*(memBuf: MemoryBufferRef): csize {.cdecl, importc: "LLVMGetBufferSize", dynlib: LLVMlib.}
+proc getBufferSize*(memBuf: MemoryBufferRef): csize_t {.cdecl, importc: "LLVMGetBufferSize", dynlib: LLVMlib.}
 proc disposeMemoryBuffer*(memBuf: MemoryBufferRef) {.cdecl, importc: "LLVMDisposeMemoryBuffer", dynlib: LLVMlib.}
 proc getGlobalPassRegistry*(): PassRegistryRef {.cdecl, importc: "LLVMGetGlobalPassRegistry", dynlib: LLVMlib.}
     ## * Return the global pass registry, for use with initialization functions.
