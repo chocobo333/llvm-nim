@@ -56,7 +56,7 @@ proc setDisasmOptions*(dc: DisasmContextRef; options: uint64T): cint {.cdecl, im
 proc disasmDispose*(dc: DisasmContextRef) {.cdecl, importc: "LLVMDisasmDispose", dynlib: LLVMlib.}
     ##  Dispose of a disassembler context.
 
-proc disasmInstruction*(dc: DisasmContextRef; bytes: ptr uint8T; bytesSize: uint64T;pc: uint64T; outString: cstring;outStringSize: csize): csize {. cdecl, importc: "LLVMDisasmInstruction", dynlib: LLVMlib.}
+proc disasmInstruction*(dc: DisasmContextRef; bytes: ptr uint8T; bytesSize: uint64T;pc: uint64T; outString: cstring;outStringSize: csize_t): csize_t {. cdecl, importc: "LLVMDisasmInstruction", dynlib: LLVMlib.}
     ##  Disassemble a single instruction using the disassembler context specified in
     ##  the parameter DC.  The bytes of the instruction are specified in the
     ##  parameter Bytes, and contains at least BytesSize number of bytes.  The
