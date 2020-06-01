@@ -8,5 +8,9 @@
 import unittest
 
 import llvm
+
 test "can add":
-  check add(5, 5) == 10
+    var
+        module = moduleCreateWithName("main")
+        
+    module.dumpModule()
