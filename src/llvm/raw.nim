@@ -36,6 +36,17 @@ import llvm/[
     Types
 ]
 
+import llvm/Transforms/[
+    AggressiveInstCombine,
+    Coroutines,
+    InstCombine,
+    IPO,
+    PassManagerBuilder,
+    Scalar,
+    Utils,
+    Vectorize
+]
+
 export
     Analysis,
     BitReader,
@@ -61,3 +72,13 @@ export
     Target,
     TargetMachine,
     Types
+
+export
+    AggressiveInstCombine,
+    Coroutines,
+    InstCombine,
+    IPO,
+    PassManagerBuilder,
+    Scalar,
+    Utils,
+    Vectorize
