@@ -12,14 +12,13 @@
 ## |* the corresponding LLVM library.                                            *|
 ## |*                                                                            *|
 ## \*===----------------------------------------------------------------------===
-## *
-##  @defgroup LLVMCInitialization Initialization Routines
-##  @ingroup LLVMC
-##
+## 
 ##  This module contains routines used to initialize the LLVM system.
-##
-##  @{
-##
+
+import prelude/platforms
+
+import Types
+
 
 proc initializeCore*(r: PassRegistryRef) {.cdecl, importc: "LLVMInitializeCore", dynlib: LLVMlib.}
 proc initializeTransformUtils*(r: PassRegistryRef) {.cdecl, importc: "LLVMInitializeTransformUtils", dynlib: LLVMlib.}
@@ -33,9 +32,4 @@ proc initializeInstrumentation*(r: PassRegistryRef) {.cdecl, importc: "LLVMIniti
 proc initializeAnalysis*(r: PassRegistryRef) {.cdecl, importc: "LLVMInitializeAnalysis", dynlib: LLVMlib.}
 proc initializeIPA*(r: PassRegistryRef) {.cdecl, importc: "LLVMInitializeIPA", dynlib: LLVMlib.}
 proc initializeCodeGen*(r: PassRegistryRef) {.cdecl, importc: "LLVMInitializeCodeGen", dynlib: LLVMlib.}
-proc initializeTarget*(r: PassRegistryRef) {.cdecl,
-        importc: "LLVMInitializeTarget",
-    dynlib: LLVMlib.}
-## *
-##  @}
-##
+proc initializeTarget*(r: PassRegistryRef) {.cdecl, importc: "LLVMInitializeTarget", dynlib: LLVMlib.}
