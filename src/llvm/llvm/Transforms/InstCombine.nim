@@ -11,15 +11,11 @@
 ## |* combines instructions to form fewer, simple IR instructions.               *|
 ## |*                                                                            *|
 ## \*===----------------------------------------------------------------------===
-## *
-##  @defgroup LLVMCTransformsInstCombine Instruction Combining transformations
-##  @ingroup LLVMCTransforms
-##
-##  @{
-##
-## * See llvm::createInstructionCombiningPass function.
+
+import ../prelude/platforms
+
+import ../Types
+
 
 proc addInstructionCombiningPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddInstructionCombiningPass", dynlib: LLVMlib.}
-## *
-##  @}
-##
+    ## * See llvm::createInstructionCombiningPass function.

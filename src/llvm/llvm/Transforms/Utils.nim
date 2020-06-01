@@ -15,21 +15,17 @@
 ## |* tools written in such languages.                                           *|
 ## |*                                                                            *|
 ## \*===----------------------------------------------------------------------===
-## *
-##  @defgroup LLVMCTransformsUtils Transformation Utilities
-##  @ingroup LLVMCTransforms
-##
-##  @{
-##
-## * See llvm::createLowerSwitchPass function.
+
+import ../prelude/platforms
+
+import ../Types
+
 
 proc addLowerSwitchPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddLowerSwitchPass", dynlib: LLVMlib.}
-## * See llvm::createPromoteMemoryToRegisterPass function.
+    ## * See llvm::createLowerSwitchPass function.
 
 proc addPromoteMemoryToRegisterPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddPromoteMemoryToRegisterPass", dynlib: LLVMlib.}
-## * See llvm::createAddDiscriminatorsPass function.
+    ## * See llvm::createPromoteMemoryToRegisterPass function.
 
 proc addAddDiscriminatorsPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddAddDiscriminatorsPass", dynlib: LLVMlib.}
-## *
-##  @}
-##
+    ## * See llvm::createAddDiscriminatorsPass function.

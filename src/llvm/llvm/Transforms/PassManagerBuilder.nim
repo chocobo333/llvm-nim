@@ -11,15 +11,17 @@
 ## |*                                                                            *|
 ## \*===----------------------------------------------------------------------===
 
+import ../prelude/[
+    opaques,
+    platforms
+]
+
+import ../Types
+
+
 type
     PassManagerBuilderRef* = ptr OpaquePassManagerBuilder
 
-## *
-##  @defgroup LLVMCTransformsPassManagerBuilder Pass manager builder
-##  @ingroup LLVMCTransforms
-##
-##  @{
-##
 ## * See llvm::PassManagerBuilder.
 
 proc passManagerBuilderCreate*(): PassManagerBuilderRef {.cdecl, importc: "LLVMPassManagerBuilderCreate", dynlib: LLVMlib.}

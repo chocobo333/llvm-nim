@@ -16,18 +16,14 @@
 ## |* tools written in such languages.                                           *|
 ## |*                                                                            *|
 ## \*===----------------------------------------------------------------------===
-## *
-##  @defgroup LLVMCTransformsVectorize Vectorization transformations
-##  @ingroup LLVMCTransforms
-##
-##  @{
-##
-## * See llvm::createLoopVectorizePass function.
+
+import ../prelude/platforms
+
+import ../Types
+
 
 proc addLoopVectorizePass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddLoopVectorizePass", dynlib: LLVMlib.}
-## * See llvm::createSLPVectorizerPass function.
+    ## * See llvm::createLoopVectorizePass function.
 
 proc addSLPVectorizePass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddSLPVectorizePass", dynlib: LLVMlib.}
-## *
-##  @}
-##
+    ## * See llvm::createSLPVectorizerPass function.

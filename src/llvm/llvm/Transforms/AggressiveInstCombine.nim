@@ -11,15 +11,11 @@
 ## |* which combines instructions to form fewer, simple IR instructions.         *|
 ## |*                                                                            *|
 ## \*===----------------------------------------------------------------------===
-## *
-##  @defgroup LLVMCTransformsAggressiveInstCombine Aggressive Instruction Combining transformations
-##  @ingroup LLVMCTransforms
-##
-##  @{
-##
-## * See llvm::createAggressiveInstCombinerPass function.
+
+import ../prelude/platforms
+
+import ../Types
+
 
 proc addAggressiveInstCombinerPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddAggressiveInstCombinerPass", dynlib: LLVMlib.}
-## *
-##  @}
-##
+    ## * See llvm::createAggressiveInstCombinerPass function.

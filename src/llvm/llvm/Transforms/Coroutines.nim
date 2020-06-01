@@ -15,30 +15,20 @@
 ## |* tools written in such languages.                                           *|
 ## |*                                                                            *|
 ## \*===----------------------------------------------------------------------===
-## *
-##  @defgroup LLVMCTransformsCoroutines Coroutine transformations
-##  @ingroup LLVMCTransforms
-##
-##  @{
-##
-## * See llvm::createCoroEarlyLegacyPass function.
 
-proc addCoroEarlyPass*(pm: PassManagerRef) {.cdecl,
-        importc: "LLVMAddCoroEarlyPass",
-    dynlib: LLVMlib.}
-## * See llvm::createCoroSplitLegacyPass function.
+import ../prelude/platforms
 
-proc addCoroSplitPass*(pm: PassManagerRef) {.cdecl,
-        importc: "LLVMAddCoroSplitPass",
-    dynlib: LLVMlib.}
-## * See llvm::createCoroElideLegacyPass function.
+import ../Types
 
-proc addCoroElidePass*(pm: PassManagerRef) {.cdecl,
-        importc: "LLVMAddCoroElidePass",
-    dynlib: LLVMlib.}
-## * See llvm::createCoroCleanupLegacyPass function.
+
+proc addCoroEarlyPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddCoroEarlyPass", dynlib: LLVMlib.}
+    ## * See llvm::createCoroEarlyLegacyPass function.
+
+proc addCoroSplitPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddCoroSplitPass", dynlib: LLVMlib.}
+    ## * See llvm::createCoroSplitLegacyPass function.
+
+proc addCoroElidePass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddCoroElidePass", dynlib: LLVMlib.}
+    ## * See llvm::createCoroElideLegacyPass function.
 
 proc addCoroCleanupPass*(pm: PassManagerRef) {.cdecl, importc: "LLVMAddCoroCleanupPass", dynlib: LLVMlib.}
-## *
-##  @}
-##
+    ## * See llvm::createCoroCleanupLegacyPass function.
