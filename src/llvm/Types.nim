@@ -60,6 +60,17 @@ type
     ##  Represents a basic block of instructions in LLVM IR.
     ##
     ##  This models llvm::BasicBlock.
+    ##  A basic block represents a single entry single exit section of code.
+    ## 
+    ##  Basic blocks contain a list of instructions which form the body of
+    ##  the block.
+    ##
+    ##  Basic blocks belong to functions. They have the type of label.
+    ##
+    ##  Basic blocks are themselves values. However, the C API models them as
+    ##  LLVMBasicBlockRef.
+    ##
+    ##  @see llvm::BasicBlock
 
     MetadataRef* = ptr OpaqueMetadata
     ##  Represents an LLVM Metadata.
