@@ -1,28 +1,19 @@
-## ===-- llvm-c/Core.h - Core Library C Interface ------------------*- C -*-===*\
-## |*                                                                            *|
-## |* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
-## |* Exceptions.                                                                *|
-## |* See https://llvm.org/LICENSE.txt for license information.                  *|
-## |* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
-## |*                                                                            *|
-## |*===----------------------------------------------------------------------===*|
-## |*                                                                            *|
-## |* This header declares the C interface to libLLVMCore.a, which implements    *|
-## |* the LLVM intermediate representation.                                      *|
-## |*                                                                            *|
-## \*===----------------------------------------------------------------------===
-## *
-##  @defgroup LLVMC LLVM-C: C interface to LLVM
-##
+# ===-- llvm-c/Core.h - Core Library C Interface ------------------*- C -*-===*\
+# |*                                                                            *|
+# |* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
+# |* Exceptions.                                                                *|
+# |* See https://llvm.org/LICENSE.txt for license information.                  *|
+# |* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
+# |*                                                                            *|
+# |*===----------------------------------------------------------------------===*|
+# |*                                                                            *|
+# |* This header declares the C interface to libLLVMCore.a, which implements    *|
+# |* the LLVM intermediate representation.                                      *|
+# |*                                                                            *|
+# \*===----------------------------------------------------------------------===
+
+
 ##  This module exposes parts of the LLVM library as a C API.
-##
-##  @{
-##
-## *
-##  @defgroup LLVMCTransforms Transforms
-##
-## *
-##  @defgroup LLVMCCore Core
 ##
 ##  This modules provide an interface to libLLVMCore, which implements
 ##  the LLVM intermediate representation as well as other related types
@@ -31,14 +22,7 @@
 ##  Many exotic languages can interoperate with C code but have a harder time
 ##  with C++ due to name mangling. So in addition to C, this interface enables
 ##  tools written in such languages.
-##
-##  @{
-##
-## *
-##  @defgroup LLVMCCoreTypes Types and Enumerations
-##
-##  @{
-##
+
 ## / External users depend on the following values being stable. It is not safe
 ## / to reorder them.
 

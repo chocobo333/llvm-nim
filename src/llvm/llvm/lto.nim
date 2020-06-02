@@ -1,17 +1,17 @@
-## ===-- llvm-c/lto.h - LTO Public C Interface ---------------------*- C -*-===*\
-## |*                                                                            *|
-## |* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
-## |* Exceptions.                                                                *|
-## |* See https://llvm.org/LICENSE.txt for license information.                  *|
-## |* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
-## |*                                                                            *|
-## |*===----------------------------------------------------------------------===*|
-## |*                                                                            *|
-## |* This header provides public interface to an abstract link time optimization*|
-## |* library.  LLVM provides an implementation of this interface for use with   *|
-## |* llvm bitcode files.                                                        *|
-## |*                                                                            *|
-## \*===----------------------------------------------------------------------===
+# ===-- llvm-c/lto.h - LTO Public C Interface ---------------------*- C -*-===*\
+# |*                                                                            *|
+# |* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
+# |* Exceptions.                                                                *|
+# |* See https://llvm.org/LICENSE.txt for license information.                  *|
+# |* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
+# |*                                                                            *|
+# |*===----------------------------------------------------------------------===*|
+# |*                                                                            *|
+# |* This header provides public interface to an abstract link time optimization*|
+# |* library.  LLVM provides an implementation of this interface for use with   *|
+# |* llvm bitcode files.                                                        *|
+# |*                                                                            *|
+# \*===----------------------------------------------------------------------===
 
 import prelude/[
     opaques,
@@ -230,8 +230,8 @@ type
         ##  \since LTO_API_VERSION=7
 
 
-proc ltoCodegenSetDiagnosticHandler*(a1: LtoCodeGenT; a2: LtoDiagnosticHandlerT;a3: pointer) {.cdecl, importc: "lto_codegen_set_diagnostic_handler", dynlib: LLVMlib.}
-    ##  Set a diagnostic handler and the related context (void *).
+proc ltoCodegenSetDiagnosticHandler*(a1: LtoCodeGenT; a2: LtoDiagnosticHandlerT; a3: pointer) {.cdecl, importc: "lto_codegen_set_diagnostic_handler", dynlib: LLVMlib.}
+    ##  Set a diagnostic handler and the related context (void ptr).
     ##  This is more general than lto_get_error_message, as the diagnostic handler
     ##  can be called at anytime within lto.
     ##
