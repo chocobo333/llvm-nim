@@ -7,10 +7,13 @@
 
 import unittest
 
-import llvm
+import llvm/raw
 
-test "can add":
+test "raw":
     var
         module = moduleCreateWithName("main")
-        
-    module.dumpModule()
+
+    check module.printModuleToString() == """; ModuleID = 'main'
+source_filename = "main"
+"""
+    # module.dumpModule()
