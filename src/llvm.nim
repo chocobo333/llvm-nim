@@ -7,3 +7,7 @@ const
 {.passL: "`llvm-config --cflags --libs --ldflags all --system-libs`".}
 {.passL: "-lLLVM".}
 {.passL: "-Wl,-rpath " & LLVMRoot & "lib".}
+
+import llvm/wrapper
+
+export wrapper

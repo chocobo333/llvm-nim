@@ -1,4 +1,9 @@
 
+## This provides raw LLVM interfaces or functions.
+## 
+## Unsafe
+## ------
+
 const
     LLVMRoot = "/usr/local/opt/llvm/"
 

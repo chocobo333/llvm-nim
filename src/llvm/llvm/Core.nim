@@ -1095,7 +1095,7 @@ proc x86MMXType*(): TypeRef {.cdecl, importc: "LLVMX86MMXType", dynlib: LLVMlib.
 ##  Functions in this section work on all LLVMValueRef instances,
 ##  regardless of their sub-type. They correspond to functions available
 ##  on llvm::Value.
-proc typeOf*(val: ValueRef): TypeRef {.cdecl, importc: "LLVMTypeOf", dynlib: LLVMlib.}
+proc typeOfX*(val: ValueRef): TypeRef {.cdecl, importc: "LLVMTypeOf", dynlib: LLVMlib.}
     ##  Obtain the type of a value.
     ##
     ##  @see llvm::Value::getType()
@@ -1466,7 +1466,7 @@ proc constVector*(scalarConstantVals: ptr ValueRef; size: cuint): ValueRef {.cde
 ##  @see llvm::ConstantExpr.
 proc getConstOpcode*(constantVal: ValueRef): Opcode {.cdecl, importc: "LLVMGetConstOpcode", dynlib: LLVMlib.}
 proc alignOf*(ty: TypeRef): ValueRef {.cdecl, importc: "LLVMAlignOf", dynlib: LLVMlib.}
-proc sizeOf*(ty: TypeRef): ValueRef {.cdecl, importc: "LLVMSizeOf", dynlib: LLVMlib.}
+proc sizeOfX*(ty: TypeRef): ValueRef {.cdecl, importc: "LLVMSizeOf", dynlib: LLVMlib.}
 proc constNeg*(constantVal: ValueRef): ValueRef {.cdecl, importc: "LLVMConstNeg", dynlib: LLVMlib.}
 proc constNSWNeg*(constantVal: ValueRef): ValueRef {.cdecl, importc: "LLVMConstNSWNeg", dynlib: LLVMlib.}
 proc constNUWNeg*(constantVal: ValueRef): ValueRef {.cdecl, importc: "LLVMConstNUWNeg", dynlib: LLVMlib.}
@@ -2401,8 +2401,8 @@ proc getIncomingBlock*(phiNode: ValueRef; index: cuint): BasicBlockRef {.cdecl, 
 ##  Functions in this group only apply to instructions that map to
 ##  llvm::ExtractValue and llvm::InsertValue instances.
 proc getNumIndices*(inst: ValueRef): cuint {.cdecl, importc: "LLVMGetNumIndices", dynlib: LLVMlib.}
-##  Obtain the number of indices.
-##  NB: This also works on GEP.
+    ##  Obtain the number of indices.
+    ##  NB: This also works on GEP.
 
 
 proc getIndices*(inst: ValueRef): ptr cuint {.cdecl, importc: "LLVMGetIndices", dynlib: LLVMlib.}
