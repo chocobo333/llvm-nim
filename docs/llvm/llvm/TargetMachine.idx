@@ -1,0 +1,30 @@
+TargetMachineRef	llvm/llvm/TargetMachine.html#TargetMachineRef	TargetMachine: TargetMachineRef	
+TargetRef	llvm/llvm/TargetMachine.html#TargetRef	TargetMachine: TargetRef	
+CodeGenOptLevel	llvm/llvm/TargetMachine.html#CodeGenOptLevel	TargetMachine: CodeGenOptLevel	
+RelocMode	llvm/llvm/TargetMachine.html#RelocMode	TargetMachine: RelocMode	
+CodeModel	llvm/llvm/TargetMachine.html#CodeModel	TargetMachine: CodeModel	
+CodeGenFileType	llvm/llvm/TargetMachine.html#CodeGenFileType	TargetMachine: CodeGenFileType	
+getFirstTarget	llvm/llvm/TargetMachine.html#getFirstTarget	TargetMachine: getFirstTarget(): TargetRef	
+getNextTarget	llvm/llvm/TargetMachine.html#getNextTarget,TargetRef	TargetMachine: getNextTarget(t: TargetRef): TargetRef	
+getTargetFromName	llvm/llvm/TargetMachine.html#getTargetFromName,cstring	TargetMachine: getTargetFromName(name: cstring): TargetRef	
+getTargetFromTriple	llvm/llvm/TargetMachine.html#getTargetFromTriple,cstring,ptr.TargetRef,cstringArray	TargetMachine: getTargetFromTriple(triple: cstring; t: ptr TargetRef; errorMessage: cstringArray): Bool	
+getTargetName	llvm/llvm/TargetMachine.html#getTargetName,TargetRef	TargetMachine: getTargetName(t: TargetRef): cstring	
+getTargetDescription	llvm/llvm/TargetMachine.html#getTargetDescription,TargetRef	TargetMachine: getTargetDescription(t: TargetRef): cstring	
+targetHasJIT	llvm/llvm/TargetMachine.html#targetHasJIT,TargetRef	TargetMachine: targetHasJIT(t: TargetRef): Bool	
+targetHasTargetMachine	llvm/llvm/TargetMachine.html#targetHasTargetMachine,TargetRef	TargetMachine: targetHasTargetMachine(t: TargetRef): Bool	
+targetHasAsmBackend	llvm/llvm/TargetMachine.html#targetHasAsmBackend,TargetRef	TargetMachine: targetHasAsmBackend(t: TargetRef): Bool	
+createTargetMachine	llvm/llvm/TargetMachine.html#createTargetMachine,TargetRef,cstring,cstring,cstring,CodeGenOptLevel,RelocMode,CodeModel	TargetMachine: createTargetMachine(t: TargetRef; triple: cstring; cpu: cstring; features: cstring;\n                    level: CodeGenOptLevel; reloc: RelocMode; codeModel: CodeModel): TargetMachineRef	
+disposeTargetMachine	llvm/llvm/TargetMachine.html#disposeTargetMachine,TargetMachineRef	TargetMachine: disposeTargetMachine(t: TargetMachineRef)	
+getTargetMachineTarget	llvm/llvm/TargetMachine.html#getTargetMachineTarget,TargetMachineRef	TargetMachine: getTargetMachineTarget(t: TargetMachineRef): TargetRef	
+getTargetMachineTriple	llvm/llvm/TargetMachine.html#getTargetMachineTriple,TargetMachineRef	TargetMachine: getTargetMachineTriple(t: TargetMachineRef): cstring	
+getTargetMachineCPU	llvm/llvm/TargetMachine.html#getTargetMachineCPU,TargetMachineRef	TargetMachine: getTargetMachineCPU(t: TargetMachineRef): cstring	
+getTargetMachineFeatureString	llvm/llvm/TargetMachine.html#getTargetMachineFeatureString,TargetMachineRef	TargetMachine: getTargetMachineFeatureString(t: TargetMachineRef): cstring	
+createTargetDataLayout	llvm/llvm/TargetMachine.html#createTargetDataLayout,TargetMachineRef	TargetMachine: createTargetDataLayout(t: TargetMachineRef): TargetDataRef	
+setTargetMachineAsmVerbosity	llvm/llvm/TargetMachine.html#setTargetMachineAsmVerbosity,TargetMachineRef,Bool	TargetMachine: setTargetMachineAsmVerbosity(t: TargetMachineRef; verboseAsm: Bool)	
+targetMachineEmitToFile	llvm/llvm/TargetMachine.html#targetMachineEmitToFile,TargetMachineRef,ModuleRef,cstring,CodeGenFileType,cstringArray	TargetMachine: targetMachineEmitToFile(t: TargetMachineRef; m: ModuleRef; filename: cstring;\n                        codegen: CodeGenFileType; errorMessage: cstringArray): Bool	
+targetMachineEmitToMemoryBuffer	llvm/llvm/TargetMachine.html#targetMachineEmitToMemoryBuffer,TargetMachineRef,ModuleRef,CodeGenFileType,cstringArray,ptr.MemoryBufferRef	TargetMachine: targetMachineEmitToMemoryBuffer(t: TargetMachineRef; m: ModuleRef;\n                                codegen: CodeGenFileType;\n                                errorMessage: cstringArray;\n                                outMemBuf: ptr MemoryBufferRef): Bool	
+getDefaultTargetTriple	llvm/llvm/TargetMachine.html#getDefaultTargetTriple	TargetMachine: getDefaultTargetTriple(): cstring	
+normalizeTargetTriple	llvm/llvm/TargetMachine.html#normalizeTargetTriple,cstring	TargetMachine: normalizeTargetTriple(triple: cstring): cstring	
+getHostCPUName	llvm/llvm/TargetMachine.html#getHostCPUName	TargetMachine: getHostCPUName(): cstring	
+getHostCPUFeatures	llvm/llvm/TargetMachine.html#getHostCPUFeatures	TargetMachine: getHostCPUFeatures(): cstring	
+addAnalysisPasses	llvm/llvm/TargetMachine.html#addAnalysisPasses,TargetMachineRef,PassManagerRef	TargetMachine: addAnalysisPasses(t: TargetMachineRef; pm: PassManagerRef)	

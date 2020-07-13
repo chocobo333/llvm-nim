@@ -1,0 +1,2 @@
+LinkerMode	llvm/llvm/Linker.html#LinkerMode	Linker: LinkerMode	
+linkModules2	llvm/llvm/Linker.html#linkModules2,ModuleRef,ModuleRef	Linker: linkModules2(dest: ModuleRef; src: ModuleRef): Bool	

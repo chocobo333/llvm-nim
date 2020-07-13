@@ -1,0 +1,4 @@
+addCoroEarlyPass	llvm/llvm/Transforms/Coroutines.html#addCoroEarlyPass,PassManagerRef	Coroutines: addCoroEarlyPass(pm: PassManagerRef)	
+addCoroSplitPass	llvm/llvm/Transforms/Coroutines.html#addCoroSplitPass,PassManagerRef	Coroutines: addCoroSplitPass(pm: PassManagerRef)	
+addCoroElidePass	llvm/llvm/Transforms/Coroutines.html#addCoroElidePass,PassManagerRef	Coroutines: addCoroElidePass(pm: PassManagerRef)	
+addCoroCleanupPass	llvm/llvm/Transforms/Coroutines.html#addCoroCleanupPass,PassManagerRef	Coroutines: addCoroCleanupPass(pm: PassManagerRef)	

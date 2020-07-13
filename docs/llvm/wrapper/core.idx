@@ -1,0 +1,45 @@
+newContext	llvm/wrapper/core.html#newContext	core: newContext(): Context	
+globalContext	llvm/wrapper/core.html#globalContext	core: globalContext(): Context	
+newModule	llvm/wrapper/core.html#newModule,string,Context	core: newModule(name: string; cxt: Context = nil): Module	
+clone	llvm/wrapper/core.html#clone,Module	core: clone(self: Module): Module	
+newModule	llvm/wrapper/core.html#newModule,Module	core: newModule(other: Module): Module	
+identifier	llvm/wrapper/core.html#identifier,Module	core: identifier(self: Module): string	
+identifier=	llvm/wrapper/core.html#identifier=,Module,string	core: identifier=(self: Module; id: string)	
+sourceFileName	llvm/wrapper/core.html#sourceFileName,Module	core: sourceFileName(self: Module): string	
+sourceFileName=	llvm/wrapper/core.html#sourceFileName=,Module,string	core: sourceFileName=(self: Module; name: string)	
+dataLayout	llvm/wrapper/core.html#dataLayout,Module	core: dataLayout(self: Module): string	
+dataLayout=	llvm/wrapper/core.html#dataLayout=,Module,string	core: dataLayout=(self: Module; dataLayoutStr: string)	
+target	llvm/wrapper/core.html#target,Module	core: target(self: Module): string	
+target=	llvm/wrapper/core.html#target=,Module,string	core: target=(self: Module; triple: string)	
+dump	llvm/wrapper/core.html#dump,Module	core: dump(self: Module)	
+printToFile	llvm/wrapper/core.html#printToFile,Module,string	core: printToFile(self: Module; filename: string): bool	
+`$`	llvm/wrapper/core.html#$,Module	core: `$`(self: Module): string	
+context	llvm/wrapper/core.html#context,Module	core: context(self: Module): Context	
+addFunction	llvm/wrapper/core.html#addFunction,Module,string,FunctionType	core: addFunction(self: Module; name: string; fnty: FunctionType): FunctionValue	
+kind	llvm/wrapper/core.html#kind,Type	core: kind(self: Type): TypeKind	
+isSized	llvm/wrapper/core.html#isSized,Type	core: isSized(self: Type): bool	
+dump	llvm/wrapper/core.html#dump,Type	core: dump(self: Type)	
+`$`	llvm/wrapper/core.html#$,Type	core: `$`(self: Type): string	
+intType	llvm/wrapper/core.html#intType,Context,uint	core: intType(cxt: Context; nbits: uint): IntegerType	
+intType	llvm/wrapper/core.html#intType,uint	core: intType(nbits: uint): IntegerType	
+functionType	llvm/wrapper/core.html#functionType,Type,openArray[Type],bool	core: functionType(retTy: Type; paramTypes: openArray[Type]; isVarArg: bool = false): FunctionType	
+voidType	llvm/wrapper/core.html#voidType	core: voidType(): VoidType	
+typ	llvm/wrapper/core.html#typ,Value	core: typ(self: Value): Type	
+kind	llvm/wrapper/core.html#kind,Value	core: kind(self: Value): ValueKind	
+name	llvm/wrapper/core.html#name,Value	core: name(self: Value): string	
+name=	llvm/wrapper/core.html#name=,Value,string	core: name=(self: Value; name: string)	
+dump	llvm/wrapper/core.html#dump,Value	core: dump(self: Value)	
+`$`	llvm/wrapper/core.html#$,Value	core: `$`(self: Value): string	
+constInt	llvm/wrapper/core.html#constInt,IntegerType,int,bool	core: constInt(intTy: IntegerType; n: int; signExtend: bool = false): Value	
+newGlobal	llvm/wrapper/core.html#newGlobal,Module,Type,string	core: newGlobal(module: Module; typ: Type; name: string): GlobalVariable	
+appendBasicBlock	llvm/wrapper/core.html#appendBasicBlock,FunctionValue,BasicBlock	core: appendBasicBlock(fn: FunctionValue; bb: BasicBlock)	
+newBasicBlock	llvm/wrapper/core.html#newBasicBlock,Context,string	core: newBasicBlock(cxt: Context; name: string = &quot;&quot;): BasicBlock	
+appendBasicBlock	llvm/wrapper/core.html#appendBasicBlock,FunctionValue,string,Context	core: appendBasicBlock(fn: FunctionValue; name: string; cxt: Context = nil): BasicBlock	
+newBuilder	llvm/wrapper/core.html#newBuilder,Context	core: newBuilder(cxt: Context = nil): Builder	
+atEndOf	llvm/wrapper/core.html#atEndOf,Builder,BasicBlock	core: atEndOf(self: Builder; bb: BasicBlock)	
+retVoid	llvm/wrapper/core.html#retVoid,Builder	core: retVoid(self: Builder): Instruction	
+ret	llvm/wrapper/core.html#ret,Builder,Value	core: ret(self: Builder; val: Value): Instruction	
+alloca	llvm/wrapper/core.html#alloca,Builder,Type,string	core: alloca(self: Builder; typ: Type; name: string = &quot;&quot;): Instruction	
+load	llvm/wrapper/core.html#load,Builder,Type,Value,string	core: load(self: Builder; typ: Type; ptrVal: Value; name: string = &quot;&quot;): Instruction	
+store	llvm/wrapper/core.html#store,Builder,Value,Value,string	core: store(self: Builder; val: Value; `ptr`: Value; name: string = &quot;&quot;): Instruction	
+zext	llvm/wrapper/core.html#zext,Builder,Value,IntegerType,string	core: zext(self: Builder; val: Value; destTy: IntegerType; name: string = &quot;&quot;): Instruction	

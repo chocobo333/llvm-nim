@@ -1,0 +1,4 @@
+FatalErrorHandler	llvm/llvm/ErrorHandling.html#FatalErrorHandler	ErrorHandling: FatalErrorHandler	
+installFatalErrorHandler	llvm/llvm/ErrorHandling.html#installFatalErrorHandler,FatalErrorHandler	ErrorHandling: installFatalErrorHandler(handler: FatalErrorHandler)	
+resetFatalErrorHandler	llvm/llvm/ErrorHandling.html#resetFatalErrorHandler	ErrorHandling: resetFatalErrorHandler()	
+enablePrettyStackTrace	llvm/llvm/ErrorHandling.html#enablePrettyStackTrace	ErrorHandling: enablePrettyStackTrace()	

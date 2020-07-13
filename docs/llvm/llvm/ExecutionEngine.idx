@@ -1,0 +1,45 @@
+linkInMCJIT	llvm/llvm/ExecutionEngine.html#linkInMCJIT	ExecutionEngine: linkInMCJIT()	
+linkInInterpreter	llvm/llvm/ExecutionEngine.html#linkInInterpreter	ExecutionEngine: linkInInterpreter()	
+GenericValueRef	llvm/llvm/ExecutionEngine.html#GenericValueRef	ExecutionEngine: GenericValueRef	
+ExecutionEngineRef	llvm/llvm/ExecutionEngine.html#ExecutionEngineRef	ExecutionEngine: ExecutionEngineRef	
+MCJITMemoryManagerRef	llvm/llvm/ExecutionEngine.html#MCJITMemoryManagerRef	ExecutionEngine: MCJITMemoryManagerRef	
+MCJITCompilerOptions	llvm/llvm/ExecutionEngine.html#MCJITCompilerOptions	ExecutionEngine: MCJITCompilerOptions	
+createGenericValueOfInt	llvm/llvm/ExecutionEngine.html#createGenericValueOfInt,TypeRef,culonglong,Bool	ExecutionEngine: createGenericValueOfInt(ty: TypeRef; n: culonglong; isSigned: Bool): GenericValueRef	
+createGenericValueOfPointer	llvm/llvm/ExecutionEngine.html#createGenericValueOfPointer,pointer	ExecutionEngine: createGenericValueOfPointer(p: pointer): GenericValueRef	
+createGenericValueOfFloat	llvm/llvm/ExecutionEngine.html#createGenericValueOfFloat,TypeRef,cdouble	ExecutionEngine: createGenericValueOfFloat(ty: TypeRef; n: cdouble): GenericValueRef	
+genericValueIntWidth	llvm/llvm/ExecutionEngine.html#genericValueIntWidth,GenericValueRef	ExecutionEngine: genericValueIntWidth(genValRef: GenericValueRef): cuint	
+genericValueToInt	llvm/llvm/ExecutionEngine.html#genericValueToInt,GenericValueRef,Bool	ExecutionEngine: genericValueToInt(genVal: GenericValueRef; isSigned: Bool): culonglong	
+genericValueToPointer	llvm/llvm/ExecutionEngine.html#genericValueToPointer,GenericValueRef	ExecutionEngine: genericValueToPointer(genVal: GenericValueRef): pointer	
+genericValueToFloat	llvm/llvm/ExecutionEngine.html#genericValueToFloat,TypeRef,GenericValueRef	ExecutionEngine: genericValueToFloat(tyRef: TypeRef; genVal: GenericValueRef): cdouble	
+disposeGenericValue	llvm/llvm/ExecutionEngine.html#disposeGenericValue,GenericValueRef	ExecutionEngine: disposeGenericValue(genVal: GenericValueRef)	
+createExecutionEngineForModule	llvm/llvm/ExecutionEngine.html#createExecutionEngineForModule,ptr.ExecutionEngineRef,ModuleRef,cstringArray	ExecutionEngine: createExecutionEngineForModule(outEE: ptr ExecutionEngineRef; m: ModuleRef;\n                               outError: cstringArray): Bool	
+createInterpreterForModule	llvm/llvm/ExecutionEngine.html#createInterpreterForModule,ptr.ExecutionEngineRef,ModuleRef,cstringArray	ExecutionEngine: createInterpreterForModule(outInterp: ptr ExecutionEngineRef; m: ModuleRef;\n                           outError: cstringArray): Bool	
+createJITCompilerForModule	llvm/llvm/ExecutionEngine.html#createJITCompilerForModule,ptr.ExecutionEngineRef,ModuleRef,cuint,cstringArray	ExecutionEngine: createJITCompilerForModule(outJIT: ptr ExecutionEngineRef; m: ModuleRef;\n                           optLevel: cuint; outError: cstringArray): Bool	
+initializeMCJITCompilerOptions	llvm/llvm/ExecutionEngine.html#initializeMCJITCompilerOptions,ptr.MCJITCompilerOptions,csize_t	ExecutionEngine: initializeMCJITCompilerOptions(options: ptr MCJITCompilerOptions;\n                               sizeOfOptions: csize_t)	
+createMCJITCompilerForModule	llvm/llvm/ExecutionEngine.html#createMCJITCompilerForModule,ptr.ExecutionEngineRef,ModuleRef,ptr.MCJITCompilerOptions,csize_t,cstringArray	ExecutionEngine: createMCJITCompilerForModule(outJIT: ptr ExecutionEngineRef; m: ModuleRef;\n                             options: ptr MCJITCompilerOptions;\n                             sizeOfOptions: csize_t; outError: cstringArray): Bool	
+disposeExecutionEngine	llvm/llvm/ExecutionEngine.html#disposeExecutionEngine,ExecutionEngineRef	ExecutionEngine: disposeExecutionEngine(ee: ExecutionEngineRef)	
+runStaticConstructors	llvm/llvm/ExecutionEngine.html#runStaticConstructors,ExecutionEngineRef	ExecutionEngine: runStaticConstructors(ee: ExecutionEngineRef)	
+runStaticDestructors	llvm/llvm/ExecutionEngine.html#runStaticDestructors,ExecutionEngineRef	ExecutionEngine: runStaticDestructors(ee: ExecutionEngineRef)	
+runFunctionAsMain	llvm/llvm/ExecutionEngine.html#runFunctionAsMain,ExecutionEngineRef,ValueRef,cuint,cstringArray,cstringArray	ExecutionEngine: runFunctionAsMain(ee: ExecutionEngineRef; f: ValueRef; argC: cuint;\n                  argV: cstringArray; envP: cstringArray): cint	
+runFunction	llvm/llvm/ExecutionEngine.html#runFunction,ExecutionEngineRef,ValueRef,cuint,ptr.GenericValueRef	ExecutionEngine: runFunction(ee: ExecutionEngineRef; f: ValueRef; numArgs: cuint;\n            args: ptr GenericValueRef): GenericValueRef	
+freeMachineCodeForFunction	llvm/llvm/ExecutionEngine.html#freeMachineCodeForFunction,ExecutionEngineRef,ValueRef	ExecutionEngine: freeMachineCodeForFunction(ee: ExecutionEngineRef; f: ValueRef)	
+addModule	llvm/llvm/ExecutionEngine.html#addModule,ExecutionEngineRef,ModuleRef	ExecutionEngine: addModule(ee: ExecutionEngineRef; m: ModuleRef)	
+removeModule	llvm/llvm/ExecutionEngine.html#removeModule,ExecutionEngineRef,ModuleRef,ptr.ModuleRef,cstringArray	ExecutionEngine: removeModule(ee: ExecutionEngineRef; m: ModuleRef; outMod: ptr ModuleRef;\n             outError: cstringArray): Bool	
+findFunction	llvm/llvm/ExecutionEngine.html#findFunction,ExecutionEngineRef,cstring,ptr.ValueRef	ExecutionEngine: findFunction(ee: ExecutionEngineRef; name: cstring; outFn: ptr ValueRef): Bool	
+recompileAndRelinkFunction	llvm/llvm/ExecutionEngine.html#recompileAndRelinkFunction,ExecutionEngineRef,ValueRef	ExecutionEngine: recompileAndRelinkFunction(ee: ExecutionEngineRef; fn: ValueRef): pointer	
+getExecutionEngineTargetData	llvm/llvm/ExecutionEngine.html#getExecutionEngineTargetData,ExecutionEngineRef	ExecutionEngine: getExecutionEngineTargetData(ee: ExecutionEngineRef): TargetDataRef	
+getExecutionEngineTargetMachine	llvm/llvm/ExecutionEngine.html#getExecutionEngineTargetMachine,ExecutionEngineRef	ExecutionEngine: getExecutionEngineTargetMachine(ee: ExecutionEngineRef): TargetMachineRef	
+addGlobalMapping	llvm/llvm/ExecutionEngine.html#addGlobalMapping,ExecutionEngineRef,ValueRef,pointer	ExecutionEngine: addGlobalMapping(ee: ExecutionEngineRef; global: ValueRef; `addr`: pointer)	
+getPointerToGlobal	llvm/llvm/ExecutionEngine.html#getPointerToGlobal,ExecutionEngineRef,ValueRef	ExecutionEngine: getPointerToGlobal(ee: ExecutionEngineRef; global: ValueRef): pointer	
+getGlobalValueAddress	llvm/llvm/ExecutionEngine.html#getGlobalValueAddress,ExecutionEngineRef,cstring	ExecutionEngine: getGlobalValueAddress(ee: ExecutionEngineRef; name: cstring): uint64T	
+getFunctionAddress	llvm/llvm/ExecutionEngine.html#getFunctionAddress,ExecutionEngineRef,cstring	ExecutionEngine: getFunctionAddress(ee: ExecutionEngineRef; name: cstring): uint64T	
+MemoryManagerAllocateCodeSectionCallback	llvm/llvm/ExecutionEngine.html#MemoryManagerAllocateCodeSectionCallback	ExecutionEngine: MemoryManagerAllocateCodeSectionCallback	
+MemoryManagerAllocateDataSectionCallback	llvm/llvm/ExecutionEngine.html#MemoryManagerAllocateDataSectionCallback	ExecutionEngine: MemoryManagerAllocateDataSectionCallback	
+MemoryManagerFinalizeMemoryCallback	llvm/llvm/ExecutionEngine.html#MemoryManagerFinalizeMemoryCallback	ExecutionEngine: MemoryManagerFinalizeMemoryCallback	
+MemoryManagerDestroyCallback	llvm/llvm/ExecutionEngine.html#MemoryManagerDestroyCallback	ExecutionEngine: MemoryManagerDestroyCallback	
+createSimpleMCJITMemoryManager	llvm/llvm/ExecutionEngine.html#createSimpleMCJITMemoryManager,pointer,MemoryManagerAllocateCodeSectionCallback,MemoryManagerAllocateDataSectionCallback,MemoryManagerFinalizeMemoryCallback,MemoryManagerDestroyCallback	ExecutionEngine: createSimpleMCJITMemoryManager(opaque: pointer; allocateCodeSection: MemoryManagerAllocateCodeSectionCallback;\n    allocateDataSection: MemoryManagerAllocateDataSectionCallback; finalizeMemory: MemoryManagerFinalizeMemoryCallback;\n                               destroy: MemoryManagerDestroyCallback): MCJITMemoryManagerRef	
+disposeMCJITMemoryManager	llvm/llvm/ExecutionEngine.html#disposeMCJITMemoryManager,MCJITMemoryManagerRef	ExecutionEngine: disposeMCJITMemoryManager(mm: MCJITMemoryManagerRef)	
+createGDBRegistrationListener	llvm/llvm/ExecutionEngine.html#createGDBRegistrationListener	ExecutionEngine: createGDBRegistrationListener(): JITEventListenerRef	
+createIntelJITEventListener	llvm/llvm/ExecutionEngine.html#createIntelJITEventListener	ExecutionEngine: createIntelJITEventListener(): JITEventListenerRef	
+createOProfileJITEventListener	llvm/llvm/ExecutionEngine.html#createOProfileJITEventListener	ExecutionEngine: createOProfileJITEventListener(): JITEventListenerRef	
+createPerfJITEventListener	llvm/llvm/ExecutionEngine.html#createPerfJITEventListener	ExecutionEngine: createPerfJITEventListener(): JITEventListenerRef	

@@ -1,0 +1,40 @@
+ContextObj	llvm/wrapper/types.html#ContextObj	types: ContextObj	
+ModuleObj	llvm/wrapper/types.html#ModuleObj	types: ModuleObj	
+TypeObj	llvm/wrapper/types.html#TypeObj	types: TypeObj	
+ValueObj	llvm/wrapper/types.html#ValueObj	types: ValueObj	
+BasicBlockObj	llvm/wrapper/types.html#BasicBlockObj	types: BasicBlockObj	
+BuilderObj	llvm/wrapper/types.html#BuilderObj	types: BuilderObj	
+Context	llvm/wrapper/types.html#Context	types: Context	
+Module	llvm/wrapper/types.html#Module	types: Module	
+Type	llvm/wrapper/types.html#Type	types: Type	
+VoidType	llvm/wrapper/types.html#VoidType	types: VoidType	
+HalfType	llvm/wrapper/types.html#HalfType	types: HalfType	
+FloatType	llvm/wrapper/types.html#FloatType	types: FloatType	
+DoubleType	llvm/wrapper/types.html#DoubleType	types: DoubleType	
+X86FP80Type	llvm/wrapper/types.html#X86FP80Type	types: X86FP80Type	
+FP128Type	llvm/wrapper/types.html#FP128Type	types: FP128Type	
+PPC_FP128Type	llvm/wrapper/types.html#PPC_FP128Type	types: PPC_FP128Type	
+LabelType	llvm/wrapper/types.html#LabelType	types: LabelType	
+IntegerType	llvm/wrapper/types.html#IntegerType	types: IntegerType	
+FunctionType	llvm/wrapper/types.html#FunctionType	types: FunctionType	
+StructType	llvm/wrapper/types.html#StructType	types: StructType	
+ArrayType	llvm/wrapper/types.html#ArrayType	types: ArrayType	
+PointerType	llvm/wrapper/types.html#PointerType	types: PointerType	
+VectorType	llvm/wrapper/types.html#VectorType	types: VectorType	
+MetadataType	llvm/wrapper/types.html#MetadataType	types: MetadataType	
+X86MMXType	llvm/wrapper/types.html#X86MMXType	types: X86MMXType	
+TokenType	llvm/wrapper/types.html#TokenType	types: TokenType	
+Value	llvm/wrapper/types.html#Value	types: Value	
+FunctionValue	llvm/wrapper/types.html#FunctionValue	types: FunctionValue	
+GlobalVariable	llvm/wrapper/types.html#GlobalVariable	types: GlobalVariable	
+Instruction	llvm/wrapper/types.html#Instruction	types: Instruction	
+BasicBlock	llvm/wrapper/types.html#BasicBlock	types: BasicBlock	
+Builder	llvm/wrapper/types.html#Builder	types: Builder	
+newContext	llvm/wrapper/types.html#newContext,ContextRef	types: newContext(cxt: ContextRef): Context	
+newModule	llvm/wrapper/types.html#newModule,ModuleRef	types: newModule(module: ModuleRef): Module	
+newType	llvm/wrapper/types.html#newType,TypeRef	types: newType[T: Ty](typ: TypeRef): T	
+newValue	llvm/wrapper/types.html#newValue,ValueRef	types: newValue[T: Val](value: ValueRef): T	
+newBB	llvm/wrapper/types.html#newBB,BasicBlockRef	types: newBB(bb: BasicBlockRef): BasicBlock	
+newBuilder	llvm/wrapper/types.html#newBuilder,BuilderRef	types: newBuilder(builder: BuilderRef): Builder	
+toLLVMBool	llvm/wrapper/types.html#toLLVMBool.c,bool	types: toLLVMBool(self: bool): Bool	
+toNimBool	llvm/wrapper/types.html#toNimBool.c,Bool	types: toNimBool(self: Bool): bool	

@@ -1,0 +1,31 @@
+RemarkType	llvm/llvm/Remarks.html#RemarkType	Remarks: RemarkType	
+RemarkStringRef	llvm/llvm/Remarks.html#RemarkStringRef	Remarks: RemarkStringRef	
+remarkStringGetData	llvm/llvm/Remarks.html#remarkStringGetData,RemarkStringRef	Remarks: remarkStringGetData(string: RemarkStringRef): cstring	
+remarkStringGetLen	llvm/llvm/Remarks.html#remarkStringGetLen,RemarkStringRef	Remarks: remarkStringGetLen(string: RemarkStringRef): uint32T	
+RemarkDebugLocRef	llvm/llvm/Remarks.html#RemarkDebugLocRef	Remarks: RemarkDebugLocRef	
+remarkDebugLocGetSourceFilePath	llvm/llvm/Remarks.html#remarkDebugLocGetSourceFilePath,RemarkDebugLocRef	Remarks: remarkDebugLocGetSourceFilePath(dl: RemarkDebugLocRef): RemarkStringRef	
+remarkDebugLocGetSourceLine	llvm/llvm/Remarks.html#remarkDebugLocGetSourceLine,RemarkDebugLocRef	Remarks: remarkDebugLocGetSourceLine(dl: RemarkDebugLocRef): uint32T	
+remarkDebugLocGetSourceColumn	llvm/llvm/Remarks.html#remarkDebugLocGetSourceColumn,RemarkDebugLocRef	Remarks: remarkDebugLocGetSourceColumn(dl: RemarkDebugLocRef): uint32T	
+RemarkArgRef	llvm/llvm/Remarks.html#RemarkArgRef	Remarks: RemarkArgRef	
+remarkArgGetKey	llvm/llvm/Remarks.html#remarkArgGetKey,RemarkArgRef	Remarks: remarkArgGetKey(arg: RemarkArgRef): RemarkStringRef	
+remarkArgGetValue	llvm/llvm/Remarks.html#remarkArgGetValue,RemarkArgRef	Remarks: remarkArgGetValue(arg: RemarkArgRef): RemarkStringRef	
+remarkArgGetDebugLoc	llvm/llvm/Remarks.html#remarkArgGetDebugLoc,RemarkArgRef	Remarks: remarkArgGetDebugLoc(arg: RemarkArgRef): RemarkDebugLocRef	
+RemarkEntryRef	llvm/llvm/Remarks.html#RemarkEntryRef	Remarks: RemarkEntryRef	
+remarkEntryDispose	llvm/llvm/Remarks.html#remarkEntryDispose,RemarkEntryRef	Remarks: remarkEntryDispose(remark: RemarkEntryRef)	
+remarkEntryGetType	llvm/llvm/Remarks.html#remarkEntryGetType,RemarkEntryRef	Remarks: remarkEntryGetType(remark: RemarkEntryRef): RemarkType	
+remarkEntryGetPassName	llvm/llvm/Remarks.html#remarkEntryGetPassName,RemarkEntryRef	Remarks: remarkEntryGetPassName(remark: RemarkEntryRef): RemarkStringRef	
+remarkEntryGetRemarkName	llvm/llvm/Remarks.html#remarkEntryGetRemarkName,RemarkEntryRef	Remarks: remarkEntryGetRemarkName(remark: RemarkEntryRef): RemarkStringRef	
+remarkEntryGetFunctionName	llvm/llvm/Remarks.html#remarkEntryGetFunctionName,RemarkEntryRef	Remarks: remarkEntryGetFunctionName(remark: RemarkEntryRef): RemarkStringRef	
+remarkEntryGetDebugLoc	llvm/llvm/Remarks.html#remarkEntryGetDebugLoc,RemarkEntryRef	Remarks: remarkEntryGetDebugLoc(remark: RemarkEntryRef): RemarkDebugLocRef	
+remarkEntryGetHotness	llvm/llvm/Remarks.html#remarkEntryGetHotness,RemarkEntryRef	Remarks: remarkEntryGetHotness(remark: RemarkEntryRef): uint64T	
+remarkEntryGetNumArgs	llvm/llvm/Remarks.html#remarkEntryGetNumArgs,RemarkEntryRef	Remarks: remarkEntryGetNumArgs(remark: RemarkEntryRef): uint32T	
+remarkEntryGetFirstArg	llvm/llvm/Remarks.html#remarkEntryGetFirstArg,RemarkEntryRef	Remarks: remarkEntryGetFirstArg(remark: RemarkEntryRef): RemarkArgRef	
+remarkEntryGetNextArg	llvm/llvm/Remarks.html#remarkEntryGetNextArg,RemarkArgRef,RemarkEntryRef	Remarks: remarkEntryGetNextArg(it: RemarkArgRef; remark: RemarkEntryRef): RemarkArgRef	
+RemarkParserRef	llvm/llvm/Remarks.html#RemarkParserRef	Remarks: RemarkParserRef	
+remarkParserCreateYAML	llvm/llvm/Remarks.html#remarkParserCreateYAML,pointer,uint64T	Remarks: remarkParserCreateYAML(buf: pointer; size: uint64T): RemarkParserRef	
+remarkParserCreateBitstream	llvm/llvm/Remarks.html#remarkParserCreateBitstream,pointer,uint64T	Remarks: remarkParserCreateBitstream(buf: pointer; size: uint64T): RemarkParserRef	
+remarkParserGetNext	llvm/llvm/Remarks.html#remarkParserGetNext,RemarkParserRef	Remarks: remarkParserGetNext(parser: RemarkParserRef): RemarkEntryRef	
+remarkParserHasError	llvm/llvm/Remarks.html#remarkParserHasError,RemarkParserRef	Remarks: remarkParserHasError(parser: RemarkParserRef): Bool	
+remarkParserGetErrorMessage	llvm/llvm/Remarks.html#remarkParserGetErrorMessage,RemarkParserRef	Remarks: remarkParserGetErrorMessage(parser: RemarkParserRef): cstring	
+remarkParserDispose	llvm/llvm/Remarks.html#remarkParserDispose,RemarkParserRef	Remarks: remarkParserDispose(parser: RemarkParserRef)	
+remarkVersion	llvm/llvm/Remarks.html#remarkVersion	Remarks: remarkVersion(): uint32T	

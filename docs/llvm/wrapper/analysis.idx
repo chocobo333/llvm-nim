@@ -1,0 +1,2 @@
+verify	llvm/wrapper/analysis.html#verify,Module,VerifierFailureAction	analysis: verify(self: Module; action: VerifierFailureAction = PrintMessageAction): bool	
+verify	llvm/wrapper/analysis.html#verify,Value,VerifierFailureAction	analysis: verify(fn: Value; action: VerifierFailureAction = PrintMessageAction): bool	

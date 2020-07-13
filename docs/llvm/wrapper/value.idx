@@ -1,0 +1,7 @@
+Value	llvm/wrapper/value.html#Value	value: Value	
+typ	llvm/wrapper/value.html#typ,Value	value: typ(self: Value): Type	
+kind	llvm/wrapper/value.html#kind,Value	value: kind(self: Value): ValueKind	
+name	llvm/wrapper/value.html#name,Value	value: name(self: Value): string	
+name=	llvm/wrapper/value.html#name=,Value,string	value: name=(self: Value; name: string)	
+dump	llvm/wrapper/value.html#dump,Value	value: dump(self: Value)	
+`$`	llvm/wrapper/value.html#$,Value	value: `$`(self: Value): string	

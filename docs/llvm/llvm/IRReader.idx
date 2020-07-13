@@ -1,0 +1,1 @@
+parseIRInContext	llvm/llvm/IRReader.html#parseIRInContext,ContextRef,MemoryBufferRef,ptr.ModuleRef,cstringArray	IRReader: parseIRInContext(contextRef: ContextRef; memBuf: MemoryBufferRef;\n                 outM: ptr ModuleRef; outMessage: cstringArray): Bool	

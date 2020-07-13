@@ -1,0 +1,4 @@
+loadLibraryPermanently	llvm/llvm/Support.html#loadLibraryPermanently,cstring	Support: loadLibraryPermanently(filename: cstring): Bool	
+parseCommandLineOptions	llvm/llvm/Support.html#parseCommandLineOptions,cint,cstringArray,cstring	Support: parseCommandLineOptions(argc: cint; argv: cstringArray; overview: cstring)	
+searchForAddressOfSymbol	llvm/llvm/Support.html#searchForAddressOfSymbol,cstring	Support: searchForAddressOfSymbol(symbolName: cstring): pointer	
+addSymbol	llvm/llvm/Support.html#addSymbol,cstring,pointer	Support: addSymbol(symbolName: cstring; symbolValue: pointer)	

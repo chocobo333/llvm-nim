@@ -1,0 +1,6 @@
+LlvmLtoT	llvm/llvm/LinkTimeOptimizer.html#LlvmLtoT	LinkTimeOptimizer: LlvmLtoT	
+LlvmLtoStatusT	llvm/llvm/LinkTimeOptimizer.html#LlvmLtoStatusT	LinkTimeOptimizer: LlvmLtoStatusT	
+llvmCreateOptimizer	llvm/llvm/LinkTimeOptimizer.html#llvmCreateOptimizer	LinkTimeOptimizer: llvmCreateOptimizer(): LlvmLtoT	
+llvmDestroyOptimizer	llvm/llvm/LinkTimeOptimizer.html#llvmDestroyOptimizer,LlvmLtoT	LinkTimeOptimizer: llvmDestroyOptimizer(lto: LlvmLtoT)	
+llvmReadObjectFile	llvm/llvm/LinkTimeOptimizer.html#llvmReadObjectFile,LlvmLtoT,cstring	LinkTimeOptimizer: llvmReadObjectFile(lto: LlvmLtoT; inputFilename: cstring): LlvmLtoStatusT	
+llvmOptimizeModules	llvm/llvm/LinkTimeOptimizer.html#llvmOptimizeModules,LlvmLtoT,cstring	LinkTimeOptimizer: llvmOptimizeModules(lto: LlvmLtoT; outputFilename: cstring): LlvmLtoStatusT	

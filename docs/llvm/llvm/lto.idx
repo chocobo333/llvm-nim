@@ -1,0 +1,87 @@
+false	llvm/llvm/lto.html#false	LtoBoolT.false	
+true	llvm/llvm/lto.html#true	LtoBoolT.true	
+LtoBoolT	llvm/llvm/lto.html#LtoBoolT	lto: LtoBoolT	
+LtoSymbolAttributes	llvm/llvm/lto.html#LtoSymbolAttributes	lto: LtoSymbolAttributes	
+LtoDebugModel	llvm/llvm/lto.html#LtoDebugModel	lto: LtoDebugModel	
+LtoCodegenModel	llvm/llvm/lto.html#LtoCodegenModel	lto: LtoCodegenModel	
+LtoModuleT	llvm/llvm/lto.html#LtoModuleT	lto: LtoModuleT	
+LtoCodeGenT	llvm/llvm/lto.html#LtoCodeGenT	lto: LtoCodeGenT	
+ThinltoCodeGenT	llvm/llvm/lto.html#ThinltoCodeGenT	lto: ThinltoCodeGenT	
+ltoGetVersion	llvm/llvm/lto.html#ltoGetVersion	lto: ltoGetVersion(): cstring	
+ltoGetErrorMessage	llvm/llvm/lto.html#ltoGetErrorMessage	lto: ltoGetErrorMessage(): cstring	
+ltoModuleIsObjectFile	llvm/llvm/lto.html#ltoModuleIsObjectFile,cstring	lto: ltoModuleIsObjectFile(path: cstring): LtoBoolT	
+ltoModuleIsObjectFileForTarget	llvm/llvm/lto.html#ltoModuleIsObjectFileForTarget,cstring,cstring	lto: ltoModuleIsObjectFileForTarget(path: cstring; targetTriplePrefix: cstring): LtoBoolT	
+ltoModuleHasObjcCategory	llvm/llvm/lto.html#ltoModuleHasObjcCategory,pointer,csize_t	lto: ltoModuleHasObjcCategory(mem: pointer; length: csize_t): LtoBoolT	
+ltoModuleIsObjectFileInMemory	llvm/llvm/lto.html#ltoModuleIsObjectFileInMemory,pointer,csize_t	lto: ltoModuleIsObjectFileInMemory(mem: pointer; length: csize_t): LtoBoolT	
+ltoModuleIsObjectFileInMemoryForTarget	llvm/llvm/lto.html#ltoModuleIsObjectFileInMemoryForTarget,pointer,csize_t,cstring	lto: ltoModuleIsObjectFileInMemoryForTarget(mem: pointer; length: csize_t;\n                                       targetTriplePrefix: cstring): LtoBoolT	
+ltoModuleCreate	llvm/llvm/lto.html#ltoModuleCreate,cstring	lto: ltoModuleCreate(path: cstring): LtoModuleT	
+ltoModuleCreateFromMemory	llvm/llvm/lto.html#ltoModuleCreateFromMemory,pointer,csize_t	lto: ltoModuleCreateFromMemory(mem: pointer; length: csize_t): LtoModuleT	
+ltoModuleCreateFromMemoryWithPath	llvm/llvm/lto.html#ltoModuleCreateFromMemoryWithPath,pointer,csize_t,cstring	lto: ltoModuleCreateFromMemoryWithPath(mem: pointer; length: csize_t; path: cstring): LtoModuleT	
+ltoModuleCreateInLocalContext	llvm/llvm/lto.html#ltoModuleCreateInLocalContext,pointer,csize_t,cstring	lto: ltoModuleCreateInLocalContext(mem: pointer; length: csize_t; path: cstring): LtoModuleT	
+ltoModuleCreateInCodegenContext	llvm/llvm/lto.html#ltoModuleCreateInCodegenContext,pointer,csize_t,cstring,LtoCodeGenT	lto: ltoModuleCreateInCodegenContext(mem: pointer; length: csize_t; path: cstring;\n                                cg: LtoCodeGenT): LtoModuleT	
+ltoModuleCreateFromFd	llvm/llvm/lto.html#ltoModuleCreateFromFd,cint,cstring,csize_t	lto: ltoModuleCreateFromFd(fd: cint; path: cstring; fileSize: csize_t): LtoModuleT	
+ltoModuleCreateFromFdAtOffset	llvm/llvm/lto.html#ltoModuleCreateFromFdAtOffset,cint,cstring,csize_t,csize_t,OffT	lto: ltoModuleCreateFromFdAtOffset(fd: cint; path: cstring; fileSize: csize_t;\n                              mapSize: csize_t; offset: OffT): LtoModuleT	
+ltoModuleDispose	llvm/llvm/lto.html#ltoModuleDispose,LtoModuleT	lto: ltoModuleDispose(`mod`: LtoModuleT)	
+ltoModuleGetTargetTriple	llvm/llvm/lto.html#ltoModuleGetTargetTriple,LtoModuleT	lto: ltoModuleGetTargetTriple(`mod`: LtoModuleT): cstring	
+ltoModuleSetTargetTriple	llvm/llvm/lto.html#ltoModuleSetTargetTriple,LtoModuleT,cstring	lto: ltoModuleSetTargetTriple(`mod`: LtoModuleT; triple: cstring)	
+ltoModuleGetNumSymbols	llvm/llvm/lto.html#ltoModuleGetNumSymbols,LtoModuleT	lto: ltoModuleGetNumSymbols(`mod`: LtoModuleT): cuint	
+ltoModuleGetSymbolName	llvm/llvm/lto.html#ltoModuleGetSymbolName,LtoModuleT,cuint	lto: ltoModuleGetSymbolName(`mod`: LtoModuleT; index: cuint): cstring	
+ltoModuleGetSymbolAttribute	llvm/llvm/lto.html#ltoModuleGetSymbolAttribute,LtoModuleT,cuint	lto: ltoModuleGetSymbolAttribute(`mod`: LtoModuleT; index: cuint): LtoSymbolAttributes	
+ltoModuleGetLinkeropts	llvm/llvm/lto.html#ltoModuleGetLinkeropts,LtoModuleT	lto: ltoModuleGetLinkeropts(`mod`: LtoModuleT): cstring	
+LtoCodegenDiagnosticSeverityT	llvm/llvm/lto.html#LtoCodegenDiagnosticSeverityT	lto: LtoCodegenDiagnosticSeverityT	
+LtoDiagnosticHandlerT	llvm/llvm/lto.html#LtoDiagnosticHandlerT	lto: LtoDiagnosticHandlerT	
+ltoCodegenSetDiagnosticHandler	llvm/llvm/lto.html#ltoCodegenSetDiagnosticHandler,LtoCodeGenT,LtoDiagnosticHandlerT,pointer	lto: ltoCodegenSetDiagnosticHandler(a1: LtoCodeGenT; a2: LtoDiagnosticHandlerT;\n                               a3: pointer)	
+ltoCodegenCreate	llvm/llvm/lto.html#ltoCodegenCreate	lto: ltoCodegenCreate(): LtoCodeGenT	
+ltoCodegenCreateInLocalContext	llvm/llvm/lto.html#ltoCodegenCreateInLocalContext	lto: ltoCodegenCreateInLocalContext(): LtoCodeGenT	
+ltoCodegenDispose	llvm/llvm/lto.html#ltoCodegenDispose,LtoCodeGenT	lto: ltoCodegenDispose(a1: LtoCodeGenT)	
+ltoCodegenAddModule	llvm/llvm/lto.html#ltoCodegenAddModule,LtoCodeGenT,LtoModuleT	lto: ltoCodegenAddModule(cg: LtoCodeGenT; `mod`: LtoModuleT): LtoBoolT	
+ltoCodegenSetModule	llvm/llvm/lto.html#ltoCodegenSetModule,LtoCodeGenT,LtoModuleT	lto: ltoCodegenSetModule(cg: LtoCodeGenT; `mod`: LtoModuleT)	
+ltoCodegenSetDebugModel	llvm/llvm/lto.html#ltoCodegenSetDebugModel,LtoCodeGenT,LtoDebugModel	lto: ltoCodegenSetDebugModel(cg: LtoCodeGenT; a2: LtoDebugModel): LtoBoolT	
+ltoCodegenSetPicModel	llvm/llvm/lto.html#ltoCodegenSetPicModel,LtoCodeGenT,LtoCodegenModel	lto: ltoCodegenSetPicModel(cg: LtoCodeGenT; a2: LtoCodegenModel): LtoBoolT	
+ltoCodegenSetCpu	llvm/llvm/lto.html#ltoCodegenSetCpu,LtoCodeGenT,cstring	lto: ltoCodegenSetCpu(cg: LtoCodeGenT; cpu: cstring)	
+ltoCodegenSetAssemblerPath	llvm/llvm/lto.html#ltoCodegenSetAssemblerPath,LtoCodeGenT,cstring	lto: ltoCodegenSetAssemblerPath(cg: LtoCodeGenT; path: cstring)	
+ltoCodegenSetAssemblerArgs	llvm/llvm/lto.html#ltoCodegenSetAssemblerArgs,LtoCodeGenT,cstringArray,cint	lto: ltoCodegenSetAssemblerArgs(cg: LtoCodeGenT; args: cstringArray; nargs: cint)	
+ltoCodegenAddMustPreserveSymbol	llvm/llvm/lto.html#ltoCodegenAddMustPreserveSymbol,LtoCodeGenT,cstring	lto: ltoCodegenAddMustPreserveSymbol(cg: LtoCodeGenT; symbol: cstring)	
+ltoCodegenWriteMergedModules	llvm/llvm/lto.html#ltoCodegenWriteMergedModules,LtoCodeGenT,cstring	lto: ltoCodegenWriteMergedModules(cg: LtoCodeGenT; path: cstring): LtoBoolT	
+ltoCodegenCompile	llvm/llvm/lto.html#ltoCodegenCompile,LtoCodeGenT,ptr.csize_t	lto: ltoCodegenCompile(cg: LtoCodeGenT; length: ptr csize_t): pointer	
+ltoCodegenCompileToFile	llvm/llvm/lto.html#ltoCodegenCompileToFile,LtoCodeGenT,cstringArray	lto: ltoCodegenCompileToFile(cg: LtoCodeGenT; name: cstringArray): LtoBoolT	
+ltoCodegenOptimize	llvm/llvm/lto.html#ltoCodegenOptimize,LtoCodeGenT	lto: ltoCodegenOptimize(cg: LtoCodeGenT): LtoBoolT	
+ltoCodegenCompileOptimized	llvm/llvm/lto.html#ltoCodegenCompileOptimized,LtoCodeGenT,ptr.csize_t	lto: ltoCodegenCompileOptimized(cg: LtoCodeGenT; length: ptr csize_t): pointer	
+ltoApiVersion	llvm/llvm/lto.html#ltoApiVersion	lto: ltoApiVersion(): cuint	
+ltoCodegenDebugOptions	llvm/llvm/lto.html#ltoCodegenDebugOptions,LtoCodeGenT,cstring	lto: ltoCodegenDebugOptions(cg: LtoCodeGenT; a2: cstring)	
+ltoCodegenDebugOptionsArray	llvm/llvm/lto.html#ltoCodegenDebugOptionsArray,LtoCodeGenT,cstringArray,cint	lto: ltoCodegenDebugOptionsArray(cg: LtoCodeGenT; a2: cstringArray; number: cint)	
+ltoInitializeDisassembler	llvm/llvm/lto.html#ltoInitializeDisassembler	lto: ltoInitializeDisassembler()	
+ltoCodegenSetShouldInternalize	llvm/llvm/lto.html#ltoCodegenSetShouldInternalize,LtoCodeGenT,LtoBoolT	lto: ltoCodegenSetShouldInternalize(cg: LtoCodeGenT; shouldInternalize: LtoBoolT)	
+ltoCodegenSetShouldEmbedUselists	llvm/llvm/lto.html#ltoCodegenSetShouldEmbedUselists,LtoCodeGenT,LtoBoolT	lto: ltoCodegenSetShouldEmbedUselists(cg: LtoCodeGenT; shouldEmbedUselists: LtoBoolT)	
+LtoInputT	llvm/llvm/lto.html#LtoInputT	lto: LtoInputT	
+ltoInputCreate	llvm/llvm/lto.html#ltoInputCreate,pointer,csize_t,cstring	lto: ltoInputCreate(buffer: pointer; bufferSize: csize_t; path: cstring): LtoInputT	
+ltoInputDispose	llvm/llvm/lto.html#ltoInputDispose,LtoInputT	lto: ltoInputDispose(input: LtoInputT)	
+ltoInputGetNumDependentLibraries	llvm/llvm/lto.html#ltoInputGetNumDependentLibraries,LtoInputT	lto: ltoInputGetNumDependentLibraries(input: LtoInputT): cuint	
+ltoInputGetDependentLibrary	llvm/llvm/lto.html#ltoInputGetDependentLibrary,LtoInputT,csize_t,ptr.csize_t	lto: ltoInputGetDependentLibrary(input: LtoInputT; index: csize_t; size: ptr csize_t): cstring	
+ltoRuntimeLibSymbolsList	llvm/llvm/lto.html#ltoRuntimeLibSymbolsList,ptr.csize_t	lto: ltoRuntimeLibSymbolsList(size: ptr csize_t): cstringArray	
+LTOObjectBuffer	llvm/llvm/lto.html#LTOObjectBuffer	lto: LTOObjectBuffer	
+thinltoCreateCodegen	llvm/llvm/lto.html#thinltoCreateCodegen	lto: thinltoCreateCodegen(): ThinltoCodeGenT	
+thinltoCodegenDispose	llvm/llvm/lto.html#thinltoCodegenDispose,ThinltoCodeGenT	lto: thinltoCodegenDispose(cg: ThinltoCodeGenT)	
+thinltoCodegenAddModule	llvm/llvm/lto.html#thinltoCodegenAddModule,ThinltoCodeGenT,cstring,cstring,cint	lto: thinltoCodegenAddModule(cg: ThinltoCodeGenT; identifier: cstring; data: cstring;\n                        length: cint)	
+thinltoCodegenProcess	llvm/llvm/lto.html#thinltoCodegenProcess,ThinltoCodeGenT	lto: thinltoCodegenProcess(cg: ThinltoCodeGenT)	
+thinltoModuleGetNumObjects	llvm/llvm/lto.html#thinltoModuleGetNumObjects,ThinltoCodeGenT	lto: thinltoModuleGetNumObjects(cg: ThinltoCodeGenT): cuint	
+thinltoModuleGetObject	llvm/llvm/lto.html#thinltoModuleGetObject,ThinltoCodeGenT,cuint	lto: thinltoModuleGetObject(cg: ThinltoCodeGenT; index: cuint): LTOObjectBuffer	
+thinltoModuleGetNumObjectFiles	llvm/llvm/lto.html#thinltoModuleGetNumObjectFiles,ThinltoCodeGenT	lto: thinltoModuleGetNumObjectFiles(cg: ThinltoCodeGenT): cuint	
+thinltoModuleGetObjectFile	llvm/llvm/lto.html#thinltoModuleGetObjectFile,ThinltoCodeGenT,cuint	lto: thinltoModuleGetObjectFile(cg: ThinltoCodeGenT; index: cuint): cstring	
+thinltoCodegenSetPicModel	llvm/llvm/lto.html#thinltoCodegenSetPicModel,ThinltoCodeGenT,LtoCodegenModel	lto: thinltoCodegenSetPicModel(cg: ThinltoCodeGenT; a2: LtoCodegenModel): LtoBoolT	
+thinltoCodegenSetSavetempsDir	llvm/llvm/lto.html#thinltoCodegenSetSavetempsDir,ThinltoCodeGenT,cstring	lto: thinltoCodegenSetSavetempsDir(cg: ThinltoCodeGenT; saveTempsDir: cstring)	
+thinltoSetGeneratedObjectsDir	llvm/llvm/lto.html#thinltoSetGeneratedObjectsDir,ThinltoCodeGenT,cstring	lto: thinltoSetGeneratedObjectsDir(cg: ThinltoCodeGenT; saveTempsDir: cstring)	
+thinltoCodegenSetCpu	llvm/llvm/lto.html#thinltoCodegenSetCpu,ThinltoCodeGenT,cstring	lto: thinltoCodegenSetCpu(cg: ThinltoCodeGenT; cpu: cstring)	
+thinltoCodegenDisableCodegen	llvm/llvm/lto.html#thinltoCodegenDisableCodegen,ThinltoCodeGenT,LtoBoolT	lto: thinltoCodegenDisableCodegen(cg: ThinltoCodeGenT; disable: LtoBoolT)	
+thinltoCodegenSetCodegenOnly	llvm/llvm/lto.html#thinltoCodegenSetCodegenOnly,ThinltoCodeGenT,LtoBoolT	lto: thinltoCodegenSetCodegenOnly(cg: ThinltoCodeGenT; codegenOnly: LtoBoolT)	
+thinltoDebugOptions	llvm/llvm/lto.html#thinltoDebugOptions,cstringArray,cint	lto: thinltoDebugOptions(options: cstringArray; number: cint)	
+ltoModuleIsThinlto	llvm/llvm/lto.html#ltoModuleIsThinlto,LtoModuleT	lto: ltoModuleIsThinlto(`mod`: LtoModuleT): LtoBoolT	
+thinltoCodegenAddMustPreserveSymbol	llvm/llvm/lto.html#thinltoCodegenAddMustPreserveSymbol,ThinltoCodeGenT,cstring,cint	lto: thinltoCodegenAddMustPreserveSymbol(cg: ThinltoCodeGenT; name: cstring; length: cint)	
+thinltoCodegenAddCrossReferencedSymbol	llvm/llvm/lto.html#thinltoCodegenAddCrossReferencedSymbol,ThinltoCodeGenT,cstring,cint	lto: thinltoCodegenAddCrossReferencedSymbol(cg: ThinltoCodeGenT; name: cstring;\n                                       length: cint)	
+thinltoCodegenSetCacheDir	llvm/llvm/lto.html#thinltoCodegenSetCacheDir,ThinltoCodeGenT,cstring	lto: thinltoCodegenSetCacheDir(cg: ThinltoCodeGenT; cacheDir: cstring)	
+thinltoCodegenSetCachePruningInterval	llvm/llvm/lto.html#thinltoCodegenSetCachePruningInterval,ThinltoCodeGenT,cint	lto: thinltoCodegenSetCachePruningInterval(cg: ThinltoCodeGenT; interval: cint)	
+thinltoCodegenSetFinalCacheSizeRelativeToAvailableSpace	llvm/llvm/lto.html#thinltoCodegenSetFinalCacheSizeRelativeToAvailableSpace,ThinltoCodeGenT,cuint	lto: thinltoCodegenSetFinalCacheSizeRelativeToAvailableSpace(cg: ThinltoCodeGenT;\n    percentage: cuint)	
+thinltoCodegenSetCacheEntryExpiration	llvm/llvm/lto.html#thinltoCodegenSetCacheEntryExpiration,ThinltoCodeGenT,cuint	lto: thinltoCodegenSetCacheEntryExpiration(cg: ThinltoCodeGenT; expiration: cuint)	
+thinltoCodegenSetCacheSizeBytes	llvm/llvm/lto.html#thinltoCodegenSetCacheSizeBytes,ThinltoCodeGenT,cuint	lto: thinltoCodegenSetCacheSizeBytes(cg: ThinltoCodeGenT; maxSizeBytes: cuint)	
+thinltoCodegenSetCacheSizeMegabytes	llvm/llvm/lto.html#thinltoCodegenSetCacheSizeMegabytes,ThinltoCodeGenT,cuint	lto: thinltoCodegenSetCacheSizeMegabytes(cg: ThinltoCodeGenT; maxSizeMegabytes: cuint)	
+thinltoCodegenSetCacheSizeFiles	llvm/llvm/lto.html#thinltoCodegenSetCacheSizeFiles,ThinltoCodeGenT,cuint	lto: thinltoCodegenSetCacheSizeFiles(cg: ThinltoCodeGenT; maxSizeFiles: cuint)	

@@ -1,0 +1,6 @@
+ComdatSelectionKind	llvm/llvm/Comdat.html#ComdatSelectionKind	Comdat: ComdatSelectionKind	
+getOrInsertComdat	llvm/llvm/Comdat.html#getOrInsertComdat,ModuleRef,cstring	Comdat: getOrInsertComdat(m: ModuleRef; name: cstring): ComdatRef	
+getComdat	llvm/llvm/Comdat.html#getComdat,ValueRef	Comdat: getComdat(v: ValueRef): ComdatRef	
+setComdat	llvm/llvm/Comdat.html#setComdat,ValueRef,ComdatRef	Comdat: setComdat(v: ValueRef; c: ComdatRef)	
+getComdatSelectionKind	llvm/llvm/Comdat.html#getComdatSelectionKind,ComdatRef	Comdat: getComdatSelectionKind(c: ComdatRef): ComdatSelectionKind	
+setComdatSelectionKind	llvm/llvm/Comdat.html#setComdatSelectionKind,ComdatRef,ComdatSelectionKind	Comdat: setComdatSelectionKind(c: ComdatRef; kind: ComdatSelectionKind)	

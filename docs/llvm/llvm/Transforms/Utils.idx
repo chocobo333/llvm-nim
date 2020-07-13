@@ -1,0 +1,3 @@
+addLowerSwitchPass	llvm/llvm/Transforms/Utils.html#addLowerSwitchPass,PassManagerRef	Utils: addLowerSwitchPass(pm: PassManagerRef)	
+addPromoteMemoryToRegisterPass	llvm/llvm/Transforms/Utils.html#addPromoteMemoryToRegisterPass,PassManagerRef	Utils: addPromoteMemoryToRegisterPass(pm: PassManagerRef)	
+addAddDiscriminatorsPass	llvm/llvm/Transforms/Utils.html#addAddDiscriminatorsPass,PassManagerRef	Utils: addAddDiscriminatorsPass(pm: PassManagerRef)	

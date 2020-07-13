@@ -1,0 +1,35 @@
+ByteOrdering	llvm/llvm/Target.html#ByteOrdering	Target: ByteOrdering	
+TargetDataRef	llvm/llvm/Target.html#TargetDataRef	Target: TargetDataRef	
+TargetLibraryInfoRef	llvm/llvm/Target.html#TargetLibraryInfoRef	Target: TargetLibraryInfoRef	
+initializeAllTargetInfos	llvm/llvm/Target.html#initializeAllTargetInfos	Target: initializeAllTargetInfos()	
+initializeAllTargets	llvm/llvm/Target.html#initializeAllTargets	Target: initializeAllTargets()	
+initializeAllTargetMCs	llvm/llvm/Target.html#initializeAllTargetMCs	Target: initializeAllTargetMCs()	
+initializeAllAsmPrinters	llvm/llvm/Target.html#initializeAllAsmPrinters	Target: initializeAllAsmPrinters()	
+initializeAllAsmParsers	llvm/llvm/Target.html#initializeAllAsmParsers	Target: initializeAllAsmParsers()	
+initializeAllDisassemblers	llvm/llvm/Target.html#initializeAllDisassemblers	Target: initializeAllDisassemblers()	
+initializeNativeTarget	llvm/llvm/Target.html#initializeNativeTarget	Target: initializeNativeTarget(): Bool	
+initializeNativeAsmParser	llvm/llvm/Target.html#initializeNativeAsmParser	Target: initializeNativeAsmParser(): Bool	
+initializeNativeAsmPrinter	llvm/llvm/Target.html#initializeNativeAsmPrinter	Target: initializeNativeAsmPrinter(): Bool	
+initializeNativeDisassembler	llvm/llvm/Target.html#initializeNativeDisassembler	Target: initializeNativeDisassembler(): Bool	
+getModuleDataLayout	llvm/llvm/Target.html#getModuleDataLayout,ModuleRef	Target: getModuleDataLayout(m: ModuleRef): TargetDataRef	
+setModuleDataLayout	llvm/llvm/Target.html#setModuleDataLayout,ModuleRef,TargetDataRef	Target: setModuleDataLayout(m: ModuleRef; dl: TargetDataRef)	
+createTargetData	llvm/llvm/Target.html#createTargetData,cstring	Target: createTargetData(stringRep: cstring): TargetDataRef	
+disposeTargetData	llvm/llvm/Target.html#disposeTargetData,TargetDataRef	Target: disposeTargetData(td: TargetDataRef)	
+addTargetLibraryInfo	llvm/llvm/Target.html#addTargetLibraryInfo,TargetLibraryInfoRef,PassManagerRef	Target: addTargetLibraryInfo(tli: TargetLibraryInfoRef; pm: PassManagerRef)	
+copyStringRepOfTargetData	llvm/llvm/Target.html#copyStringRepOfTargetData,TargetDataRef	Target: copyStringRepOfTargetData(td: TargetDataRef): cstring	
+byteOrder	llvm/llvm/Target.html#byteOrder,TargetDataRef	Target: byteOrder(td: TargetDataRef): ByteOrdering	
+pointerSize	llvm/llvm/Target.html#pointerSize,TargetDataRef	Target: pointerSize(td: TargetDataRef): cuint	
+pointerSizeForAS	llvm/llvm/Target.html#pointerSizeForAS,TargetDataRef,cuint	Target: pointerSizeForAS(td: TargetDataRef; `as`: cuint): cuint	
+intPtrType	llvm/llvm/Target.html#intPtrType,TargetDataRef	Target: intPtrType(td: TargetDataRef): TypeRef	
+intPtrTypeForAS	llvm/llvm/Target.html#intPtrTypeForAS,TargetDataRef,cuint	Target: intPtrTypeForAS(td: TargetDataRef; `as`: cuint): TypeRef	
+intPtrTypeInContext	llvm/llvm/Target.html#intPtrTypeInContext,ContextRef,TargetDataRef	Target: intPtrTypeInContext(c: ContextRef; td: TargetDataRef): TypeRef	
+intPtrTypeForASInContext	llvm/llvm/Target.html#intPtrTypeForASInContext,ContextRef,TargetDataRef,cuint	Target: intPtrTypeForASInContext(c: ContextRef; td: TargetDataRef; `as`: cuint): TypeRef	
+sizeOfTypeInBits	llvm/llvm/Target.html#sizeOfTypeInBits,TargetDataRef,TypeRef	Target: sizeOfTypeInBits(td: TargetDataRef; ty: TypeRef): culonglong	
+storeSizeOfType	llvm/llvm/Target.html#storeSizeOfType,TargetDataRef,TypeRef	Target: storeSizeOfType(td: TargetDataRef; ty: TypeRef): culonglong	
+aBISizeOfType	llvm/llvm/Target.html#aBISizeOfType,TargetDataRef,TypeRef	Target: aBISizeOfType(td: TargetDataRef; ty: TypeRef): culonglong	
+aBIAlignmentOfType	llvm/llvm/Target.html#aBIAlignmentOfType,TargetDataRef,TypeRef	Target: aBIAlignmentOfType(td: TargetDataRef; ty: TypeRef): cuint	
+callFrameAlignmentOfType	llvm/llvm/Target.html#callFrameAlignmentOfType,TargetDataRef,TypeRef	Target: callFrameAlignmentOfType(td: TargetDataRef; ty: TypeRef): cuint	
+preferredAlignmentOfType	llvm/llvm/Target.html#preferredAlignmentOfType,TargetDataRef,TypeRef	Target: preferredAlignmentOfType(td: TargetDataRef; ty: TypeRef): cuint	
+preferredAlignmentOfGlobal	llvm/llvm/Target.html#preferredAlignmentOfGlobal,TargetDataRef,ValueRef	Target: preferredAlignmentOfGlobal(td: TargetDataRef; globalVar: ValueRef): cuint	
+elementAtOffset	llvm/llvm/Target.html#elementAtOffset,TargetDataRef,TypeRef,culonglong	Target: elementAtOffset(td: TargetDataRef; structTy: TypeRef; offset: culonglong): cuint	
+offsetOfElement	llvm/llvm/Target.html#offsetOfElement,TargetDataRef,TypeRef,cuint	Target: offsetOfElement(td: TargetDataRef; structTy: TypeRef; element: cuint): culonglong	

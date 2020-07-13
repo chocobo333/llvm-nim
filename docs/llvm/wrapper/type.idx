@@ -1,0 +1,7 @@
+Type	llvm/wrapper/type.html#Type	type: Type	
+kind	llvm/wrapper/type.html#kind,Type	type: kind(self: Type): TypeKind	
+dump	llvm/wrapper/type.html#dump,Type	type: dump(self: Type)	
+`$`	llvm/wrapper/type.html#$,Type	type: `$`(self: Type): string	
+functionType	llvm/wrapper/type.html#functionType,Type,openArray[Type],bool	type: functionType(retTy: Type; paramTypes: openArray[Type]; isVarArg: bool = false): Type	
+voidType	llvm/wrapper/type.html#voidType	type: voidType(): Type	
+intType	llvm/wrapper/type.html#intType,uint	type: intType(nbits: uint): Type	

@@ -1,0 +1,16 @@
+Module	llvm/wrapper/module.html#Module	module: Module	
+newModule	llvm/wrapper/module.html#newModule,string,Context	module: newModule(name: string; cxt: Context = nil): Module	
+clone	llvm/wrapper/module.html#clone,Module	module: clone(self: Module): Module	
+newModule	llvm/wrapper/module.html#newModule,Module	module: newModule(other: Module): Module	
+identifier	llvm/wrapper/module.html#identifier,Module	module: identifier(self: Module): string	
+identifier=	llvm/wrapper/module.html#identifier=,Module,string	module: identifier=(self: Module; id: string)	
+sourceFileName	llvm/wrapper/module.html#sourceFileName,Module	module: sourceFileName(self: Module): string	
+sourceFileName=	llvm/wrapper/module.html#sourceFileName=,Module,string	module: sourceFileName=(self: Module; name: string)	
+dataLayout	llvm/wrapper/module.html#dataLayout,Module	module: dataLayout(self: Module): string	
+dataLayout=	llvm/wrapper/module.html#dataLayout=,Module,string	module: dataLayout=(self: Module; dataLayoutStr: string)	
+target	llvm/wrapper/module.html#target,Module	module: target(self: Module): string	
+target=	llvm/wrapper/module.html#target=,Module,string	module: target=(self: Module; triple: string)	
+dump	llvm/wrapper/module.html#dump,Module	module: dump(self: Module)	
+printToFile	llvm/wrapper/module.html#printToFile,Module,string	module: printToFile(self: Module; filename: string): bool	
+`$`	llvm/wrapper/module.html#$,Module	module: `$`(self: Module): string	
+addFunction	llvm/wrapper/module.html#addFunction,Module,string,Type	module: addFunction(self: Module; name: string; fnty: Type): Value	

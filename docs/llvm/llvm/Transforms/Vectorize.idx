@@ -1,0 +1,2 @@
+addLoopVectorizePass	llvm/llvm/Transforms/Vectorize.html#addLoopVectorizePass,PassManagerRef	Vectorize: addLoopVectorizePass(pm: PassManagerRef)	
+addSLPVectorizePass	llvm/llvm/Transforms/Vectorize.html#addSLPVectorizePass,PassManagerRef	Vectorize: addSLPVectorizePass(pm: PassManagerRef)	

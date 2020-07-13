@@ -1,0 +1,1 @@
+addAggressiveInstCombinerPass	llvm/llvm/Transforms/AggressiveInstCombine.html#addAggressiveInstCombinerPass,PassManagerRef	AggressiveInstCombine: addAggressiveInstCombinerPass(pm: PassManagerRef)	

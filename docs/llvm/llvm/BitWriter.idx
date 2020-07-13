@@ -1,0 +1,4 @@
+writeBitcodeToFile	llvm/llvm/BitWriter.html#writeBitcodeToFile,ModuleRef,cstring	BitWriter: writeBitcodeToFile(m: ModuleRef; path: cstring): cint	
+writeBitcodeToFD	llvm/llvm/BitWriter.html#writeBitcodeToFD,ModuleRef,cint,cint,cint	BitWriter: writeBitcodeToFD(m: ModuleRef; fd: cint; shouldClose: cint; unbuffered: cint): cint	
+writeBitcodeToFileHandle	llvm/llvm/BitWriter.html#writeBitcodeToFileHandle,ModuleRef,cint	BitWriter: writeBitcodeToFileHandle(m: ModuleRef; handle: cint): cint	
+writeBitcodeToMemoryBuffer	llvm/llvm/BitWriter.html#writeBitcodeToMemoryBuffer,ModuleRef	BitWriter: writeBitcodeToMemoryBuffer(m: ModuleRef): MemoryBufferRef	

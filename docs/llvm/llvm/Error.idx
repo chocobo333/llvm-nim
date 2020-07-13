@@ -1,0 +1,7 @@
+ErrorRef	llvm/llvm/Error.html#ErrorRef	Error: ErrorRef	
+ErrorTypeId	llvm/llvm/Error.html#ErrorTypeId	Error: ErrorTypeId	
+getErrorTypeId	llvm/llvm/Error.html#getErrorTypeId,ErrorRef	Error: getErrorTypeId(err: ErrorRef): ErrorTypeId	
+consumeError	llvm/llvm/Error.html#consumeError,ErrorRef	Error: consumeError(err: ErrorRef)	
+getErrorMessage	llvm/llvm/Error.html#getErrorMessage,ErrorRef	Error: getErrorMessage(err: ErrorRef): cstring	
+disposeErrorMessage	llvm/llvm/Error.html#disposeErrorMessage,cstring	Error: disposeErrorMessage(errMsg: cstring)	
+getStringErrorTypeId	llvm/llvm/Error.html#getStringErrorTypeId	Error: getStringErrorTypeId(): ErrorTypeId	

@@ -1,0 +1,42 @@
+SectionIteratorRef	llvm/llvm/Object.html#SectionIteratorRef	Object: SectionIteratorRef	
+SymbolIteratorRef	llvm/llvm/Object.html#SymbolIteratorRef	Object: SymbolIteratorRef	
+RelocationIteratorRef	llvm/llvm/Object.html#RelocationIteratorRef	Object: RelocationIteratorRef	
+BinaryType	llvm/llvm/Object.html#BinaryType	Object: BinaryType	
+createBinary	llvm/llvm/Object.html#createBinary,MemoryBufferRef,ContextRef,cstringArray	Object: createBinary(memBuf: MemoryBufferRef; context: ContextRef;\n             errorMessage: cstringArray): BinaryRef	
+disposeBinary	llvm/llvm/Object.html#disposeBinary,BinaryRef	Object: disposeBinary(br: BinaryRef)	
+binaryCopyMemoryBuffer	llvm/llvm/Object.html#binaryCopyMemoryBuffer,BinaryRef	Object: binaryCopyMemoryBuffer(br: BinaryRef): MemoryBufferRef	
+binaryGetType	llvm/llvm/Object.html#binaryGetType,BinaryRef	Object: binaryGetType(br: BinaryRef): BinaryType	
+machOUniversalBinaryCopyObjectForArch	llvm/llvm/Object.html#machOUniversalBinaryCopyObjectForArch,BinaryRef,cstring,csize_t,cstringArray	Object: machOUniversalBinaryCopyObjectForArch(br: BinaryRef; arch: cstring;\n                                      archLen: csize_t; errorMessage: cstringArray): BinaryRef	
+objectFileCopySectionIterator	llvm/llvm/Object.html#objectFileCopySectionIterator,BinaryRef	Object: objectFileCopySectionIterator(br: BinaryRef): SectionIteratorRef	
+objectFileIsSectionIteratorAtEnd	llvm/llvm/Object.html#objectFileIsSectionIteratorAtEnd,BinaryRef,SectionIteratorRef	Object: objectFileIsSectionIteratorAtEnd(br: BinaryRef; si: SectionIteratorRef): Bool	
+objectFileCopySymbolIterator	llvm/llvm/Object.html#objectFileCopySymbolIterator,BinaryRef	Object: objectFileCopySymbolIterator(br: BinaryRef): SymbolIteratorRef	
+objectFileIsSymbolIteratorAtEnd	llvm/llvm/Object.html#objectFileIsSymbolIteratorAtEnd,BinaryRef,SymbolIteratorRef	Object: objectFileIsSymbolIteratorAtEnd(br: BinaryRef; si: SymbolIteratorRef): Bool	
+disposeSectionIterator	llvm/llvm/Object.html#disposeSectionIterator,SectionIteratorRef	Object: disposeSectionIterator(si: SectionIteratorRef)	
+moveToNextSection	llvm/llvm/Object.html#moveToNextSection,SectionIteratorRef	Object: moveToNextSection(si: SectionIteratorRef)	
+moveToContainingSection	llvm/llvm/Object.html#moveToContainingSection,SectionIteratorRef,SymbolIteratorRef	Object: moveToContainingSection(sect: SectionIteratorRef; sym: SymbolIteratorRef)	
+disposeSymbolIterator	llvm/llvm/Object.html#disposeSymbolIterator,SymbolIteratorRef	Object: disposeSymbolIterator(si: SymbolIteratorRef)	
+moveToNextSymbol	llvm/llvm/Object.html#moveToNextSymbol,SymbolIteratorRef	Object: moveToNextSymbol(si: SymbolIteratorRef)	
+getSectionName	llvm/llvm/Object.html#getSectionName,SectionIteratorRef	Object: getSectionName(si: SectionIteratorRef): cstring	
+getSectionSize	llvm/llvm/Object.html#getSectionSize,SectionIteratorRef	Object: getSectionSize(si: SectionIteratorRef): uint64T	
+getSectionContents	llvm/llvm/Object.html#getSectionContents,SectionIteratorRef	Object: getSectionContents(si: SectionIteratorRef): cstring	
+getSectionAddress	llvm/llvm/Object.html#getSectionAddress,SectionIteratorRef	Object: getSectionAddress(si: SectionIteratorRef): uint64T	
+getSectionContainsSymbol	llvm/llvm/Object.html#getSectionContainsSymbol,SectionIteratorRef,SymbolIteratorRef	Object: getSectionContainsSymbol(si: SectionIteratorRef; sym: SymbolIteratorRef): Bool	
+getRelocations	llvm/llvm/Object.html#getRelocations,SectionIteratorRef	Object: getRelocations(section: SectionIteratorRef): RelocationIteratorRef	
+disposeRelocationIterator	llvm/llvm/Object.html#disposeRelocationIterator,RelocationIteratorRef	Object: disposeRelocationIterator(ri: RelocationIteratorRef)	
+isRelocationIteratorAtEnd	llvm/llvm/Object.html#isRelocationIteratorAtEnd,SectionIteratorRef,RelocationIteratorRef	Object: isRelocationIteratorAtEnd(section: SectionIteratorRef; ri: RelocationIteratorRef): Bool	
+moveToNextRelocation	llvm/llvm/Object.html#moveToNextRelocation,RelocationIteratorRef	Object: moveToNextRelocation(ri: RelocationIteratorRef)	
+getSymbolName	llvm/llvm/Object.html#getSymbolName,SymbolIteratorRef	Object: getSymbolName(si: SymbolIteratorRef): cstring	
+getSymbolAddress	llvm/llvm/Object.html#getSymbolAddress,SymbolIteratorRef	Object: getSymbolAddress(si: SymbolIteratorRef): uint64T	
+getSymbolSize	llvm/llvm/Object.html#getSymbolSize,SymbolIteratorRef	Object: getSymbolSize(si: SymbolIteratorRef): uint64T	
+getRelocationOffset	llvm/llvm/Object.html#getRelocationOffset,RelocationIteratorRef	Object: getRelocationOffset(ri: RelocationIteratorRef): uint64T	
+getRelocationSymbol	llvm/llvm/Object.html#getRelocationSymbol,RelocationIteratorRef	Object: getRelocationSymbol(ri: RelocationIteratorRef): SymbolIteratorRef	
+getRelocationType	llvm/llvm/Object.html#getRelocationType,RelocationIteratorRef	Object: getRelocationType(ri: RelocationIteratorRef): uint64T	
+getRelocationTypeName	llvm/llvm/Object.html#getRelocationTypeName,RelocationIteratorRef	Object: getRelocationTypeName(ri: RelocationIteratorRef): cstring	
+getRelocationValueString	llvm/llvm/Object.html#getRelocationValueString,RelocationIteratorRef	Object: getRelocationValueString(ri: RelocationIteratorRef): cstring	
+ObjectFileRef	llvm/llvm/Object.html#ObjectFileRef	Object: ObjectFileRef	
+createObjectFile	llvm/llvm/Object.html#createObjectFile,MemoryBufferRef	Object: createObjectFile(memBuf: MemoryBufferRef): ObjectFileRef	
+disposeObjectFile	llvm/llvm/Object.html#disposeObjectFile,ObjectFileRef	Object: disposeObjectFile(objectFile: ObjectFileRef)	
+getSections	llvm/llvm/Object.html#getSections,ObjectFileRef	Object: getSections(objectFile: ObjectFileRef): SectionIteratorRef	
+isSectionIteratorAtEnd	llvm/llvm/Object.html#isSectionIteratorAtEnd,ObjectFileRef,SectionIteratorRef	Object: isSectionIteratorAtEnd(objectFile: ObjectFileRef; si: SectionIteratorRef): Bool	
+getSymbols	llvm/llvm/Object.html#getSymbols,ObjectFileRef	Object: getSymbols(objectFile: ObjectFileRef): SymbolIteratorRef	
+isSymbolIteratorAtEnd	llvm/llvm/Object.html#isSymbolIteratorAtEnd,ObjectFileRef,SymbolIteratorRef	Object: isSymbolIteratorAtEnd(objectFile: ObjectFileRef; si: SymbolIteratorRef): Bool	

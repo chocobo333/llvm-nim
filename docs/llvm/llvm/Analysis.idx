@@ -1,0 +1,5 @@
+VerifierFailureAction	llvm/llvm/Analysis.html#VerifierFailureAction	Analysis: VerifierFailureAction	
+verifyModule	llvm/llvm/Analysis.html#verifyModule,ModuleRef,VerifierFailureAction,cstringArray	Analysis: verifyModule(m: ModuleRef; action: VerifierFailureAction; outMessage: cstringArray): Bool	
+verifyFunction	llvm/llvm/Analysis.html#verifyFunction,ValueRef,VerifierFailureAction	Analysis: verifyFunction(fn: ValueRef; action: VerifierFailureAction): Bool	
+viewFunctionCFG	llvm/llvm/Analysis.html#viewFunctionCFG,ValueRef	Analysis: viewFunctionCFG(fn: ValueRef)	
+viewFunctionCFGOnly	llvm/llvm/Analysis.html#viewFunctionCFGOnly,ValueRef	Analysis: viewFunctionCFGOnly(fn: ValueRef)	
