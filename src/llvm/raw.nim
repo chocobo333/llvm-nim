@@ -5,13 +5,13 @@
 ## ------
 
 const
-    LLVMRoot = "/usr/local/opt/llvm/"
+    LLVMLib = gorge("llvm-config --libdir")
 
 
 {.passC: "`llvm-config --cflags`".}
 {.passL: "`llvm-config --cflags --libs --ldflags all --system-libs`".}
 {.passL: "-lLLVM".}
-{.passL: "-Wl,-rpath " & LLVMRoot & "lib".}
+{.passL: "-Wl,-rpath " & LLVMLib.}
 
 
 import llvm/[
