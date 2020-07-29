@@ -16,7 +16,7 @@ import llvm/[
     BitWriter,
     Comdat,
     Core,
-    Debuginfo,
+    DebugInfo,
     Disassembler,
     DisassemblerTypes,
     Error,
