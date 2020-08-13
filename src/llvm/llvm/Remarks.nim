@@ -1,16 +1,6 @@
-# ===-- llvm-c/Remarks.h - Remarks Public C Interface -------------*- C -*-===*\
-# |*                                                                            *|
-# |* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
-# |* Exceptions.                                                                *|
-# |* See https://llvm.org/LICENSE.txt for license information.                  *|
-# |* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
-# |*                                                                            *|
-# |*===----------------------------------------------------------------------===*|
-# |*                                                                            *|
-# |* This header provides a public interface to a remark diagnostics library.   *|
-# |* LLVM provides an implementation of this interface.                         *|
-# |*                                                                            *|
-# \*===----------------------------------------------------------------------===
+
+##  This header provides a public interface to a remark diagnostics library.
+##  LLVM provides an implementation of this interface.
 
 import prelude/[
     opaques,

@@ -9,3 +9,5 @@ bin/
 nimcache/
 
 TODO
+
+src/llvm/llvm/prep/

@@ -1,16 +1,7 @@
-## ===-- llvm/LinkTimeOptimizer.h - LTO Public C Interface -------*- C++ -*-===//
-##
-##  Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
-##  See https://llvm.org/LICENSE.txt for license information.
-##  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
-##
-## ===----------------------------------------------------------------------===//
-##
+
 ##  This header provides a C API to use the LLVM link time optimization
 ##  library. This is intended to be used by linkers which are C-only in
 ##  their implementation for performing LTO.
-##
-## ===----------------------------------------------------------------------===//
 
 import prelude/platforms
 

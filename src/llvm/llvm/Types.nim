@@ -1,15 +1,5 @@
-# ===-- llvm-c/Support.h - C Interface Types declarations ---------*- C -*-===*\
-# |*                                                                            *|
-# |* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
-# |* Exceptions.                                                                *|
-# |* See https://llvm.org/LICENSE.txt for license information.                  *|
-# |* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
-# |*                                                                            *|
-# |*===----------------------------------------------------------------------===*|
-# |*                                                                            *|
-# |* This file defines types used by the C interface to LLVM.                   *|
-# |*                                                                            *|
-# \*===----------------------------------------------------------------------===
+
+##  This file defines types used by the C interface to LLVM.
 
 ##  Opaque types.
 ##  LLVM uses a polymorphic type hierarchy which C cannot represent, therefore

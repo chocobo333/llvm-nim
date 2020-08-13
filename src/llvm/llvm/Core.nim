@@ -1,17 +1,3 @@
-# ===-- llvm-c/Core.h - Core Library C Interface ------------------*- C -*-===*\
-# |*                                                                            *|
-# |* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
-# |* Exceptions.                                                                *|
-# |* See https://llvm.org/LICENSE.txt for license information.                  *|
-# |* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
-# |*                                                                            *|
-# |*===----------------------------------------------------------------------===*|
-# |*                                                                            *|
-# |* This header declares the C interface to libLLVMCore.a, which implements    *|
-# |* the LLVM intermediate representation.                                      *|
-# |*                                                                            *|
-# \*===----------------------------------------------------------------------===
-
 
 ##  This module exposes parts of the LLVM library as a C API.
 ##

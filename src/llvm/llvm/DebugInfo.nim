@@ -1,20 +1,9 @@
-## ===------------ DebugInfo.h - LLVM C API Debug Info API -----------------===//
-##
-##  Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
-##  See https://llvm.org/LICENSE.txt for license information.
-##  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
-##
-## ===----------------------------------------------------------------------===//
-## /
+
 ## / This file declares the C API endpoints for generating DWARF Debug Info
 ## /
 ## / Note: This interface is experimental. It is *NOT* stable, and may be
 ## /       changed without warning.
 ## /
-## ===----------------------------------------------------------------------===//
-## *
-##  Debug info flags.
-##
 
 import prelude/[
     opaques,
