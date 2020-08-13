@@ -1,0 +1,1 @@
+parseIR	llvm/wrapper/IRReader.html#parseIR,Context,string	IRReader: parseIR(self: Context; filename: string): Option[Module]	

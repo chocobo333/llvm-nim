@@ -17,7 +17,7 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
-<title>llvm/llvm/Support</title>
+<title>llvm/wrapper/Linker</title>
 <link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
 <script type="text/javascript" src="dochack.js"></script>
@@ -71,7 +71,7 @@ function main() {
 <body onload="main()">
 <div class="document" id="documentId">
   <div class="container">
-    <h1 class="title">llvm/llvm/Support</h1>
+    <h1 class="title">llvm/wrapper/Linker</h1>
     <div class="row">
   <div class="three columns">
   <div class="theme-switch-wrapper">
@@ -106,14 +106,8 @@ function main() {
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#loadLibraryPermanently%2Ccstring"
-    title="loadLibraryPermanently(filename: cstring): Bool"><wbr />load<wbr />Library<wbr />Permanently<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#parseCommandLineOptions%2Ccint%2CcstringArray%2Ccstring"
-    title="parseCommandLineOptions(argc: cint; argv: cstringArray; overview: cstring)"><wbr />parse<wbr />Command<wbr />Line<wbr />Options<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#searchForAddressOfSymbol%2Ccstring"
-    title="searchForAddressOfSymbol(symbolName: cstring): pointer"><wbr />search<wbr />For<wbr />Address<wbr />Of<wbr />Symbol<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#addSymbol%2Ccstring%2Cpointer"
-    title="addSymbol(symbolName: cstring; symbolValue: pointer)"><wbr />add<wbr />Symbol<span class="attachedType"></span></a></li>
+      <li><a class="reference" href="#link%2CModule%2CModule"
+    title="link(self: Module; other: Module): Module"><wbr />link<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -128,48 +122,15 @@ function main() {
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="prelude/platforms.html">prelude/platforms</a>, <a class="reference external" href="Types.html">Types</a>
+<a class="reference external" href="../raw.html">../raw</a>, <a class="reference external" href="types.html">types</a>
 </dl></div>
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<a id="loadLibraryPermanently,cstring"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#loadLibraryPermanently%2Ccstring"><span class="Identifier">loadLibraryPermanently</span></a><span class="Other">(</span><span class="Identifier">filename</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <a href="Types.html#Bool"><span class="Identifier">Bool</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;LLVMLoadLibraryPermanently&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">LLVMlib</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="link,Module,Module"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#link%2CModule%2CModule"><span class="Identifier">link</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="types.html#Module"><span class="Identifier">Module</span></a><span class="Other">;</span> <span class="Identifier">other</span><span class="Other">:</span> <a href="types.html#Module"><span class="Identifier">Module</span></a><span class="Other">)</span><span class="Other">:</span> <a href="types.html#Module"><span class="Identifier">Module</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-<p>This function permanently loads the dynamic library at the given path. It is safe to call this function multiple times for the same library.</p>
-<p>@see sys::DynamicLibrary::LoadLibraryPermanently()</p>
-
-
-</dd>
-<a id="parseCommandLineOptions,cint,cstringArray,cstring"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#parseCommandLineOptions%2Ccint%2CcstringArray%2Ccstring"><span class="Identifier">parseCommandLineOptions</span></a><span class="Other">(</span><span class="Identifier">argc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">argv</span><span class="Other">:</span> <span class="Identifier">cstringArray</span><span class="Other">;</span> <span class="Identifier">overview</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;LLVMParseCommandLineOptions&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">LLVMlib</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-<p>This function parses the given arguments using the LLVM command line parser. Note that the only stable thing about this function is its signature; you cannot rely on any particular set of command line arguments being interpreted the same way across LLVM versions.</p>
-<p>@see llvm::cl::ParseCommandLineOptions()</p>
-
-
-</dd>
-<a id="searchForAddressOfSymbol,cstring"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#searchForAddressOfSymbol%2Ccstring"><span class="Identifier">searchForAddressOfSymbol</span></a><span class="Other">(</span><span class="Identifier">symbolName</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;LLVMSearchForAddressOfSymbol&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">LLVMlib</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-<p>This function will search through all previously loaded dynamic libraries for the symbol p symbolName. If it is found, the address of that symbol is returned. If not, null is returned.</p>
-<p>@see sys::DynamicLibrary::SearchForAddressOfSymbol()</p>
-
-
-</dd>
-<a id="addSymbol,cstring,pointer"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#addSymbol%2Ccstring%2Cpointer"><span class="Identifier">addSymbol</span></a><span class="Other">(</span><span class="Identifier">symbolName</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">symbolValue</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;LLVMAddSymbol&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">LLVMlib</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-<p>This functions permanently adds the symbol p symbolName with the value p symbolValue.  These symbols are searched before any libraries.</p>
-<p>@see sys::DynamicLibrary::AddSymbol()</p>
 
 
 </dd>
@@ -183,7 +144,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-08-13 14:06:27 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-08-13 14:06:28 UTC</small>
       </div>
     </div>
   </div>

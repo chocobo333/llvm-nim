@@ -23,6 +23,7 @@ dump	llvm/wrapper/core.html#dump,Type	core: dump(self: Type)
 intType	llvm/wrapper/core.html#intType,Context,uint	core: intType(cxt: Context; nbits: uint): IntegerType	
 intType	llvm/wrapper/core.html#intType,uint	core: intType(nbits: uint): IntegerType	
 functionType	llvm/wrapper/core.html#functionType,Type,openArray[Type],bool	core: functionType(retTy: Type; paramTypes: openArray[Type]; isVarArg: bool = false): FunctionType	
+voidType	llvm/wrapper/core.html#voidType,Context	core: voidType(cxt: Context): VoidType	
 voidType	llvm/wrapper/core.html#voidType	core: voidType(): VoidType	
 typ	llvm/wrapper/core.html#typ,Value	core: typ(self: Value): Type	
 kind	llvm/wrapper/core.html#kind,Value	core: kind(self: Value): ValueKind	
@@ -43,3 +44,5 @@ alloca	llvm/wrapper/core.html#alloca,Builder,Type,string	core: alloca(self: Buil
 load	llvm/wrapper/core.html#load,Builder,Type,Value,string	core: load(self: Builder; typ: Type; ptrVal: Value; name: string = &quot;&quot;): Instruction	
 store	llvm/wrapper/core.html#store,Builder,Value,Value,string	core: store(self: Builder; val: Value; `ptr`: Value; name: string = &quot;&quot;): Instruction	
 zext	llvm/wrapper/core.html#zext,Builder,Value,IntegerType,string	core: zext(self: Builder; val: Value; destTy: IntegerType; name: string = &quot;&quot;): Instruction	
+call	llvm/wrapper/core.html#call,Builder,Value,openArray[Value],string	core: call(self: Builder; fn: Value; args: openArray[Value]; name: string = &quot;&quot;): Value	
+call2	llvm/wrapper/core.html#call2,Builder,Type,Value,openArray[Value],string	core: call2(self: Builder; rtype: Type; fn: Value; args: openArray[Value]; name: string = &quot;&quot;): Value	

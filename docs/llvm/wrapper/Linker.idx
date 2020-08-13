@@ -1,0 +1,1 @@
+link	llvm/wrapper/Linker.html#link,Module,Module	Linker: link(self: Module; other: Module): Module	
