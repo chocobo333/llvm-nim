@@ -326,6 +326,26 @@ export
     BasicBlock,
     Builder
 
+export
+    VoidType,
+    HalfType,
+    FloatType,
+    DoubleType,
+    X86FP80Type,
+    FP128Type,
+    PPC_FP128Type,
+    LabelType,
+    IntegerType,
+    FunctionType,
+    StructType,
+    ArrayType,
+    PointerType,
+    VectorType,
+    MetadataType,
+    X86MMXType,
+    TokenType
+
+
 # REGION: Kinds
 
 export TypeKind
@@ -1147,8 +1167,13 @@ proc functionType*(retTy: Type, paramTypes: openArray[Type], isVarArg: bool = fa
 #     ##
 #     ##  @see llvm::VectorType::getNumElements()
 
-# proc voidTypeInContext*(c: ContextRef): TypeRef {.cdecl, importc: "LLVMVoidTypeInContext", dynlib: LLVMlib.}
-#     ##  Create a void type in a context.
+proc voidType*(cxt: Context): VoidType =
+    ##  Create a void type in a context.
+    ## 
+    ##  Wrapping:
+    ##  * `voidType(ContextRef)<../llvm/Core.html#voidType,ContextRef>`_
+    newType[VoidType](cxt.context.voidTypeInContext())
+
 
 # proc labelTypeInContext*(c: ContextRef): TypeRef {.cdecl, importc: "LLVMLabelTypeInContext", dynlib: LLVMlib.}
 #     ##  Create a label type in a context.
@@ -2805,7 +2830,7 @@ proc zext*(self: Builder, val: Value, destTy: IntegerType, name: string = ""): I
     ##  Zero-extend integer value to integer type *destTy*.
     ## 
     ##  Wrapping:
-    ##  * `buildZExt(BuilderRef ValueRef, TypeRef, cstring)<../llvm/Core.html#buildZExt,BuilderRef,ValueRef,TypeRef,cstring>`_
+    ##  * `buildZExt(BuilderRef, ValueRef, TypeRef, cstring)<../llvm/Core.html#buildZExt,BuilderRef,ValueRef,TypeRef,cstring>`_
     newValue[Instruction](self.builder.buildZExt(val.value, destTy.typ, name))
 
 # proc buildSExt*(a1: BuilderRef; val: ValueRef; destTy: TypeRef;name: cstring): ValueRef {. cdecl, importc: "LLVMBuildSExt", dynlib: LLVMlib.}
@@ -2842,7 +2867,21 @@ proc zext*(self: Builder, val: Value, destTy: IntegerType, name: string = ""): I
 #     ##  LLVMBuildCall is deprecated in favor of LLVMBuildCall2, in preparation for
 #     ##  opaque pointer types.
 
-# proc buildCall2*(a1: BuilderRef; a2: TypeRef; fn: ValueRef; args: ptr ValueRef;numArgs: cuint; name: cstring): ValueRef {.cdecl, importc: "LLVMBuildCall2", dynlib: LLVMlib.}
+proc call*(self: Builder, fn: Value, args: openArray[Value], name: string = ""): Value =
+    ##  Wrapping:
+    ##  * `buildCall(BuilderRef, ValueRef, ptr ValueRef, cstring)<../llvm/Core.html#buildCall,BuilderRef,ValueRef,ptr.ValueRef,cstring>`_
+    var
+        s = args.map(proc(a: Value): ValueRef = a.value)
+        adr = if s.len > 0: s[0].addr else: nil
+    newValue[Instruction](self.builder.buildCall(fn.value, adr, cuint s.len, name))
+
+proc call2*(self: Builder, rtype: Type, fn: Value, args: openArray[Value], name: string = ""): Value =
+    ##  Wrapping:
+    ##  * `buildCall2(BuilderRef, TypeRef, ValueRef, ptr ValueRef, cstring)<../llvm/Core.html#buildCall2,BuilderRef,TypeRef,ValueRef,ptr.ValueRef,cstring>`_
+    var
+        s = args.map(proc(a: Value): ValueRef = a.value)
+        adr = if s.len > 0: s[0].addr else: nil
+    newValue[Instruction](self.builder.buildCall2(rtype.typ, fn.value, adr, cuint s.len, name))
 
 # proc buildSelect*(a1: BuilderRef; `if`: ValueRef; then: ValueRef; `else`: ValueRef;name: cstring): ValueRef {.cdecl, importc: "LLVMBuildSelect", dynlib: LLVMlib.}
 # proc buildVAArg*(a1: BuilderRef; list: ValueRef; ty: TypeRef;name: cstring): ValueRef {. cdecl, importc: "LLVMBuildVAArg", dynlib: LLVMlib.}

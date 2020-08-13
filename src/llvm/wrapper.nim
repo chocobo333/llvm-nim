@@ -1,8 +1,12 @@
 
 import wrapper/[
     analysis,
-    core
+    core,
+    IRReader,
+    Linker
 ]
 
 export analysis
 export core except cxt, module
+export IRReader
+export Linker

@@ -11,6 +11,8 @@ test "":
         Int64 = intType(64)
         module = newModule("main")
         cxt = module.context
+        # cxt = newContext()
+        # module = newModule("main", cxt)
         fnty = functionType(Int64, @[])
         main = module.addFunction("main", fnty)
         bb = main.appendBasicBlock("entry", cxt)
