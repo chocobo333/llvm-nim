@@ -965,6 +965,8 @@ proc intType*(nbits: uint): IntegerType =
 
 # proc floatTypeInContext*(c: ContextRef): TypeRef {.cdecl, importc: "LLVMFloatTypeInContext", dynlib: LLVMlib.}
 #     ##  Obtain a 32-bit floating point type from a context.
+proc floatType*(cxt: Context): FloatType =
+    newType[FloatType](floatTypeInContext(cxt.context))
 
 # proc doubleTypeInContext*(c: ContextRef): TypeRef {.cdecl, importc: "LLVMDoubleTypeInContext", dynlib: LLVMlib.}
 #     ##  Obtain a 64-bit floating point type from a context.
@@ -1512,6 +1514,9 @@ proc constInt*(intTy: IntegerType, n: int, signExtend: bool = false): Value =
 
 # proc constReal*(realTy: TypeRef; n: cdouble): ValueRef {.cdecl, importc: "LLVMConstReal", dynlib: LLVMlib.}
 #     ##  Obtain a constant value referring to a double floating point value.
+proc constReal*(typ: Type, n: BiggestFloat): Value =
+    newValue[Value](typ.typ.constReal(cast[cdouble](n)))
+    
 
 # proc constRealOfString*(realTy: TypeRef; text: cstring): ValueRef {.cdecl, importc: "LLVMConstRealOfString", dynlib: LLVMlib.}
 #     ##  Obtain a constant for a floating point value parsed from a string.
