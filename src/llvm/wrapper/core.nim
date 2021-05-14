@@ -849,7 +849,11 @@ proc lastFunction*(m: Module): FunctionValue =
 #     ##  Returns NULL if the iterator was already at the end and there are no more
 #     ##  functions.
 proc nextFunction*(v: FunctionValue): FunctionValue =
-    newValue[FunctionValue](v.value.getNextFunction())
+    let a = v.value.getNextFunction()
+    if a.isNil:
+        nil
+    else:
+        newValue[FunctionValue](a)
 
 iterator funcs*(m: Module): FunctionValue =
     var ret = m.firstFunction
