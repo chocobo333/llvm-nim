@@ -833,17 +833,29 @@ declare void @test()
 #     ##  Obtain an iterator to the first Function in a Module.
 #     ##
 #     ##  @see llvm::Module::begin()
+proc firstFunction*(m: Module): FunctionValue =
+    newValue[FunctionValue](m.module.getFirstFunction())
 
 # proc getLastFunction*(m: ModuleRef): ValueRef {.cdecl, importc: "LLVMGetLastFunction", dynlib: LLVMlib.}
 #     ##  Obtain an iterator to the last Function in a Module.
 #     ##
 #     ##  @see llvm::Module::end()
+proc lastFunction*(m: Module): FunctionValue =
+    newValue[FunctionValue](m.module.getLastFunction())
 
 # proc getNextFunction*(fn: ValueRef): ValueRef {.cdecl, importc: "LLVMGetNextFunction", dynlib: LLVMlib.}
 #     ##  Advance a Function iterator to the next Function.
 #     ##
 #     ##  Returns NULL if the iterator was already at the end and there are no more
 #     ##  functions.
+proc nextFunction*(v: FunctionValue): FunctionValue =
+    newValue[FunctionValue](v.value.getNextFunction())
+
+iterator funcs*(m: Module): FunctionValue =
+    var ret = m.firstFunction
+    while not ret.isNil:
+        yield ret
+        ret = ret.nextFunction
 
 # proc getPreviousFunction*(fn: ValueRef): ValueRef {.cdecl, importc: "LLVMGetPreviousFunction", dynlib: LLVMlib.}
 #     ##  Decrement a Function iterator to the previous Function.
@@ -2918,6 +2930,9 @@ proc call2*(self: Builder, rtype: Type, fn: Value, args: openArray[Value], name:
 # proc createMemoryBufferWithContentsOfFile*(path: cstring;outMemBuf: ptr MemoryBufferRef; outMessage: cstringArray): Bool {.cdecl, importc: "LLVMCreateMemoryBufferWithContentsOfFile", dynlib: LLVMlib.}
 # proc createMemoryBufferWithSTDIN*(outMemBuf: ptr MemoryBufferRef;outMessage: cstringArray): Bool {.cdecl, importc: "LLVMCreateMemoryBufferWithSTDIN", dynlib: LLVMlib.}
 # proc createMemoryBufferWithMemoryRange*(inputData: cstring; inputDataLength: csize_t;bufferName: cstring;requiresNullTerminator: Bool): MemoryBufferRef {. cdecl, importc: "LLVMCreateMemoryBufferWithMemoryRange", dynlib: LLVMlib.}
+proc createMemoryBufferWithMemoryRange*(inputdata: string, bufferName: string): MemoryBufferRef =
+    let a = cstring inputdata
+    createMemoryBufferWithMemoryRange(a, csize_t a.len, bufferName, false)
 # proc createMemoryBufferWithMemoryRangeCopy*(inputData: cstring;inputDataLength: csize_t; bufferName: cstring): MemoryBufferRef {.cdecl, importc: "LLVMCreateMemoryBufferWithMemoryRangeCopy", dynlib: LLVMlib.}
 # proc getBufferStart*(memBuf: MemoryBufferRef): cstring {.cdecl, importc: "LLVMGetBufferStart", dynlib: LLVMlib.}
 # proc getBufferSize*(memBuf: MemoryBufferRef): csize_t {.cdecl, importc: "LLVMGetBufferSize", dynlib: LLVMlib.}
