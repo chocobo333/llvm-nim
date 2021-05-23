@@ -1981,7 +1981,7 @@ proc newGlobal*(module: Module, typ: Type, name: string): GlobalVariable =
 #     ##  Parameters are indexed from 0.
 #     ##
 #     ##  @see llvm::Function::arg_begin()
-proc param(fn: Value, index: int): Value =
+proc param*(fn: Value, index: int): Value =
     newValue[Value](getParam(fn.value, cuint index))
 
 # proc getParamParent*(inst: ValueRef): ValueRef {.cdecl, importc: 
