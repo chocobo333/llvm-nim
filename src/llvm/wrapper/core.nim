@@ -2564,6 +2564,14 @@ proc appendBasicBlock*(fn: FunctionValue, name: string, cxt: Context = nil): Bas
 # ##  llvm::PHINode instances.
 # proc addIncoming*(phiNode: ValueRef; incomingValues: ptr ValueRef;incomingBlocks: ptr BasicBlockRef; count: cuint) {.cdecl, importc: "LLVMAddIncoming", dynlib: LLVMlib.}
 #     ##  Add an incoming value to the end of a PHI list.
+proc addIncoming*(phiNode: Value; vb: openarray[(Value, BasicBlock)]) =
+    ##  Add an incoming value to the end of a PHI list.
+    var
+        vals = vb.mapIt(it[0].value)
+        bs = vb.mapIt(it[1].bb)
+        vadr = if vals.len > 0: vals[0].addr else: nil
+        badr = if bs.len > 0: bs[0].addr else: nil
+    phiNode.value.addIncoming(vadr, badr, cuint vals.len)
 
 # proc countIncoming*(phiNode: ValueRef): cuint {.cdecl, importc: "LLVMCountIncoming", dynlib: LLVMlib.}
 #     ##  Obtain the number of incoming basic blocks to a PHI node.
