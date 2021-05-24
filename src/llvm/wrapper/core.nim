@@ -1981,7 +1981,7 @@ proc newGlobal*(module: Module, typ: Type, name: string): GlobalVariable =
 #     ##  Parameters are indexed from 0.
 #     ##
 #     ##  @see llvm::Function::arg_begin()
-proc param*(fn: Value, index: int): Value =
+proc param*(fn: FunctionValue, index: int): Value =
     newValue[Value](getParam(fn.value, cuint index))
 
 # proc getParamParent*(inst: ValueRef): ValueRef {.cdecl, importc: 
@@ -2665,6 +2665,8 @@ proc ret*(self: Builder, val: Value): Instruction {.discardable.} =
 
 # proc buildAggregateRet*(a1: BuilderRef; retVals: ptr ValueRef;n: cuint): ValueRef {. cdecl, importc: "LLVMBuildAggregateRet", dynlib: LLVMlib.}
 # proc buildBr*(a1: BuilderRef; dest: BasicBlockRef): ValueRef {.cdecl, importc: "LLVMBuildBr", dynlib: LLVMlib.}
+proc br*(self: Builder, dest: BasicBlock): Instruction {.discardable.} =
+    newValue[Instruction](self.builder.buildBr(dest.bb))
 # proc buildCondBr*(a1: BuilderRef; `if`: ValueRef; then: BasicBlockRef;`else`: BasicBlockRef): ValueRef {.cdecl, importc: "LLVMBuildCondBr", dynlib: LLVMlib.}
 # proc buildSwitch*(a1: BuilderRef; v: ValueRef; `else`: BasicBlockRef;numCases: cuint): ValueRef {. cdecl, importc: "LLVMBuildSwitch", dynlib: LLVMlib.}
 # proc buildIndirectBr*(b: BuilderRef; `addr`: ValueRef;numDests: cuint): ValueRef {. cdecl, importc: "LLVMBuildIndirectBr", dynlib: LLVMlib.}
@@ -2885,6 +2887,9 @@ proc zext*(self: Builder, val: Value, destTy: IntegerType, name: string = ""): I
 
 # proc buildPhi*(a1: BuilderRef; ty: TypeRef; name: cstring): ValueRef {.cdecl, importc: "LLVMBuildPhi", dynlib: LLVMlib.}
 #     ##  Miscellaneous instructions
+proc phi*(self: Builder; ty: Type; name: string): Instruction =
+    newValue[Instruction](self.builder.buildPhi(ty.typ, name))
+
 
 # proc buildCall*(a1: BuilderRef; fn: ValueRef; args: ptr ValueRef; numArgs: cuint;name: cstring): ValueRef {.cdecl, importc: "LLVMBuildCall", dynlib: LLVMlib.}
 #     ##  LLVMBuildCall is deprecated in favor of LLVMBuildCall2, in preparation for
