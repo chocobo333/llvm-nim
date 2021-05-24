@@ -344,6 +344,8 @@ export
     MetadataType,
     X86MMXType,
     TokenType
+export
+    FunctionValue
 
 
 # REGION: Kinds
