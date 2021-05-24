@@ -2883,6 +2883,8 @@ proc zext*(self: Builder, val: Value, destTy: IntegerType, name: string = ""): I
 
 # ##  Comparisons
 # proc buildICmp*(a1: BuilderRef; op: IntPredicate; lhs: ValueRef; rhs: ValueRef;name: cstring): ValueRef {.cdecl, importc: "LLVMBuildICmp", dynlib: LLVMlib.}
+proc isTrue*(self: Builder, val: Value, name: string = ""): Instruction =
+    newValue[Instruction](self.builder.buildICmp(IntNE, val.value, int1Type().constInt(0, false), name))
 # proc buildFCmp*(a1: BuilderRef; op: RealPredicate; lhs: ValueRef; rhs: ValueRef;name: cstring): ValueRef {.cdecl, importc: "LLVMBuildFCmp", dynlib: LLVMlib.}
 
 # proc buildPhi*(a1: BuilderRef; ty: TypeRef; name: cstring): ValueRef {.cdecl, importc: "LLVMBuildPhi", dynlib: LLVMlib.}
