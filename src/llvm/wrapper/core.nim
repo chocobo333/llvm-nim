@@ -2668,6 +2668,8 @@ proc ret*(self: Builder, val: Value): Instruction {.discardable.} =
 proc br*(self: Builder, dest: BasicBlock): Instruction {.discardable.} =
     newValue[Instruction](self.builder.buildBr(dest.bb))
 # proc buildCondBr*(a1: BuilderRef; `if`: ValueRef; then: BasicBlockRef;`else`: BasicBlockRef): ValueRef {.cdecl, importc: "LLVMBuildCondBr", dynlib: LLVMlib.}
+proc condBr*(self: Builder; `if`: Value; then: BasicBlock;`else`: BasicBlock): Instruction =
+    newValue[Instruction](self.builder.buildCondBr(`if`.value, then.bb, `else`.bb))
 # proc buildSwitch*(a1: BuilderRef; v: ValueRef; `else`: BasicBlockRef;numCases: cuint): ValueRef {. cdecl, importc: "LLVMBuildSwitch", dynlib: LLVMlib.}
 # proc buildIndirectBr*(b: BuilderRef; `addr`: ValueRef;numDests: cuint): ValueRef {. cdecl, importc: "LLVMBuildIndirectBr", dynlib: LLVMlib.}
 
