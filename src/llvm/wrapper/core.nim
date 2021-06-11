@@ -1087,7 +1087,7 @@ proc createStruct*(cxt: Context, name: string): StructType =
 #     ##  Set the contents of a structure type.
 #     ##
 #     ##  @see llvm::StructType::setBody()
-proc `body=`*(struct: StructType, elementTypes: openArray[Type], packed: bool) =
+proc `body=`*(struct: Type, elementTypes: openArray[Type], packed: bool) =
     var
         s = elementTypes.map(proc(a: Type): TypeRef = a.typ)
         adr = if s.len > 0: s[0].addr else: nil
