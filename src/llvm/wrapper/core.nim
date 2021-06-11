@@ -1627,6 +1627,12 @@ proc constStruct*(cxt: Context, constantVals: openArray[Value], packed: bool = f
 #     ##  Create a non-anonymous ConstantStruct from values.
 #     ##
 #     ##  @see llvm::ConstantStruct::get()
+proc constStruct*(structType: Type, constantVals: openArray[Value]): Value =
+    var
+        s = constantVals.map(proc(a: Value): ValueRef = a.value)
+        adr = if s.len > 0: s[0].addr else: nil
+        l = cuint s.len
+    newValue[Value](constNamedStruct(structType.typ, adr, l))
 
 # proc getElementAsConstant*(c: ValueRef; idx: cuint): ValueRef {.cdecl, importc: "LLVMGetElementAsConstant", dynlib: LLVMlib.}
 #     ##  Get an element at specified index as a constant.
