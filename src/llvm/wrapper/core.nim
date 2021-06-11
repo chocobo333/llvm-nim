@@ -1679,6 +1679,12 @@ proc constStruct*(cxt: Context, constantVals: openArray[Value], packed: bool = f
 # proc constLShr*(lHSConstant: ValueRef; rHSConstant: ValueRef): ValueRef {.cdecl, importc: "LLVMConstLShr", dynlib: LLVMlib.}
 # proc constAShr*(lHSConstant: ValueRef; rHSConstant: ValueRef): ValueRef {.cdecl, importc: "LLVMConstAShr", dynlib: LLVMlib.}
 # proc constGEP*(constantVal: ValueRef; constantIndices: ptr ValueRef;numIndices: cuint): ValueRef {. cdecl, importc: "LLVMConstGEP", dynlib: LLVMlib.}
+proc constGep*(constantVal: Value, constantIndices: openArray[Value], numIndices: cuint): Value =
+    var
+        s = constantIndices.map(proc(a: Value): ValueRef = a.value)
+        adr = if s.len > 0: s[0].addr else: nil
+        l = cuint s.len
+    newValue[Value](constGEP(constantVal.value, adr, l))
 # proc constGEP2*(ty: TypeRef; constantVal: ValueRef; constantIndices: ptr ValueRef;numIndices: cuint): ValueRef {.cdecl, importc: "LLVMConstGEP2", dynlib: LLVMlib.}
 # proc constInBoundsGEP*(constantVal: ValueRef; constantIndices: ptr ValueRef;numIndices: cuint): ValueRef {.cdecl, importc: "LLVMConstInBoundsGEP", dynlib: LLVMlib.}
 # proc constInBoundsGEP2*(ty: TypeRef; constantVal: ValueRef;constantIndices: ptr ValueRef;numIndices: cuint): ValueRef {. cdecl, importc: "LLVMConstInBoundsGEP2", dynlib: LLVMlib.}
