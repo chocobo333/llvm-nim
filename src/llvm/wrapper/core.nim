@@ -1833,7 +1833,11 @@ proc `initializer=`*(globalVar: Value, constantVal: Value) =
 # proc isThreadLocal*(globalVar: ValueRef): Bool {.cdecl, importc: "LLVMIsThreadLocal", dynlib: LLVMlib.}
 # proc setThreadLocal*(globalVar: ValueRef; isThreadLocal: Bool) {.cdecl, importc: "LLVMSetThreadLocal", dynlib: LLVMlib.}
 # proc isGlobalConstant*(globalVar: ValueRef): Bool {.cdecl, importc: "LLVMIsGlobalConstant", dynlib: LLVMlib.}
+proc constant*(globalVar: Value): bool =
+    isGlobalConstant(globalVar.value)
 # proc setGlobalConstant*(globalVar: ValueRef; isConstant: Bool) {.cdecl, importc: "LLVMSetGlobalConstant", dynlib: LLVMlib.}
+proc `constant=`*(globalVar: Value, isConstant: bool) =
+    setGlobalConstant(globalVar.value, isConstant)
 # proc getThreadLocalMode*(globalVar: ValueRef): ThreadLocalMode {.cdecl, importc: "LLVMGetThreadLocalMode", dynlib: LLVMlib.}
 # proc setThreadLocalMode*(globalVar: ValueRef; mode: ThreadLocalMode) {.cdecl, importc: "LLVMSetThreadLocalMode", dynlib: LLVMlib.}
 # proc isExternallyInitialized*(globalVar: ValueRef): Bool {.cdecl, importc: "LLVMIsExternallyInitialized", dynlib: LLVMlib.}
