@@ -1578,7 +1578,7 @@ proc constReal*(typ: Type, n: BiggestFloat): Value =
 #     ##
 #     ##  @see llvm::ConstantDataArray::getString()
 proc constString*(cxt: Context, str: string): Value =
-    newValue[Value](constStringInContext(cxt.context, str, cuint str.len, false))
+    newValue[Value](constStringInContext(cxt.context, str, cuint str.len, true))
 
 # proc constString*(str: cstring; length: cuint;dontNullTerminate: Bool): ValueRef {. cdecl, importc: "LLVMConstString", dynlib: LLVMlib.}
 #     ##  Create a ConstantDataSequential with string content in the global context.
