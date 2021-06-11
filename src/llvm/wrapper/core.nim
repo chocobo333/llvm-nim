@@ -1171,6 +1171,8 @@ proc `body=`*(struct: Type, elementTypes: openArray[Type], packed: bool = false)
 #     ##  exists in.
 #     ##
 #     ##  @see llvm::PointerType::get()
+proc pointerType*(elementType: Type, addressSpace: int = 0): PointerType =
+    newType[PointerType](pointerType(elementType.typ, cuint addressSpace))
 
 # proc getPointerAddressSpace*(pointerTy: TypeRef): cuint {.cdecl, importc: "LLVMGetPointerAddressSpace", dynlib: LLVMlib.}
 #     ##  Obtain the address space of a pointer type.
