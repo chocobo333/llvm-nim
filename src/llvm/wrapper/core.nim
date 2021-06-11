@@ -1601,6 +1601,12 @@ proc constReal*(typ: Type, n: BiggestFloat): Value =
 #     ##  Create an anonymous ConstantStruct with the specified values.
 #     ##
 #     ##  @see llvm::ConstantStruct::getAnon()
+proc constStruct*(cxt: Context, constantVals: openArray[Value], packed: bool = false): Value =
+    var
+        s = constantVals.map(proc(a: Value): ValueRef = a.value)
+        adr = if s.len > 0: s[0].addr else: nil
+        l = cuint s.len
+    newValue[Value](constStructInContext(cxt.context, adr, l, packed))
 
 # proc constStruct*(constantVals: ptr ValueRef; count: cuint;packed: Bool): ValueRef {. cdecl, importc: "LLVMConstStruct", dynlib: LLVMlib.}
 #     ##  Create a ConstantStruct in the global Context.
