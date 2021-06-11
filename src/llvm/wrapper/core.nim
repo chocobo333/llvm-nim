@@ -1828,6 +1828,8 @@ proc newGlobal*(module: Module, typ: Type, name: string): GlobalVariable =
 # proc deleteGlobal*(globalVar: ValueRef) {.cdecl, importc: "LLVMDeleteGlobal", dynlib: LLVMlib.}
 # proc getInitializer*(globalVar: ValueRef): ValueRef {.cdecl, importc: "LLVMGetInitializer", dynlib: LLVMlib.}
 # proc setInitializer*(globalVar: ValueRef; constantVal: ValueRef) {.cdecl, importc: "LLVMSetInitializer", dynlib: LLVMlib.}
+proc `initializer=`*(globalVar: Value, constantVal: Value) =
+    setInitializer(globalVar.value, constantVal.value)
 # proc isThreadLocal*(globalVar: ValueRef): Bool {.cdecl, importc: "LLVMIsThreadLocal", dynlib: LLVMlib.}
 # proc setThreadLocal*(globalVar: ValueRef; isThreadLocal: Bool) {.cdecl, importc: "LLVMSetThreadLocal", dynlib: LLVMlib.}
 # proc isGlobalConstant*(globalVar: ValueRef): Bool {.cdecl, importc: "LLVMIsGlobalConstant", dynlib: LLVMlib.}
