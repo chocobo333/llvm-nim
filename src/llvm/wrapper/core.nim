@@ -1075,6 +1075,8 @@ proc functionType*(retTy: Type, paramTypes: openArray[Type], isVarArg: bool = fa
 # ##  Create an empty structure in a context having a specified name.
 # ##
 # ##  @see llvm::StructType::create()
+proc createStruct*(cxt: Context, name: string): StructType =
+    newType[StructType](structCreateNamed(cxt.context, name))
 
 # proc getStructName*(ty: TypeRef): cstring {.cdecl, importc: "LLVMGetStructName", dynlib: LLVMlib.}
 #     ##  Obtain the name of a structure.
@@ -1085,6 +1087,12 @@ proc functionType*(retTy: Type, paramTypes: openArray[Type], isVarArg: bool = fa
 #     ##  Set the contents of a structure type.
 #     ##
 #     ##  @see llvm::StructType::setBody()
+proc `body=`*(struct: StructType, elementTypes: openArray[Type], packed: bool) =
+    var
+        s = elementTypes.map(proc(a: Type): TypeRef = a.typ)
+        adr = if s.len > 0: s[0].addr else: nil
+        l = cuint s.len
+    structSetBody(struct.typ, adr, l, packed)
 
 # proc countStructElementTypes*(structTy: TypeRef): cuint {.cdecl, importc: "LLVMCountStructElementTypes", dynlib: LLVMlib.}
 #     ##  Get the number of elements defined inside the structure.
