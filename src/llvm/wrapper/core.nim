@@ -2979,6 +2979,10 @@ proc call2*(self: Builder, rtype: Type, fn: Value, args: openArray[Value], name:
 # proc buildShuffleVector*(a1: BuilderRef; v1: ValueRef; v2: ValueRef; mask: ValueRef;name: cstring): ValueRef {.cdecl, importc: "LLVMBuildShuffleVector", dynlib: LLVMlib.}
 # proc buildExtractValue*(a1: BuilderRef; aggVal: ValueRef; index: cuint;name: cstring): ValueRef {. cdecl, importc: "LLVMBuildExtractValue", dynlib: LLVMlib.}
 # proc buildInsertValue*(a1: BuilderRef; aggVal: ValueRef; eltVal: ValueRef;index: cuint; name: cstring): ValueRef {.cdecl, importc: "LLVMBuildInsertValue", dynlib: LLVMlib.}
+proc insertvalue*(self: Builder, aggVal: Value, eltVal: Value, index: int, name: string = ""): Instruction =
+    ##  Wrapping:
+    ##  * `buildInsertValue(BuilderRef, ValueRef, ValueRef, cuint, cstring)<../llvm/Core.html#buildInsertValue,BuilderRef,ValueRef,ValueRef,cuint,cstring>`_
+    newValue[Instruction](self.builder.buildInsertValue(aggVal.value, eltVal.value, cuint index, name))
 # proc buildFreeze*(a1: BuilderRef; val: ValueRef; name: cstring): ValueRef {.cdecl, importc: "LLVMBuildFreeze", dynlib: LLVMlib.}
 # proc buildIsNull*(a1: BuilderRef; val: ValueRef; name: cstring): ValueRef {.cdecl, importc: "LLVMBuildIsNull", dynlib: LLVMlib.}
 # proc buildIsNotNull*(a1: BuilderRef; val: ValueRef; name: cstring): ValueRef {.cdecl, importc: "LLVMBuildIsNotNull", dynlib: LLVMlib.}
