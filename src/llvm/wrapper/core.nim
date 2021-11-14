@@ -1065,7 +1065,7 @@ proc createStruct*(cxt: Context, elementTypes: openArray[Type], packed: bool = f
     ##  whether these can be packed together.
     ## 
     ##  Wrapping:
-    ##  * `structTypeInContext(cxt: Context, elementTypes: openArray[Type], packed: bool)`<../llvm/Core.html#structTypeInContext,ContextRef,ptr.TypeRef,cuint,Bool>`_
+    ##  * `structTypeInContext(cxt: Context, elementTypes: openArray[Type], packed: bool)<../llvm/Core.html#structTypeInContext,ContextRef,ptr.TypeRef,cuint,Bool>`_
     var
         s = elementTypes.map(proc(a: Type): TypeRef = a.typ)
         adr = if s.len > 0: s[0].addr else: nil
@@ -1080,7 +1080,7 @@ proc createStruct*(cxt: Context, name: string): StructType =
     ##  Create an empty structure in a context having a specified name.
     ## 
     ##  Wrapping:
-    ##  * `structCreateNamed(c: ContextRef; name: cstring)`<../llvm/Core.html#createStruct,ContextRef,cstring>`_
+    ##  * `structCreateNamed(c: ContextRef; name: cstring)<../llvm/Core.html#createStruct,ContextRef,cstring>`_
     newType[StructType](structCreateNamed(cxt.context, name))
 
 # proc getStructName*(ty: TypeRef): cstring {.cdecl, importc: "LLVMGetStructName", dynlib: LLVMlib.}
@@ -1487,6 +1487,12 @@ proc `$`*(self: Value): string =
 #     ##  Obtain a constant value referring to an undefined value of a type.
 #     ##
 #     ##  @see llvm::UndefValue::get()
+proc undef*(ty: Type): UndefValue =
+    ##  Obtain a constant value referring to an undefined value of a type.
+    ## 
+    ##  Wrapping:
+    ##  * `getUndef()<../llvm/Core.html#getUndef,TypeRef>`_
+    newValue[UndefValue](ty.typ.getUndef)
 
 # proc isNull*(val: ValueRef): Bool {.cdecl, importc: "LLVMIsNull", dynlib: LLVMlib.}
 #     ##  Determine whether a value instance is null.

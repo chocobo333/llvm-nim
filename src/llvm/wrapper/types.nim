@@ -188,7 +188,7 @@ type
     # ConstantArrayValueKind
     # ConstantStructValueKind
     # ConstantVectorValueKind
-    # UndefValueValueKind
+    UndefValue* = ref object of ValueObj
     # ConstantAggregateZeroValueKind
     # ConstantDataArrayValueKind
     # ConstantDataVectorValueKind
