@@ -2978,7 +2978,10 @@ proc call2*(self: Builder, rtype: Type, fn: Value, args: openArray[Value], name:
 # proc buildInsertElement*(a1: BuilderRef; vecVal: ValueRef; eltVal: ValueRef;index: ValueRef; name: cstring): ValueRef {.cdecl, importc: "LLVMBuildInsertElement", dynlib: LLVMlib.}
 # proc buildShuffleVector*(a1: BuilderRef; v1: ValueRef; v2: ValueRef; mask: ValueRef;name: cstring): ValueRef {.cdecl, importc: "LLVMBuildShuffleVector", dynlib: LLVMlib.}
 # proc buildExtractValue*(a1: BuilderRef; aggVal: ValueRef; index: cuint;name: cstring): ValueRef {. cdecl, importc: "LLVMBuildExtractValue", dynlib: LLVMlib.}
-# proc buildInsertValue*(a1: BuilderRef; aggVal: ValueRef; eltVal: ValueRef;index: cuint; name: cstring): ValueRef {.cdecl, importc: "LLVMBuildInsertValue", dynlib: LLVMlib.}
+proc extractvalue*(self: Builder, aggVal: Value, index: int, name: string = ""): Instruction =
+    ##  Wrapping:
+    ##  * `buildExtractValue(BuilderRef, ValueRef, cuint, cstring)<../llvm/Core.html#buildExtractValue,BuilderRef,ValueRef,cuint,cstring>`_
+    newValue[Instruction](self.builder.buildExtractValue(aggVal.value, cuint index, name))
 proc insertvalue*(self: Builder, aggVal: Value, eltVal: Value, index: int, name: string = ""): Instruction =
     ##  Wrapping:
     ##  * `buildInsertValue(BuilderRef, ValueRef, ValueRef, cuint, cstring)<../llvm/Core.html#buildInsertValue,BuilderRef,ValueRef,ValueRef,cuint,cstring>`_
