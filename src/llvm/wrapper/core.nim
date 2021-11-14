@@ -2927,6 +2927,12 @@ proc zext*(self: Builder, val: Value, destTy: IntegerType, name: string = ""): I
 # proc buildPtrToInt*(a1: BuilderRef; val: ValueRef; destTy: TypeRef;name: cstring): ValueRef {. cdecl, importc: "LLVMBuildPtrToInt", dynlib: LLVMlib.}
 # proc buildIntToPtr*(a1: BuilderRef; val: ValueRef; destTy: TypeRef;name: cstring): ValueRef {. cdecl, importc: "LLVMBuildIntToPtr", dynlib: LLVMlib.}
 # proc buildBitCast*(a1: BuilderRef; val: ValueRef; destTy: TypeRef;name: cstring): ValueRef {. cdecl, importc: "LLVMBuildBitCast", dynlib: LLVMlib.}
+proc bitcast*(self: Builder, val: Value, destTy: Type, name: string = ""): Instruction =
+    ##  Zero-extend integer value to integer type *destTy*.
+    ## 
+    ##  Wrapping:
+    ##  * `buildBitCast(BuilderRef, ValueRef, TypeRef, cstring)<../llvm/Core.html#buildBitCast,BuilderRef,ValueRef,TypeRef,cstring>`_
+    newValue[Instruction](buildBitCast(self.builder, val.value, destTy.typ, name))
 # proc buildAddrSpaceCast*(a1: BuilderRef; val: ValueRef; destTy: TypeRef;name: cstring): ValueRef {. cdecl, importc: "LLVMBuildAddrSpaceCast", dynlib: LLVMlib.}
 # proc buildZExtOrBitCast*(a1: BuilderRef; val: ValueRef; destTy: TypeRef;name: cstring): ValueRef {. cdecl, importc: "LLVMBuildZExtOrBitCast", dynlib: LLVMlib.}
 # proc buildSExtOrBitCast*(a1: BuilderRef; val: ValueRef; destTy: TypeRef;name: cstring): ValueRef {. cdecl, importc: "LLVMBuildSExtOrBitCast", dynlib: LLVMlib.}
