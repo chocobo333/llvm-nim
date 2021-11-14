@@ -1058,7 +1058,7 @@ proc functionType*(retTy: Type, paramTypes: openArray[Type], isVarArg: bool = fa
 # ##  These functions relate to LLVMTypeRef instances.
 # ##
 # ##  @see llvm::StructType
-proc createStruct*(cxt: Context, elementTypes: openArray[Type], packed: bool): StructType =
+proc createStruct*(cxt: Context, elementTypes: openArray[Type], packed: bool = false): StructType =
     ##  Create a new structure type in a context.
     ##
     ##  A structure is specified by a list of inner elements/types and
