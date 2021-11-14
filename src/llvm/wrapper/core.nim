@@ -1058,24 +1058,29 @@ proc functionType*(retTy: Type, paramTypes: openArray[Type], isVarArg: bool = fa
 # ##  These functions relate to LLVMTypeRef instances.
 # ##
 # ##  @see llvm::StructType
-# proc structTypeInContext*(c: ContextRef; elementTypes: ptr TypeRef;elementCount: cuint; packed: Bool): TypeRef {.cdecl, importc: "LLVMStructTypeInContext", dynlib: LLVMlib.}
-#     ##  Create a new structure type in a context.
-#     ##
-#     ##  A structure is specified by a list of inner elements/types and
-#     ##  whether these can be packed together.
-#     ##
-#     ##  @see llvm::StructType::create()
+proc createStruct*(cxt: Context, elementTypes: openArray[Type], packed: bool): StructType =
+    ##  Create a new structure type in a context.
+    ##
+    ##  A structure is specified by a list of inner elements/types and
+    ##  whether these can be packed together.
+    ## 
+    ##  Wrapping:
+    ##  * `structTypeInContext(cxt: Context, elementTypes: openArray[Type], packed: bool)`<../llvm/Core.html#structTypeInContext,ContextRef,ptr.TypeRef,cuint,Bool>`_
+    var
+        s = elementTypes.map(proc(a: Type): TypeRef = a.typ)
+        adr = if s.len > 0: s[0].addr else: nil
+    newType[StructType](structTypeInContext(cxt.context, adr, cuint s.len, packed))
 
 # proc structType*(elementTypes: ptr TypeRef; elementCount: cuint;packed: Bool): TypeRef {. cdecl, importc: "LLVMStructType", dynlib: LLVMlib.}
 #     ##  Create a new structure type in the global context.
 #     ##
 #     ##  @see llvm::StructType::create()
 
-# proc structCreateNamed*(c: ContextRef; name: cstring): TypeRef {.cdecl, importc: "LLVMStructCreateNamed", dynlib: LLVMlib.}
-# ##  Create an empty structure in a context having a specified name.
-# ##
-# ##  @see llvm::StructType::create()
 proc createStruct*(cxt: Context, name: string): StructType =
+    ##  Create an empty structure in a context having a specified name.
+    ## 
+    ##  Wrapping:
+    ##  * `structCreateNamed(c: ContextRef; name: cstring)`<../llvm/Core.html#createStruct,ContextRef,cstring>`_
     newType[StructType](structCreateNamed(cxt.context, name))
 
 # proc getStructName*(ty: TypeRef): cstring {.cdecl, importc: "LLVMGetStructName", dynlib: LLVMlib.}
