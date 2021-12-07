@@ -717,7 +717,10 @@ proc context*(self: Module): Context =
     ## 
     ##  Wrapping:
     ##  * `getModuleContext(ModuleRef)<../llvm/Core.html#getModuleContext,ModuleRef>`_
-    self.context
+    if self.context.isNil:
+        assert false
+    else:
+        self.context
 
 # proc getTypeByName*(m: ModuleRef; name: cstring): TypeRef {.cdecl, importc: "LLVMGetTypeByName", dynlib: LLVMlib.}
 #     ##  Obtain a Type from a module by its registered name.
