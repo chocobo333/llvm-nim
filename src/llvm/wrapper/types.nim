@@ -217,10 +217,8 @@ proc finalizer(self: Context) =
     ##  This should be called for every call to `newContext`() or memory
     ##  will be leaked.
     ##  but, will be automatically called by runtime gc.
-    if self.isNil:
-            return
-    elif self.context.isNil:
-            return
+    if self.isNil or self.context.isNil:
+        return
     self.context.contextDispose()
 
 proc finalizer(self: Module) =
@@ -229,11 +227,8 @@ proc finalizer(self: Module) =
     ##  This should be called for every call to `newModule`() or memory
     ##  will be leaked.
     ##  but, will be automatically called by runtime gc.
-    if self.isNil:
+    if self.isNil or self.module.isNil:
         return
-    elif self.module.isNil:
-        return
-
     self.module.disposeModule()
 
 proc finalizer(self: Builder) =
@@ -242,19 +237,19 @@ proc finalizer(self: Builder) =
     ##  This should be called for every call to `newModule`() or memory
     ##  will be leaked.
     ##  but, will be automatically called by runtime gc.
-    if self.isNil:
-        return
-    elif self.builder.isNil:
+    if self.isNil or self.builder.isNil:
         return
     self.builder.disposeBuilder()
 
 proc newContext*(cxt: ContextRef): Context =
-    new[ContextObj](result, finalizer)
+    # new[ContextObj](result, finalizer)
+    new[ContextObj](result)
     result.context = cxt
     
 proc newModule*(module: ModuleRef): Module =
     ## Helper
-    new(result, finalizer)
+    # new(result, finalizer)
+    new(result)
     result.module = module
     result.context = newContext(module.getModuleContext())
 
@@ -282,7 +277,8 @@ proc newBB*(bb: BasicBlockRef): BasicBlock =
     result.bb = bb
 
 proc newBuilder*(builder: BuilderRef): Builder =
-    new(result, finalizer)
+    # new(result, finalizer)
+    new(result)
     result.builder = builder
 
 
