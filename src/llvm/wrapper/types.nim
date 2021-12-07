@@ -217,8 +217,10 @@ proc finalizer(self: Context) =
     ##  This should be called for every call to `newContext`() or memory
     ##  will be leaked.
     ##  but, will be automatically called by runtime gc.
-    if self.isNil or self.context.isNil:
-        return
+    if self.isNil:
+            return
+    elif self.context.isNil:
+            return
     self.context.contextDispose()
 
 proc finalizer(self: Module) =
@@ -227,8 +229,11 @@ proc finalizer(self: Module) =
     ##  This should be called for every call to `newModule`() or memory
     ##  will be leaked.
     ##  but, will be automatically called by runtime gc.
-    if self.isNil or self.module.isNil:
+    if self.isNil:
         return
+    elif self.module.isNil:
+        return
+
     self.module.disposeModule()
 
 proc finalizer(self: Builder) =
@@ -237,7 +242,9 @@ proc finalizer(self: Builder) =
     ##  This should be called for every call to `newModule`() or memory
     ##  will be leaked.
     ##  but, will be automatically called by runtime gc.
-    if self.isNil or self.builder.isNil:
+    if self.isNil:
+        return
+    elif self.builder.isNil:
         return
     self.builder.disposeBuilder()
 
