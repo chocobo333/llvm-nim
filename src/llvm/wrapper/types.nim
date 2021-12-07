@@ -273,11 +273,13 @@ proc newType*[T: Ty](typ: TypeRef): T =
 
 proc newValue*[T: Val](value: ValueRef): T =
     ## Helper
-    if value.isNil:
+    if value == nil:
         assert false
-    new(result)
-    result.value = value
-    result.kind = value.getValueKind()
+    else:
+        # new(result)
+        # result.value = value
+        # result.kind = value.getValueKind()
+        return T(value: value, kind: value.getValueKind())
 
 proc newBB*(bb: BasicBlockRef): BasicBlock =
     ## Helper
