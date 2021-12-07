@@ -520,7 +520,7 @@ proc globalContext*(): Context =
 
 # REGION: Module
 
-proc newModule*(name: string, cxt: Context = nil): Module =
+proc newModule*(name: string): Module =
     ##  Create a new, empty module in a specific context.
     ##
     ##  If `cxt` is **nil**, created module consists in the global cnotext.
@@ -531,10 +531,20 @@ proc newModule*(name: string, cxt: Context = nil): Module =
     ##  * `moduleCreateWithName(cstring)<../llvm/Core.html#moduleCreateWithName,cstring>`_
     ##  * `moduleCreateWithNameInContext(cstring, ContextRef)<../llvm/Core.html#moduleCreateWithNameInContext,cstring,ContextRef>`_
     result = newModule(
-        if cxt.isNil:
-            moduleCreateWithName(name)
-        else:
-            moduleCreateWithNameInContext(name, cxt.context)
+        moduleCreateWithName(name)
+    )
+proc newModule*(name: string, cxt: Context): Module =
+    ##  Create a new, empty module in a specific context.
+    ##
+    ##  If `cxt` is **nil**, created module consists in the global cnotext.
+    ##
+    ##  This is equivalent to calling ``newModule(name, getGlobalContext())``
+    ##
+    ##  Wrapping:
+    ##  * `moduleCreateWithName(cstring)<../llvm/Core.html#moduleCreateWithName,cstring>`_
+    ##  * `moduleCreateWithNameInContext(cstring, ContextRef)<../llvm/Core.html#moduleCreateWithNameInContext,cstring,ContextRef>`_
+    result = newModule(
+        moduleCreateWithNameInContext(name, cxt.context)
     )
 
 proc clone*(self: Module): Module =
