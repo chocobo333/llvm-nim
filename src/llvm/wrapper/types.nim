@@ -93,14 +93,14 @@ type
 # REGION: TypeDefs
 
 type
-    Context* = ref ContextObj
+    Context* = ref ContextObj not nil
         ##  The top-level container for all LLVM global data. See the LLVMContext class.
         ## 
         ##  See also:
         ##  * `newContext()<#newContext>`_
         ##  * `globalContext()<#globalContext>`_
 
-    Module* = ref ModuleObj
+    Module* = ref ModuleObj not nil
         ##  Modules represent the top-level structure in an LLVM program. An LLVM
         ##  module is effectively a translation unit or a collection of
         ##  translation units merged together.
@@ -109,7 +109,7 @@ type
         ##  * `newModule(string, Context) <#newModule,string,Context>`_
         ##  * `newModule(Module) <#newModule,Module>`_
 
-    Type* = ref TypeObj
+    Type* = ref TypeObj not nil
         ##  Each value in the LLVM IR has a type, an LLVMTypeRef.
         ## 
         ##  Types represent the type of a value.
@@ -159,7 +159,7 @@ type
     X86MMXType* = ref object of TypeObj
     TokenType* = ref object of TypeObj
 
-    Value* = ref ValueObj
+    Value* = ref ValueObj not nil
         ##  Represents an individual value in LLVM IR.
         ## 
         ##  The bulk of LLVM's object model consists of values, which comprise a very
@@ -202,7 +202,7 @@ type
     # InlineAsmValueKind
     Instruction* = ref object of ValueObj
     
-    BasicBlock* = ref BasicBlockObj
+    BasicBlock* = ref BasicBlockObj not nil
         ##  A basic block represents a single entry single exit section of code.
         ##  Basic blocks contain a list of instructions which form the body of
         ##  the block.
@@ -211,7 +211,7 @@ type
         ##
         ##  Basic blocks are themselves values. However, the C API models them as
         ##  LLVMBasicBlockRef.
-    Builder* = ref BuilderObj
+    Builder* = ref BuilderObj not nil
 
 proc finalizer(self: Context) =
     ##  Finalizer a `Context` instance.
