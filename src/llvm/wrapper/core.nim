@@ -20,13 +20,6 @@ import types
 import sequtils
 
 
-proc proveNotNil[T](self: T): T {.inline.} =
-    if self == nil:
-        assert false
-    else:
-        return self
-
-
 # type ##  Terminator Instructions
 #     ## *
 #     ##  Emits an error if two values disagree, otherwise the resulting value is
@@ -527,7 +520,7 @@ proc globalContext*(): Context =
 
 # REGION: Module
 
-proc newModule*(name: string): Module =
+proc newModule*(name: string, cxt: Context = nil): Module =
     ##  Create a new, empty module in a specific context.
     ##
     ##  If `cxt` is **nil**, created module consists in the global cnotext.
@@ -538,20 +531,10 @@ proc newModule*(name: string): Module =
     ##  * `moduleCreateWithName(cstring)<../llvm/Core.html#moduleCreateWithName,cstring>`_
     ##  * `moduleCreateWithNameInContext(cstring, ContextRef)<../llvm/Core.html#moduleCreateWithNameInContext,cstring,ContextRef>`_
     result = newModule(
-        moduleCreateWithName(name)
-    )
-proc newModule*(name: string, cxt: Context): Module =
-    ##  Create a new, empty module in a specific context.
-    ##
-    ##  If `cxt` is **nil**, created module consists in the global cnotext.
-    ##
-    ##  This is equivalent to calling ``newModule(name, getGlobalContext())``
-    ##
-    ##  Wrapping:
-    ##  * `moduleCreateWithName(cstring)<../llvm/Core.html#moduleCreateWithName,cstring>`_
-    ##  * `moduleCreateWithNameInContext(cstring, ContextRef)<../llvm/Core.html#moduleCreateWithNameInContext,cstring,ContextRef>`_
-    result = newModule(
-        moduleCreateWithNameInContext(name, cxt.context)
+        if cxt.isNil:
+            moduleCreateWithName(name)
+        else:
+            moduleCreateWithNameInContext(name, cxt.context)
     )
 
 proc clone*(self: Module): Module =
@@ -724,10 +707,7 @@ proc context*(self: Module): Context =
     ## 
     ##  Wrapping:
     ##  * `getModuleContext(ModuleRef)<../llvm/Core.html#getModuleContext,ModuleRef>`_
-    if self.context == nil:
-        assert false
-    else:
-        return self.context
+    self.context
 
 # proc getTypeByName*(m: ModuleRef; name: cstring): TypeRef {.cdecl, importc: "LLVMGetTypeByName", dynlib: LLVMlib.}
 #     ##  Obtain a Type from a module by its registered name.
@@ -2308,7 +2288,7 @@ proc newBasicBlock*(cxt: Context, name: string = ""): BasicBlock =
     newBB(cxt.context.createBasicBlockInContext(name))
 
 
-proc appendBasicBlock*(fn: FunctionValue, name: string, cxt: Context): BasicBlock =
+proc appendBasicBlock*(fn: FunctionValue, name: string, cxt: Context = nil): BasicBlock =
     ##  Append a basic block to the end of a function using a specific context.
     ##  If `cxt` is **nil**, using the global context.
     ## 
@@ -2662,7 +2642,7 @@ proc addIncoming*(phiNode: Value; vb: openarray[(Value, BasicBlock)]) =
 
 
 # REGION: Builder
-proc newBuilder*(): Builder =
+proc newBuilder*(cxt: Context = nil): Builder =
     ##  An instruction builder represents a point within a basic block and is
     ##  the exclusive means of building instructions using the C interface.
     ## 
@@ -2670,17 +2650,10 @@ proc newBuilder*(): Builder =
     ##  * `createBuilderInContext(ContextRef)<../llvm/Core.html#createBuilderInContext,ContextRef>`_
     ##  * `createBuilder()<../llvm/Core.html#createBuilder>`_
     newBuilder(
-        createBuilder()
-    )
-proc newBuilder*(cxt: Context): Builder =
-    ##  An instruction builder represents a point within a basic block and is
-    ##  the exclusive means of building instructions using the C interface.
-    ## 
-    ##  Wrapping:
-    ##  * `createBuilderInContext(ContextRef)<../llvm/Core.html#createBuilderInContext,ContextRef>`_
-    ##  * `createBuilder()<../llvm/Core.html#createBuilder>`_
-    newBuilder(
-        createBuilderInContext(cxt.context)
+        if cxt.isNil:
+            createBuilder()
+        else:
+            createBuilderInContext(cxt.context)
     )
 
 # proc positionBuilder*(builder: BuilderRef; `block`: BasicBlockRef;instr: ValueRef) {. cdecl, importc: "LLVMPositionBuilder", dynlib: LLVMlib.}
@@ -2995,11 +2968,7 @@ proc call*(self: Builder, fn: Value, args: openArray[Value], name: string = ""):
     var
         s = args.map(proc(a: Value): ValueRef = a.value)
         adr = if s.len > 0: s[0].addr else: nil
-        r = newValue[Instruction](self.builder.buildCall(fn.value, adr, cuint s.len, name))
-    if r == nil:
-        assert false:
-    else:
-        return r
+    newValue[Instruction](self.builder.buildCall(fn.value, adr, cuint s.len, name))
 
 proc call2*(self: Builder, rtype: Type, fn: Value, args: openArray[Value], name: string = ""): Value =
     ##  Wrapping:
@@ -3007,11 +2976,7 @@ proc call2*(self: Builder, rtype: Type, fn: Value, args: openArray[Value], name:
     var
         s = args.map(proc(a: Value): ValueRef = a.value)
         adr = if s.len > 0: s[0].addr else: nil
-        r = newValue[Instruction](self.builder.buildCall2(rtype.typ, fn.value, adr, cuint s.len, name))
-    if r == nil:
-        assert false:
-    else:
-        return r
+    newValue[Instruction](self.builder.buildCall2(rtype.typ, fn.value, adr, cuint s.len, name))
 
 # proc buildSelect*(a1: BuilderRef; `if`: ValueRef; then: ValueRef; `else`: ValueRef;name: cstring): ValueRef {.cdecl, importc: "LLVMBuildSelect", dynlib: LLVMlib.}
 # proc buildVAArg*(a1: BuilderRef; list: ValueRef; ty: TypeRef;name: cstring): ValueRef {. cdecl, importc: "LLVMBuildVAArg", dynlib: LLVMlib.}

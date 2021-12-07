@@ -4,8 +4,6 @@
 
 import ../raw
 
-{.experimental: "notnil".}
-
 
 type
     ContextObj* = object
@@ -93,14 +91,14 @@ type
 # REGION: TypeDefs
 
 type
-    Context* = ref ContextObj not nil
+    Context* = ref ContextObj
         ##  The top-level container for all LLVM global data. See the LLVMContext class.
         ## 
         ##  See also:
         ##  * `newContext()<#newContext>`_
         ##  * `globalContext()<#globalContext>`_
 
-    Module* = ref ModuleObj not nil
+    Module* = ref ModuleObj
         ##  Modules represent the top-level structure in an LLVM program. An LLVM
         ##  module is effectively a translation unit or a collection of
         ##  translation units merged together.
@@ -109,7 +107,7 @@ type
         ##  * `newModule(string, Context) <#newModule,string,Context>`_
         ##  * `newModule(Module) <#newModule,Module>`_
 
-    Type* = ref TypeObj not nil
+    Type* = ref TypeObj
         ##  Each value in the LLVM IR has a type, an LLVMTypeRef.
         ## 
         ##  Types represent the type of a value.
@@ -159,7 +157,7 @@ type
     X86MMXType* = ref object of TypeObj
     TokenType* = ref object of TypeObj
 
-    Value* = ref ValueObj not nil
+    Value* = ref ValueObj
         ##  Represents an individual value in LLVM IR.
         ## 
         ##  The bulk of LLVM's object model consists of values, which comprise a very
@@ -202,7 +200,7 @@ type
     # InlineAsmValueKind
     Instruction* = ref object of ValueObj
     
-    BasicBlock* = ref BasicBlockObj not nil
+    BasicBlock* = ref BasicBlockObj
         ##  A basic block represents a single entry single exit section of code.
         ##  Basic blocks contain a list of instructions which form the body of
         ##  the block.
@@ -211,7 +209,7 @@ type
         ##
         ##  Basic blocks are themselves values. However, the C API models them as
         ##  LLVMBasicBlockRef.
-    Builder* = ref BuilderObj not nil
+    Builder* = ref BuilderObj
 
 proc finalizer(self: Context) =
     ##  Finalizer a `Context` instance.
@@ -244,15 +242,11 @@ proc finalizer(self: Builder) =
     self.builder.disposeBuilder()
 
 proc newContext*(cxt: ContextRef): Context =
-    if cxt.isNil:
-        assert false
     new[ContextObj](result, finalizer)
     result.context = cxt
     
 proc newModule*(module: ModuleRef): Module =
     ## Helper
-    if module.isNil:
-        assert false
     new(result, finalizer)
     result.module = module
     result.context = newContext(module.getModuleContext())
@@ -265,32 +259,22 @@ type
 
 proc newType*[T: Ty](typ: TypeRef): T =
     ## Helper
-    if typ.isNil:
-        assert false
     new(result)
     result.typ = typ
     result.kind = typ.getTypeKind()
 
 proc newValue*[T: Val](value: ValueRef): T =
     ## Helper
-    if value == nil:
-        assert false
-    else:
-        # new(result)
-        # result.value = value
-        # result.kind = value.getValueKind()
-        return T(value: value, kind: value.getValueKind())
+    new(result)
+    result.value = value
+    result.kind = value.getValueKind()
 
 proc newBB*(bb: BasicBlockRef): BasicBlock =
     ## Helper
-    if bb.isNil:
-        assert false
     new(result)
     result.bb = bb
 
 proc newBuilder*(builder: BuilderRef): Builder =
-    if builder.isNil:
-        assert false
     new(result, finalizer)
     result.builder = builder
 
