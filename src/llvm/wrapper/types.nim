@@ -4,6 +4,8 @@
 
 import ../raw
 
+{.experimental: "notnil".}
+
 
 type
     ContextObj* = object
@@ -217,7 +219,7 @@ proc finalizer(self: Context) =
     ##  This should be called for every call to `newContext`() or memory
     ##  will be leaked.
     ##  but, will be automatically called by runtime gc.
-    if self.context.isNil:
+    if self.isNil or self.context.isNil:
         return
     self.context.contextDispose()
 
@@ -227,7 +229,7 @@ proc finalizer(self: Module) =
     ##  This should be called for every call to `newModule`() or memory
     ##  will be leaked.
     ##  but, will be automatically called by runtime gc.
-    if self.module.isNil:
+    if self.isNil or self.module.isNil:
         return
     self.module.disposeModule()
 
@@ -237,16 +239,20 @@ proc finalizer(self: Builder) =
     ##  This should be called for every call to `newModule`() or memory
     ##  will be leaked.
     ##  but, will be automatically called by runtime gc.
-    if self.builder.isNil:
+    if self.isNil or self.builder.isNil:
         return
     self.builder.disposeBuilder()
 
 proc newContext*(cxt: ContextRef): Context =
+    if cxt.isNil:
+        assert false
     new[ContextObj](result, finalizer)
     result.context = cxt
     
 proc newModule*(module: ModuleRef): Module =
     ## Helper
+    if module.isNil:
+        assert false
     new(result, finalizer)
     result.module = module
     result.context = newContext(module.getModuleContext())
@@ -259,22 +265,30 @@ type
 
 proc newType*[T: Ty](typ: TypeRef): T =
     ## Helper
+    if typ.isNil:
+        assert false
     new(result)
     result.typ = typ
     result.kind = typ.getTypeKind()
 
 proc newValue*[T: Val](value: ValueRef): T =
     ## Helper
+    if value.isNil:
+        assert false
     new(result)
     result.value = value
     result.kind = value.getValueKind()
 
 proc newBB*(bb: BasicBlockRef): BasicBlock =
     ## Helper
+    if bb.isNil:
+        assert false
     new(result)
     result.bb = bb
 
 proc newBuilder*(builder: BuilderRef): Builder =
+    if builder.isNil:
+        assert false
     new(result, finalizer)
     result.builder = builder
 
