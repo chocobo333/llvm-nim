@@ -1143,6 +1143,16 @@ proc `body=`*(struct: Type, elementTypes: openArray[Type], packed: bool = false)
 #     ##  This works on array, vector, and pointer types.
 #     ##
 #     ##  @see llvm::SequentialType::getElementType()
+proc elementType*(ty: Type): Type =
+    ##  Obtain the type of elements within a sequential type.
+    ##
+    ##  This works on array, vector, and pointer types.
+    ##
+    ##  @see llvm::SequentialType::getElementType()
+    ## 
+    ##  Wrapping:
+    ##  * `getElementType(ty: TypeRef)<../llvm/Core.html#getElementType,TypeRef>`_
+    newType[Type](ty.typ.getElementType)
 
 # proc getSubtypes*(tp: TypeRef; arr: ptr TypeRef) {.cdecl, importc: "LLVMGetSubtypes", dynlib: LLVMlib.}
 #     ##  Returns type's subtypes
