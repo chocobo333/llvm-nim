@@ -3137,7 +3137,7 @@ proc targetData*(m: Module): TargetData =
 # proc pointerSize*(td: TargetDataRef): cuint {.cdecl, importc: "LLVMPointerSize", dynlib: LLVMlib.}
 #     ## * Returns the pointer size in bytes for a target.
 #     ##     See the method llvm::DataLayout::getPointerSize.
-proc pointerSize*(td: TargetData): uint =
+proc pointerSize2*(td: TargetData): uint =
     ## * Returns the pointer size in bytes for a target.
     uint td.pointerSize
 
