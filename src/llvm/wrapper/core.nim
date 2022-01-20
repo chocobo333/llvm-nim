@@ -3170,7 +3170,7 @@ proc intPtrType*(c: Context; td: TargetData): Type =
 # proc sizeOfTypeInBits*(td: TargetDataRef; ty: TypeRef): culonglong {.cdecl, importc: "LLVMSizeOfTypeInBits", dynlib: LLVMlib.}
 #     ## * Computes the size of a type in bytes for a target.
 #     ##     See the method llvm::DataLayout::getTypeSizeInBits.
-proc sizeof*(td: TargetData; ty: Type): culonglong =
+proc sizeofT*(td: TargetData; ty: Type): culonglong =
     ## * Computes the size of a type in bytes for a target.
     ## in bits.
     uint td.sizeOfTypeInBits(ty.typ)
