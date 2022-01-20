@@ -324,7 +324,8 @@ export
     Type,
     Value,
     BasicBlock,
-    Builder
+    Builder,
+    TargetData
 
 export
     VoidType,
