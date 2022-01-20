@@ -87,6 +87,7 @@ type
         bb*: BasicBlockRef
     BuilderObj* = object
         builder*: BuilderRef
+    TargetData* = TargetDataRef
 
 # REGION: TypeDefs
 
