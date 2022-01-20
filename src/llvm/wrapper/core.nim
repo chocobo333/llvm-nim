@@ -3102,7 +3102,7 @@ proc createMemoryBufferWithMemoryRange*(inputdata: string, bufferName: string): 
 #     ##  Obtain the data layout for a module.
 #     ##
 #     ##  @see Module::getDataLayout()
-proc dataLayout*(m: Module): TargetData =
+proc targetData*(m: Module): TargetData =
     ##  Obtain the data layout for a module.
     m.module.getModuleDataLayout
 
