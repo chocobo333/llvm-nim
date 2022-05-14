@@ -2904,6 +2904,12 @@ proc store*(self: Builder, val: Value, `ptr`: Value, name: string = ""): Instruc
 #     ##  LLVMBuildGEP, LLVMBuildInBoundsGEP, and LLVMBuildStructGEP are deprecated in
 #     ##  favor of LLVMBuild*GEP2, in preparation for opaque pointer types.
 # proc buildGEP2*(b: BuilderRef; ty: TypeRef; pointer: ValueRef; indices: ptr ValueRef;numIndices: cuint; name: cstring): ValueRef {.cdecl, importc: "LLVMBuildGEP2", dynlib: LLVMlib.}
+proc gep2*(b: Builder, ty: Type, p: Value, indices: openArray[Value], name: string): Instruction =
+    var
+        s = indices.mapIt(it.value)
+        adr = if s.len > 0: s[0].addr else: nil
+        l = cuint s.len
+    newValue[Instruction](b.builder.buildGEP2(ty.typ, p.value, adr, cuint l, name))
 # proc buildInBoundsGEP2*(b: BuilderRef; ty: TypeRef; pointer: ValueRef;indices: ptr ValueRef; numIndices: cuint;name: cstring): ValueRef {. cdecl, importc: "LLVMBuildInBoundsGEP2", dynlib: LLVMlib.}
 
 # proc buildStructGEP2*(b: BuilderRef; ty: TypeRef; pointer: ValueRef; idx: cuint;name: cstring): ValueRef {.cdecl, importc: "LLVMBuildStructGEP2", dynlib: LLVMlib.}
